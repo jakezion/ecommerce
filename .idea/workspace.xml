@@ -1,9 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="37c63eb1-4b68-422c-a272-ae1d717808d0" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Common.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/App.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Autoload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Boot/development.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Boot/production.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Boot/testing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Cache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Constants.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/ContentSecurityPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/DocTypes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Email.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Encryption.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Events.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Exceptions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Filters.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/ForeignCharacters.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Format.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Generators.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Honeypot.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Images.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Kint.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Logger.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Migrations.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Mimes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Modules.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Pager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Paths.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Routes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Security.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Services.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Toolbar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/UserAgents.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/Validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Config/View.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/BaseController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/Client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/Dashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/Database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Database/Migrations/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Database/Seeds/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Filters/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/requires_helper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Language/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Language/en/Validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Libraries/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/database/DatabaseModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/ThirdParty/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/client/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/client/register.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/dashboard/dashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/dashboard/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/dashboard/individual.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/dashboard/laptops.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/dashboard/phones.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/dashboard/products.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/errors/cli/error_404.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/errors/cli/error_exception.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/errors/cli/production.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/errors/html/debug.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/errors/html/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/errors/html/error_404.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/errors/html/error_exception.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/errors/html/production.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/layout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/simple_layout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/template/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/template/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/builds" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/XPS13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/XPS15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/_support/Database/Migrations/2020-02-22-222222_example_migration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/_support/Database/Seeds/ExampleSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/_support/DatabaseTestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/_support/Libraries/ConfigReader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/_support/Models/ExampleModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/_support/SessionTestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/database/ExampleDatabaseTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/session/ExampleSessionTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/HealthTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/writable/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/writable/cache/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/writable/logs/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/writable/session/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/writable/uploads/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-escaper" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/mikey179/vfsstream" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/kint-php/kint" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/codeigniter4/framework" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/twbs/bootstrap" />
+    </include_path>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="TaskManager">
+    <servers />
   </component>
 </project>
