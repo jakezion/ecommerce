@@ -1,39 +1,48 @@
-<?= $this->extend('simple_layout'); ?>
+<?= $this->extend('layout'); ?>
 <?= $this->section('title'); ?>
 <?= esc($title); ?>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 
-    <form class="form-signin">
-        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
-             height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus=""
-               data-kwimpalastatus="alive" data-kwimpalaid="1617304740905-2">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required=""
-               data-kwimpalastatus="alive" data-kwimpalaid="1617304740905-1">
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
-        <span style="border-block: initial; border-inline: initial; border-start-start-radius: initial; border-start-end-radius: initial; border-end-start-radius: initial; border-end-end-radius: initial; overflow-inline: initial; overflow-block: initial; overscroll-behavior-inline: initial; overscroll-behavior-block: initial; margin-block: initial; margin-inline: initial; scroll-margin-block: initial; scroll-margin-inline: initial; padding-block: initial; padding-inline: initial; scroll-padding-block: initial; scroll-padding-inline: initial; inset-block: initial; inset-inline: initial; block-size: initial; min-block-size: initial; max-block-size: initial; inline-size: initial; min-inline-size: initial; max-inline-size: initial; background-color: initial; background-image: url(&quot;moz-extension://7ce26f99-d8bd-4c01-9304-caa731701433/content/injected/logo-autofill-unknown.svg&quot;); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-clip: initial; background-origin: initial; background-size: contain; background-blend-mode: initial; border: medium none; border-radius: initial; box-decoration-break: initial; -moz-float-edge: initial; display: inline; position: absolute; float: initial; clear: initial; vertical-align: initial; overflow: initial; overflow-anchor: initial; transition: initial; animation: initial; transform: initial; rotate: initial; scale: initial; translate: initial; offset: initial; scroll-behavior: initial; scroll-snap-align: initial; scroll-snap-type: initial; overscroll-behavior: initial; isolation: initial; break-after: initial; break-before: initial; break-inside: initial; resize: initial; perspective: initial; perspective-origin: initial; backface-visibility: initial; transform-box: initial; transform-style: initial; transform-origin: initial; contain: initial; appearance: initial; -moz-orient: initial; will-change: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; touch-action: initial; -webkit-line-clamp: initial; columns: initial; column-fill: initial; column-rule: initial; column-span: initial; content: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; opacity: 1; box-shadow: initial; clip: initial; filter: initial; mix-blend-mode: initial; font: initial; font-synthesis: initial; visibility: visible; writing-mode: initial; text-orientation: initial; color-adjust: initial; image-rendering: initial; image-orientation: initial; dominant-baseline: initial; text-anchor: initial; color-interpolation: initial; color-interpolation-filters: initial; fill: initial; fill-opacity: initial; fill-rule: initial; shape-rendering: initial; stroke: initial; stroke-width: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-dasharray: initial; stroke-dashoffset: initial; clip-rule: initial; marker: initial; paint-order: initial; -moz-context-properties: initial; border-collapse: initial; empty-cells: initial; caption-side: initial; border-spacing: initial; color: initial; text-transform: initial; hyphens: initial; -moz-text-size-adjust: initial; text-indent: initial; overflow-wrap: initial; word-break: initial; text-justify: initial; text-align-last: initial; text-align: initial; letter-spacing: initial; word-spacing: initial; white-space: initial; text-shadow: initial; text-emphasis: initial; text-emphasis-position: initial; -moz-tab-size: initial; line-break: initial; -webkit-text-fill-color: initial; -webkit-text-stroke: initial; ruby-align: initial; ruby-position: initial; text-combine-upright: initial; text-rendering: initial; -moz-control-character-visibility: initial; text-underline-offset: initial; text-underline-position: initial; text-decoration-skip-ink: initial; cursor: initial; pointer-events: initial; -moz-user-input: initial; -moz-user-modify: initial; -moz-user-focus: initial; caret-color: initial; scrollbar-color: initial; list-style: initial; quotes: initial; -moz-image-region: initial; margin: initial; scroll-margin: initial; outline: initial; -moz-outline-radius: initial; outline-offset: initial; padding: initial; scroll-padding: initial; top: 451.8px; right: initial; bottom: initial; left: 671px; z-index: auto; flex-flow: initial; place-content: initial; place-items: initial; flex: initial; place-self: initial; order: initial; width: 16px; min-width: 16px; max-width: initial; height: 16px; min-height: initial; max-height: initial; box-sizing: initial; object-fit: initial; object-position: initial; grid-area: initial; grid: initial; gap: initial; vector-effect: initial; stop-color: initial; stop-opacity: initial; flood-color: initial; flood-opacity: initial; lighting-color: initial; mask-type: initial; clip-path: initial; mask: initial; x: initial; y: initial; cx: initial; cy: initial; rx: initial; ry: initial; r: initial; table-layout: initial; text-overflow: initial; text-decoration: initial; ime-mode: initial; scrollbar-width: initial; user-select: initial; -moz-window-dragging: initial; -moz-force-broken-image-icon: initial; -moz-box-align: initial; -moz-box-direction: initial; -moz-box-flex: initial; -moz-box-orient: initial; -moz-box-pack: initial; -moz-box-ordinal-group: initial; --darkreader-inline-bgcolor: initial; --darkreader-inline-border-top:currentcolor; --darkreader-inline-border-right:currentcolor; --darkreader-inline-border-bottom:currentcolor; --darkreader-inline-border-left:currentcolor; --darkreader-inline-boxshadow: initial; --darkreader-inline-fill: initial; --darkreader-inline-stroke: initial; --darkreader-inline-color: initial; --darkreader-inline-outline: initial; --darkreader-inline-stopcolor: initial;"
-              data-darkreader-inline-bgcolor="" data-darkreader-inline-border-top=""
-              data-darkreader-inline-border-right=""
-              data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left=""
-              data-darkreader-inline-boxshadow="" data-darkreader-inline-fill="" data-darkreader-inline-stroke=""
-              data-darkreader-inline-color="" data-darkreader-inline-outline=""
-              data-darkreader-inline-stopcolor=""></span>
-        <span
-                style="border-block: initial; border-inline: initial; border-start-start-radius: initial; border-start-end-radius: initial; border-end-start-radius: initial; border-end-end-radius: initial; overflow-inline: initial; overflow-block: initial; overscroll-behavior-inline: initial; overscroll-behavior-block: initial; margin-block: initial; margin-inline: initial; scroll-margin-block: initial; scroll-margin-inline: initial; padding-block: initial; padding-inline: initial; scroll-padding-block: initial; scroll-padding-inline: initial; inset-block: initial; inset-inline: initial; block-size: initial; min-block-size: initial; max-block-size: initial; inline-size: initial; min-inline-size: initial; max-inline-size: initial; background-color: initial; background-image: url(&quot;moz-extension://7ce26f99-d8bd-4c01-9304-caa731701433/content/injected/logo-autofill-known.svg&quot;); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-clip: initial; background-origin: initial; background-size: contain; background-blend-mode: initial; border: medium none; border-radius: initial; box-decoration-break: initial; -moz-float-edge: initial; display: inline; position: absolute; float: initial; clear: initial; vertical-align: initial; overflow: initial; overflow-anchor: initial; transition: initial; animation: initial; transform: initial; rotate: initial; scale: initial; translate: initial; offset: initial; scroll-behavior: initial; scroll-snap-align: initial; scroll-snap-type: initial; overscroll-behavior: initial; isolation: initial; break-after: initial; break-before: initial; break-inside: initial; resize: initial; perspective: initial; perspective-origin: initial; backface-visibility: initial; transform-box: initial; transform-style: initial; transform-origin: initial; contain: initial; appearance: initial; -moz-orient: initial; will-change: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; touch-action: initial; -webkit-line-clamp: initial; columns: initial; column-fill: initial; column-rule: initial; column-span: initial; content: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; opacity: 1; box-shadow: initial; clip: initial; filter: initial; mix-blend-mode: initial; font: initial; font-synthesis: initial; visibility: visible; writing-mode: initial; text-orientation: initial; color-adjust: initial; image-rendering: initial; image-orientation: initial; dominant-baseline: initial; text-anchor: initial; color-interpolation: initial; color-interpolation-filters: initial; fill: initial; fill-opacity: initial; fill-rule: initial; shape-rendering: initial; stroke: initial; stroke-width: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-dasharray: initial; stroke-dashoffset: initial; clip-rule: initial; marker: initial; paint-order: initial; -moz-context-properties: initial; border-collapse: initial; empty-cells: initial; caption-side: initial; border-spacing: initial; color: initial; text-transform: initial; hyphens: initial; -moz-text-size-adjust: initial; text-indent: initial; overflow-wrap: initial; word-break: initial; text-justify: initial; text-align-last: initial; text-align: initial; letter-spacing: initial; word-spacing: initial; white-space: initial; text-shadow: initial; text-emphasis: initial; text-emphasis-position: initial; -moz-tab-size: initial; line-break: initial; -webkit-text-fill-color: initial; -webkit-text-stroke: initial; ruby-align: initial; ruby-position: initial; text-combine-upright: initial; text-rendering: initial; -moz-control-character-visibility: initial; text-underline-offset: initial; text-underline-position: initial; text-decoration-skip-ink: initial; cursor: initial; pointer-events: initial; -moz-user-input: initial; -moz-user-modify: initial; -moz-user-focus: initial; caret-color: initial; scrollbar-color: initial; list-style: initial; quotes: initial; -moz-image-region: initial; margin: initial; scroll-margin: initial; outline: initial; -moz-outline-radius: initial; outline-offset: initial; padding: initial; scroll-padding: initial; top: 406.8px; right: initial; bottom: initial; left: 671px; z-index: 2; flex-flow: initial; place-content: initial; place-items: initial; flex: initial; place-self: initial; order: initial; width: 16px; min-width: 16px; max-width: initial; height: 16px; min-height: initial; max-height: initial; box-sizing: initial; object-fit: initial; object-position: initial; grid-area: initial; grid: initial; gap: initial; vector-effect: initial; stop-color: initial; stop-opacity: initial; flood-color: initial; flood-opacity: initial; lighting-color: initial; mask-type: initial; clip-path: initial; mask: initial; x: initial; y: initial; cx: initial; cy: initial; rx: initial; ry: initial; r: initial; table-layout: initial; text-overflow: initial; text-decoration: initial; ime-mode: initial; scrollbar-width: initial; user-select: initial; -moz-window-dragging: initial; -moz-force-broken-image-icon: initial; -moz-box-align: initial; -moz-box-direction: initial; -moz-box-flex: initial; -moz-box-orient: initial; -moz-box-pack: initial; -moz-box-ordinal-group: initial; --darkreader-inline-bgcolor: initial; --darkreader-inline-border-top:currentcolor; --darkreader-inline-border-right:currentcolor; --darkreader-inline-border-bottom:currentcolor; --darkreader-inline-border-left:currentcolor; --darkreader-inline-boxshadow: initial; --darkreader-inline-fill: initial; --darkreader-inline-stroke: initial; --darkreader-inline-color: initial; --darkreader-inline-outline: initial; --darkreader-inline-stopcolor: initial;"
-                data-darkreader-inline-bgcolor="" data-darkreader-inline-border-top=""
-                data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom=""
-                data-darkreader-inline-border-left="" data-darkreader-inline-boxshadow="" data-darkreader-inline-fill=""
-                data-darkreader-inline-stroke="" data-darkreader-inline-color="" data-darkreader-inline-outline=""
-                data-darkreader-inline-stopcolor=""></span>
-    </form>
+<div class="d-flex justify-content-center">
+    <div class="col-6 mt-5 px-5 login-main">
+        <form action="/" method="post">
+            <div class="mb-5">
+                <h1 class="d-flex justify-content-center">Login</h1>
+            </div>
+            <div class="mb-3">
+                <label for="phonenumber" class="form-label">Phone number</label>
+                <input type="tel" class="form-control pt-2 pb-2" id="phonenumber" aria-describedby="phonehelp" required>
+                <!-- pattern="[0-9]{10}" -->
+                <div id="phonehelp" class="form-text px-4">Enter the Phone Number associated with your account</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label ">Password</label>
+                <input type="password" class="form-control pt-2 pb-2" id="password" required>
+            </div>
+            <div class="d-flex justify-content-center text-center">
+                <div class="row">
+                    <div class="col">
+                    <div class="form-text mb-3">Forgot Password?</div>
+                    <button type="submit" class="btn btn-dark mb-3">Sign in</button>
+                    <div class="form-text mb-3"><a href="register">Register account</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <?= $this->endSection(); ?>
+
+
+<style>
+    .login-main{
+        font-family: 'Arvo', sans-serif;
+    }
+
+    .login-main input{
+        font-size: 22px;
+    }
+</style>

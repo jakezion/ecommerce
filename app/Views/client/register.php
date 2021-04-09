@@ -1,15 +1,24 @@
-<?= $this->extend('simple_layout'); ?>
+<?= $this->extend('layout'); ?>
 
 <?= $this->section('content'); ?>
-    <div class="col-sm-8 col-md-6 col-lg-5 mx-auto">
-        <div class="card shadow-sm card-register my-5">
-            <div class="card-body">
-                <h2 class="card-title text-center"><?= esc($title); ?></h2>
-                <div id="form"></div>
-            </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="col-6 mt-5 px-5 register-main ">
+            <div id="form"></div>
         </div>
     </div>
+
 <?= $this->endSection(); ?>
+
+    <style>
+        .register-main {
+            font-family: 'Arvo', sans-serif;
+        }
+
+        .register-main input {
+            font-size: 22px;
+        }
+    </style>
 
 <?= $this->section('scripts'); ?>
     <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
@@ -69,10 +78,10 @@
 
             validateUsername() {
                 let username = this.state.username;
-                let symbols = new RegExp(/[^a - zA - Z0 - 9\s]/);
+                let symbols = new RegExp(/[^a-zA-Z0-9\s]/);
                 //let symbols = new RegExp(/^[a-zA-Z0-9!@#$%^&*)(+=._-]*$/);
                 if (symbols.test(username)) {
-                    this.setState({nameError: 'Your username is invalid'});
+                    this.setState({nameError: 'Your username is invalid.'});
                     //   <style>.invalid{text-color: red;}</style>
                 } else {
                     this.setState({nameError: ''});
@@ -107,7 +116,7 @@
                 if (format.test(email)) {
                     this.setState({emailError: ''});
                 } else {
-                    this.setState({emailError: 'Email address isn\'t valid'});
+                    this.setState({emailError: 'Your Email address isn\'t valid.'});
                 }
             }
 
@@ -157,85 +166,93 @@
             //TODO: FINSIH FORM VALUES
             render() {
                 return (
-                    <form onSubmit={
-                        this.handleSubmit} method="post" encType="multipart/form-data">
-                        <div className="form-group">
-                            <label htmlFor="username"> Username:</label>
-                            <input
-                                name="username"
-                                type="text"
-                                className={
-                                    `form-control ` + `${this.state.nameError ? 'is-invalid' : ''}`}
-                                value={
-                                    this.state.username}
-                                id="username"
-                                onChange={
-                                    this.handleUsername}
-                                onBlur={
-                                    this.validateUsername}
-                                placeholder="Username"
-                            />
-                            <div className='invalid-feedback'>{
-                                this.state.nameError}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="phone"> Phone Number:</label>
-                            <input
-                                name="phone"
-                                type="text"
 
-                                value={
-                                    this.state.phone}
-                                className={
-                                    `form-control ` + `${this.state.phoneError ? 'is-invalid' : ''}`}
-                                id="phone"
-                                onChange={
-                                    this.handlePhone}
-                                onBlur={
-                                    this.validatePhoneNumber}
-                                placeholder="Phone Number"
-                            />
-                            <div className='invalid-feedback'>{
-                                this.state.phoneError}</div>
+                    <form onSubmit={this.handleSubmit} method="post" encType="multipart/form-data">
+                        <div className="mb-5">
+                            <h1 className="d-flex justify-content-center">Register Account</h1>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="email"> Email Address:</label>
-                            <input
-                                name="email"
-                                type="email"
-                                value={
-                                    this.state.email}
-                                className={
-                                    `form-control ` + `${this.state.emailError ? 'is-invalid' : ''}`}
-                                id="email"
-                                onChange={
-                                    this.handleEmail}
-                                onBlur={
-                                    this.validateEmailAddress}
-                                placeholder="name@example.co.uk"
-                            />
-                            <div className='invalid-feedback'>{
-                                this.state.emailError}</div>
+                        <div className="mb-3">
+                            <div className="form-group">
+                                <label htmlFor="username"> Username:</label>
+                                <input
+                                    name="username"
+                                    type="text"
+                                    className={
+                                        `form-control ` + `${this.state.nameError ? 'is-invalid' : ''}`}
+                                    value={
+                                        this.state.username}
+                                    id="username"
+                                    onChange={this.handleUsername}
+                                    onBlur={this.validateUsername}
+                                    placeholder="Username"
+                                />
+                                <div className='invalid-feedback'>{this.state.nameError}</div>
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="password"> Password:</label>
-                            <input
-                                name="password"
-                                type="password"
-                                className='form-control'
-                                value={
-                                    this.state.password}
-                                id="password"
-                                onChange={
-                                    this.handlePassword}
-                                onBlur={
-                                    this.validatePassword}
-                                placeholder="Password"
-                            />
+                        <div className="mb-3">
+                            <div className="form-group">
+                                <label htmlFor="phone"> Phone Number:</label>
+                                <input
+                                    name="phone"
+                                    type="text"
+
+                                    value={
+                                        this.state.phone}
+                                    className={
+                                        `form-control ` + `${this.state.phoneError ? 'is-invalid' : ''}`}
+                                    id="phone"
+                                    onChange={
+                                        this.handlePhone}
+                                    onBlur={
+                                        this.validatePhoneNumber}
+                                    placeholder="Phone Number"
+                                />
+                                <div className='invalid-feedback'>{this.state.phoneError}</div>
+                            </div>
                         </div>
-                        <div className='invalid-feedback'>{
-                            this.state.passwordError}</div>
-                        <button type='submit' className='btn btn-primary btn-block'> Submit</button>
+                        <div className="mb-3">
+                            <div className="form-group">
+                                <label htmlFor="email"> Email Address:</label>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    value={
+                                        this.state.email}
+                                    className={
+                                        `form-control ` + `${this.state.emailError ? 'is-invalid' : ''}`}
+                                    id="email"
+                                    onChange={
+                                        this.handleEmail}
+                                    onBlur={
+                                        this.validateEmailAddress}
+                                    placeholder="name@example.co.uk"
+                                />
+                                <div className='invalid-feedback'>{this.state.emailError}</div>
+                            </div>
+                        </div>
+                        <div className="mb-3">
+                            <div className="form-group">
+                                <label htmlFor="password"> Password:</label>
+                                <input
+                                    name="password"
+                                    type="password"
+                                    className='form-control'
+                                    value={
+                                        this.state.password}
+                                    id="password"
+                                    onChange={
+                                        this.handlePassword}
+                                    onBlur={
+                                        this.validatePassword}
+                                    placeholder="Password"
+                                />
+
+                                <div className='invalid-feedback'>{this.state.passwordError}</div>
+                            </div>
+                        </div>
+                        <div className="d-flex justify-content-center text-center">
+                            <button type="submit" className="btn btn-dark mb-3">Register</button>
+                        </div>
                     </form>
                 );
             }

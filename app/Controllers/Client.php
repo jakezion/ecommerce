@@ -8,11 +8,13 @@ class Client extends BaseController {
 
     public function login($page = 'login'){
         $data['title'] = ucfirst($page);
+//        $name = $_SESSION['phone'];
         return view('client/login',$data);
     }
 
     public function logout($page = 'logout'){
-        return view('client/login');
+
+        return view('client/logout');
     }
 
     public function register($page = 'register'){

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\Config\Services;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -20,6 +21,7 @@ use Psr\Log\LoggerInterface;
 
 class BaseController extends Controller
 {
+
 	/**
 	 * An array of helpers to be loaded automatically upon
 	 * class instantiation. These helpers will be available
@@ -28,8 +30,10 @@ class BaseController extends Controller
 	 * @var array
 	 */
 	protected $helpers = [];
-
-	/**
+    protected $session;
+    protected $request;
+    protected $response;
+        /**
 	 * Constructor.
 	 *
 	 * @param RequestInterface  $request
@@ -44,6 +48,8 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
-		// E.g.: $this->session = \Config\Services::session();
+		$this->session = Services::session();
+        $this->request = Services::request();
+        $this->response = Services::response();
 	}
 }

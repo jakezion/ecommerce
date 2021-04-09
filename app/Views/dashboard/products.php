@@ -1,182 +1,250 @@
 <?= $this->extend('layout'); ?>
 
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
 <?= $this->section('title'); ?>
 <?= esc($title); ?>
 <?= $this->endSection(); ?>
 
-<?= $this->section('content'); ?>
-                <div class="container-fluid">
-                    <h3 class="text-dark mb-4">Team</h3>
-                    <div class="card shadow">
-                        <div class="card-header py-3">
-                            <p class="text-primary m-0 font-weight-bold">Employee Info</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                        <label>Show&nbsp;<select
-                                                    class="form-control form-control-sm custom-select custom-select-sm">
-                                                <option value="10" selected="">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select>&nbsp;</label></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input
-                                                    type="search" class="form-control form-control-sm"
-                                                    aria-controls="dataTable" placeholder="Search"></label></div>
-                                </div>
-                            </div>
-                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
-                                 aria-describedby="dataTable_info">
-                                <table class="table dataTable my-0" id="dataTable">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar1.jpeg">Airi Satou
-                                        </td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar2.jpeg">Angelica Ramos
-                                        </td>
-                                        <td>Chief Executive Officer(CEO)</td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2009/10/09<br></td>
-                                        <td>$1,200,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar3.jpeg">Ashton Cox
-                                        </td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12<br></td>
-                                        <td>$86,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar4.jpeg">Bradley Greer
-                                        </td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012/10/13<br></td>
-                                        <td>$132,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar5.jpeg">Brenden Wagner
-                                        </td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011/06/07<br></td>
-                                        <td>$206,850</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar1.jpeg">Brielle Williamson
-                                        </td>
-                                        <td>Integration Specialist</td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td>2012/12/02<br></td>
-                                        <td>$372,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar2.jpeg">Bruno Nash<br></td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>38</td>
-                                        <td>2011/05/03<br></td>
-                                        <td>$163,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar3.jpeg">Caesar Vance
-                                        </td>
-                                        <td>Pre-Sales Support</td>
-                                        <td>New York</td>
-                                        <td>21</td>
-                                        <td>2011/12/12<br></td>
-                                        <td>$106,450</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar4.jpeg">Cara Stevens
-                                        </td>
-                                        <td>Sales Assistant</td>
-                                        <td>New York</td>
-                                        <td>46</td>
-                                        <td>2011/12/06<br></td>
-                                        <td>$145,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30"
-                                                 src="assets/img/avatars/avatar5.jpeg">Cedric Kelly
-                                        </td>
-                                        <td>Senior JavaScript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29<br></td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <td><strong>Name</strong></td>
-                                        <td><strong>Position</strong></td>
-                                        <td><strong>Office</strong></td>
-                                        <td><strong>Age</strong></td>
-                                        <td><strong>Start date</strong></td>
-                                        <td><strong>Salary</strong></td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 align-self-center">
-                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
-                                        Showing 1 to 10 of 27</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a class="page-link" href="#"
-                                                                              aria-label="Previous"><span
-                                                            aria-hidden="true">«</span></a></li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
-                                                            aria-hidden="true">»</span></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<style>
+    body {
+        background: #eee;
+        letter-spacing: 2px;
+        min-height: 101vh;
+    }
 
+    a:hover, a:active {
+        text-decoration: none;
+    }
+
+    input[type="text"], select {
+        outline: none;
+    }
+
+    .col-xs-1 {
+        padding: 0;
+    }
+
+    h1 {
+        font-family: 'Arvo', sans-serif;
+        color: #E35865;
+    }
+
+    header.container-fluid {
+        margin: 0;
+        background-color: #39404A;
+        box-shadow: 0 0px 3px 3px rgba(0, 0, 0, .4);
+        height: 100vh;
+        min-height: 150px;
+    }
+
+    .container {
+        max-width: 720px;
+        margin: auto;
+        padding: 0 50px;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        letter-spacing: 0;
+        padding: 30px;
+        list-style: none;
+        min-height: 200px;
+        background: #fff;
+        margin: 50px auto;
+        text-align: left;
+        -webkit-transition: box-shadow .2s ease-out .2s;
+        -moz-transition: box-shadow .2s ease-out .2s;
+        -o-transition: box-shadow .2s ease-out .2s;
+        transition: box-shadow .2s ease-out .2s;
+        word-spacing: 2px;
+    }
+
+    li > h3 {
+        margin-top: 0;
+        color: #E35865;
+        line-height: 2;
+    }
+
+    li > p {
+        color: #666;
+        line-height: 2;
+    }
+
+    input {
+        padding: 0;
+        border-radius: 0;
+        border: none;
+        font-size: 20px;
+        color: #bbb;
+        background: none;
+        letter-spacing: 1px;
+        word-spacing: 10px;
+        font-family: 'Arvo', sans-serif;
+        padding: 0;
+        line-height: 25px;
+    }
+
+    #searchBox {
+        padding-top: 40vh;
+    }
+
+    button {
+        background: none;
+        border: none;
+    }
+
+    .form {
+        padding: 10px 0;
+        padding-right: 15px;
+        border: 3px solid #E35865;
+
+    }
+
+    .form.col-xs-12 {
+        padding-left: 0;
+    }
+
+    .glyphicon {
+        color: #E35865;
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    .glyphicon-search {
+        cursor: pointer;
+
+    }
+
+    .glyphicon-search:hover {
+
+    }
+
+    .bar {
+        vertical-align: super;
+        font-weight: 700;
+        font-size: 22px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+
+    li:hover {
+        box-shadow: 0 0 15px 15px rgba(0, 0, 0, .1);
+    }
+
+    ::-webkit-input-placeholder {
+        color: #bbb;
+        opacity: 1;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+        color: #bbb;
+        opacity: 1;
+    }
+
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: #bbb;
+        opacity: 1;
+    }
+
+    :-ms-input-placeholder {
+        color: #bbb;
+        opacity: 1;
+    }
+
+    #mainBody {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    /*********media query starts ***********/
+
+    @media screen and (max-width: 420px) {
+        #searchBar, .glyphicon {
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+    }
+</style>
+<?= $this->section('sidebar'); ?>
+<div class="p-3 bg-white justify-content-end" style="width: 280px;">
+    <a href="" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <span class="fs-5 fw-semibold">Products</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center active">
+                <a href="?all">
+                    All Products
+                </a>
+
+            </button>
+        </li>
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#dashboard-collapse" aria-expanded="false">
+                Laptops
+            </button>
+            <div class="collapse" id="dashboard-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="?lenovo" class="link-dark rounded">Lenovo</a></li>
+                    <li><a href="?hp" class="link-dark rounded">HP</a></li>
+                    <li><a href="?dell" class="link-dark rounded">Dell</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#orders-collapse" aria-expanded="false">
+                Phones
+            </button>
+            <div class="collapse" id="orders-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="?samsung" class="link-dark rounded">Samsung</a>
+                        <span class="badge rounded-pill">88
+                                <span class="visually-hidden">shopping items</span>
+                        </span>
+                    </li>
+                    <li><a href="?iphone" class="link-dark rounded">iPhone</a></li>
+                    <li><a href="?huawei" class="link-dark rounded">Huawei</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="border-top my-3"></li>
+    </ul>
+</div>
 <?= $this->endSection(); ?>
+
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+<?= $this->section('content'); ?>
+<header class="container-fluid">
+    <div class="container text-center" id="searchBox">
+        <h1>Product Search</h1>
+        <div class="form col-xs-12">
+            <input class="col-xs-9" id="searchBar" type="text" placeholder="search"/>
+            <span class="bi bi-search col-xs-1" data-toggle="tooltip" title="Search"></span>
+            <span class="bi bar col-xs-1" id="submit"><b>|</b></span>
+            <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><span
+                        class="bi bi-random col-xs-1" data-toggle="tooltip"
+                        title="Random topic"></span></a>
+        </div>
+    </div>
+    </div>
+</header>
+<div id="mainBody" class="container text-center">
+    <ul id="results">
+    </ul>
+</div>
+<footer class="text-center">
+
+</footer>
+<?= $this->endSection(); ?>
+
+
