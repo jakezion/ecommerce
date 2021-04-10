@@ -12,7 +12,7 @@
             </div>
             <div class="mb-3">
                 <label for="phonenumber" class="form-label">Phone number</label>
-                <input type="tel" class="form-control pt-2 pb-2" id="phonenumber" aria-describedby="phonehelp" required>
+                <input type="tel" class="form-control pt-2 pb-2" id="phonenumber" aria-describedby="phonehelp" value="<?= old('phone_number') ?? '' ?>" required>
                 <!-- pattern="[0-9]{10}" -->
                 <div id="phonehelp" class="form-text px-4">Enter the Phone Number associated with your account</div>
             </div>

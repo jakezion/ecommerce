@@ -172,8 +172,9 @@
                             <h1 className="d-flex justify-content-center">Register Account</h1>
                         </div>
                         <div className="mb-3">
-                            <div className="form-group">
-                                <label htmlFor="username"> Username:</label>
+                            <label htmlFor="username"> Username:</label>
+                            <div className="input-group">
+
                                 <input
                                     name="username"
                                     type="text"
@@ -190,29 +191,26 @@
                             </div>
                         </div>
                         <div className="mb-3">
-                            <div className="form-group">
-                                <label htmlFor="phone"> Phone Number:</label>
+                            <label htmlFor="phone">  Phone Number:</label>
+                            <div className="input-group">
+                                <span className="input-group-text">+44</span>
                                 <input
                                     name="phone"
                                     type="text"
-
-                                    value={
-                                        this.state.phone}
+                                    value={this.state.phone}
                                     className={
                                         `form-control ` + `${this.state.phoneError ? 'is-invalid' : ''}`}
                                     id="phone"
-                                    onChange={
-                                        this.handlePhone}
-                                    onBlur={
-                                        this.validatePhoneNumber}
+                                    onChange={this.handlePhone}
+                                    onBlur={this.validatePhoneNumber}
                                     placeholder="Phone Number"
                                 />
                                 <div className='invalid-feedback'>{this.state.phoneError}</div>
                             </div>
                         </div>
                         <div className="mb-3">
-                            <div className="form-group">
-                                <label htmlFor="email"> Email Address:</label>
+                            <label htmlFor="email"> Email Address:</label>
+                            <div className="input-group">
                                 <input
                                     name="email"
                                     type="email"
@@ -231,8 +229,8 @@
                             </div>
                         </div>
                         <div className="mb-3">
-                            <div className="form-group">
-                                <label htmlFor="password"> Password:</label>
+                            <label htmlFor="password"> Password:</label>
+                            <div className="input-group">
                                 <input
                                     name="password"
                                     type="password"

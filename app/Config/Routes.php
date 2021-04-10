@@ -33,13 +33,15 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Dashboard::index');
-$routes->get('/products', 'Dashboard::products');
-$routes->get('/laptops', 'Dashboard::laptops');
-$routes->get('/phones', 'Dashboard::phones');
-$routes->get('/products', 'Database::index');
-$routes->get('/individual', 'Database::view');
-$routes->add('products/laptops', 'Database::laptops');
-$routes->get('/login', 'Client::login');
+
+
+$routes->get('inventory/(:alpha)','Dashboard::inventory/$1');
+$routes->get('inventory/(:num)','Dashboard::product/$1');
+$routes->get('/inventory', 'Dashboard::inventory/all'); //TODO check
+
+
+$routes->get('/login', 'Client::getLogin');
+$routes->post('/login', 'Client::postLogin');
 $routes->get('/logout', 'Client::logout');
 $routes->get('/register', 'Client::register');
 /*

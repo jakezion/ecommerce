@@ -1,53 +1,47 @@
-<?php
+<?php namespace App\Controllers;
 
-
-namespace App\Controllers;
+use App\Models\ProductModel;
 
 
 class Dashboard extends BaseController
 {
-    public function index($page = 'dashboard')
-    {
-        $data['title'] = ucfirst($page);
+    public function index(){
+        $data = [
+            'title' => ucfirst('dashboard')
+        ];
 
-        /*
-         if (!isset($session->phone)) {
-             echo "no phone";
-             $session->set->phone('7720904668');
-             echo $session;
-             return 'Client::login';
-         }
-        */
+        //$this->session->set('authenticated', true); //TODO fix
+
+        if (!$this->session->get('authenticated')) {
+            return redirect()->to('login')->with('phone','Please sign in correctly');
+        }
 
         return view('dashboard/dashboard', $data);
     }
 
-    public function products($page = 'products')
+    public function inventory($group = 'all')
     {
-        $data['title'] = ucfirst($page);
+
+        $productModel = new ProductModel();
+
+        $product = $productModel; //TODO getCategory
+
+        if(empty($product)); //TODO say empty
+
+        $data = [
+            'title' => ucfirst('products'),
+            'group' => $group,
+            'products' => $product
+            ];
 
         return view('dashboard/products', $data);
     }
 
-    public function product($page = 'product')
+    public function product($id)
     {
-        $data['title'] = ucfirst($page);
+        $data['title'] = ucfirst('product');
 
         return view('dashboard/product', $data);
-    }
-
-    public function laptops($page = 'laptops')
-    {
-        $data['title'] = ucfirst($page);
-
-        return view('dashboard/laptops', $data);
-    }
-
-    public function phones($page = 'phones')
-    {
-        $data['title'] = ucfirst($page);
-
-        return view('dashboard/phones', $data);
     }
 
 }

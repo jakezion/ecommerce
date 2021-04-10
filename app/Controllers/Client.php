@@ -4,21 +4,41 @@
 namespace App\Controllers;
 
 
-class Client extends BaseController {
+class Client extends BaseController
+{
 
-    public function login($page = 'login'){
+    public function getLogin($page = 'login')
+    {
+
+        if($this->session->get('authenticated')){
+            return redirect()->to($this->validAuthentication);
+        }
+
         $data['title'] = ucfirst($page);
-//        $name = $_SESSION['phone'];
-        return view('client/login',$data);
+
+
+        return view('client/login', $data);
     }
 
-    public function logout($page = 'logout'){
+    public function postLogin($page = 'login')
+    {
+
+        if($this->session->get('authenticated')){
+            return redirect()->to($this->validAuthentication);
+        }
+        $data['title'] = ucfirst($page);
+        return view('client/login', $data);
+    }
+
+    public function logout($page = 'logout')
+    {
 
         return view('client/logout');
     }
 
-    public function register($page = 'register'){
+    public function register($page = 'register')
+    {
         $data['title'] = ucfirst($page);
-        return view('client/register',$data);
+        return view('client/register', $data);
     }
 }

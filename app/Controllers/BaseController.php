@@ -29,7 +29,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = [];
+	protected $helpers = ['array','cookie','html'];
     protected $session;
     protected $request;
     protected $response;
