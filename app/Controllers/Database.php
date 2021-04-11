@@ -2,14 +2,14 @@
 
 
 namespace App\Controllers;
-use App\Models\database\DatabaseModel;
+use App\Models\database\ClientModel;
 use CodeIgniter\Controller;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Database extends Controller {
     public function index()
     {
-        $model = new DatabaseModel();
+        $model = new ClientModel();
 
         $data = [
             'products' => $model->getProducts(),
@@ -21,7 +21,7 @@ class Database extends Controller {
 
     public function view($slug = null)
     {
-        $model = new DatabaseModel();
+        $model = new ClientModel();
         $data['product'] = $model->getProducts($slug);
 
         if (empty($data['product']))

@@ -40,10 +40,10 @@ $routes->get('inventory/(:num)','Dashboard::product/$1');
 $routes->get('/inventory', 'Dashboard::inventory/all'); //TODO check
 
 
-$routes->get('/login', 'Client::getLogin');
-$routes->post('/login', 'Client::postLogin');
+$routes->match(['get','post'],'/login', 'Client::login');
+
 $routes->get('/logout', 'Client::logout');
-$routes->get('/register', 'Client::register');
+$routes->match(['get','post'],'/register', 'Client::register');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

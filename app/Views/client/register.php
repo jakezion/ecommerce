@@ -4,6 +4,17 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-6 mt-5 px-5 register-main ">
+            <div class="mb-2">
+                <h1 class="d-flex justify-content-center">Register Account</h1>
+            </div>
+            <?php if (isset($validation)): ?>
+                <div class="mb-2">
+                    <div class="alert alert-danger" role="alert">
+                        <?= $validation->listErrors(); ?>
+
+                    </div>
+                </div>
+            <?php endif; ?>
             <div id="form"></div>
         </div>
     </div>
@@ -30,8 +41,7 @@
             constructor(props) {
                 super(props);
                 this.state = {
-                    username:
-                        '',
+                    username: '',
                     phone: '',
                     email: '',
                     password: '',
@@ -159,19 +169,18 @@
                 //         }.bind(this)
                 //     });
                 // });
-                alert(this.state.username + this.state.phone + this.state.email + this.state.password);
-                event.preventDefault();
+                //alert(this.state.username + this.state.phone + this.state.email + this.state.password);
+               // event.preventDefault();
+
             }
 
             //TODO: FINSIH FORM VALUES
             render() {
                 return (
 
-                    <form onSubmit={this.handleSubmit} method="post" encType="multipart/form-data">
-                        <div className="mb-5">
-                            <h1 className="d-flex justify-content-center">Register Account</h1>
-                        </div>
-                        <div className="mb-3">
+                    <form onSubmit={this.handleSubmit} method="post" >
+
+                                          <div className="mb-3">
                             <label htmlFor="username"> Username:</label>
                             <div className="input-group">
 
@@ -224,10 +233,12 @@
                                     onBlur={
                                         this.validateEmailAddress}
                                     placeholder="name@example.co.uk"
+
                                 />
                                 <div className='invalid-feedback'>{this.state.emailError}</div>
                             </div>
                         </div>
+
                         <div className="mb-3">
                             <label htmlFor="password"> Password:</label>
                             <div className="input-group">
@@ -263,5 +274,11 @@
 
     </script>
 
-
+<!--TODO add Confirm password
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+  <span class="input-group-text">@</span>
+  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+</div>
+-->
 <?= $this->endSection(); ?>

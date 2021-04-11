@@ -11,9 +11,12 @@ class Dashboard extends BaseController
         ];
 
         //$this->session->set('authenticated', true); //TODO fix
+//echo $this->session->get('authenticated');
+        if (!$this->session->get('authenticated',true)) {
 
-        if (!$this->session->get('authenticated')) {
-            return redirect()->to('login')->with('phone','Please sign in correctly');
+            return redirect()
+                ->to('login')
+                ->with('validation','Please sign in correctly');
         }
 
         return view('dashboard/dashboard', $data);

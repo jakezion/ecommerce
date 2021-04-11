@@ -236,7 +236,6 @@
                         title="Random topic"></span></a>
         </div>
     </div>
-    </div>
 </header>
 <div id="mainBody" class="container text-center">
     <ul id="results">

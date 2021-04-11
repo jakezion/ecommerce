@@ -73,7 +73,16 @@
                 </div>
                 <div class="nav-item">
                     <a href="login">
-                        <i class="bi bi-person"></i>
+                        <div class="input-group">
+                            <i class="bi bi-person"></i>
+<!--                            --><?php
+//
+//                            if ($this->session->get('authenticated')) :
+//                                echo 'Logout';
+//                            else:
+//                                echo 'Login';
+//                            endif; ?>
+                        </div>
                     </a>
 
                 </div>
