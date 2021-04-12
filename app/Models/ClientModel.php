@@ -22,6 +22,7 @@ class ClientModel extends Model
 //        'password_confirm' => 'matches[password]'
         //|is_unique[account.phone]'|validate_user[phone,password]
     ];
+    //TODO Add unique for email and phone when registering
     protected $validationMessages = [
         'username' => [
             'required' => 'A username must be entered.',

@@ -2,6 +2,9 @@
 <!--<i class="bi bi-basket2"></i>-->
 <!--<i class="bi bi-basket2-fill"></i>-->
 <!--https://stackoverflow.com/questions/43439250/bootstrap-4-stop-collapse-from-pushing-content-down-->
+<?php
+$session = Config\Services::session();
+?>
 <div class="collapse " id="searchbarCollapse">
     <div class="header-nav navbar navbar-expand-lg navbar-dark bg-dark">
 
@@ -46,19 +49,19 @@
                         Products
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item " href="product">Product Search</a></li>
-                        <li><a class="dropdown-item" href="#">Upcoming Products</a></li>
+                        <li><a class="dropdown-item " href="/inventory">Product Search</a></li>
+                        <li><a class="dropdown-item" href="/">Upcoming Products</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="products">All Products</a></li>
+                        <li><a class="dropdown-item" href="/inventory">All Products</a></li>
                     </ul>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="laptops">Laptops</a>
+                    <a class="nav-link" href="/inventory/laptops">Laptops</a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="phones">Mobile Phones</a>
+                    <a class="nav-link" href="/inventory/phones">Mobile Phones</a>
                 </div>
             </div>
         </div>
@@ -72,16 +75,15 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="login">
+                    <a href="/login">
                         <div class="input-group">
                             <i class="bi bi-person"></i>
-<!--                            --><?php
-//
-//                            if ($this->session->get('authenticated')) :
-//                                echo 'Logout';
-//                            else:
-//                                echo 'Login';
-//                            endif; ?>
+                            <?php
+                            if ($session->authenticated) :
+                                echo 'Logout';
+                            else:
+                                echo 'Login';
+                            endif; ?>
                         </div>
                     </a>
 

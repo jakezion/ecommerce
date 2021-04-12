@@ -1,17 +1,24 @@
 <?= $this->extend('layout'); ?>
 
-<?= $this->section('content'); ?>
+<?= $this->section('content');
+$session = Config\Services::session(); ?>
 
     <div class="d-flex justify-content-center">
         <div class="col-6 mt-5 px-5 register-main ">
             <div class="mb-2">
                 <h1 class="d-flex justify-content-center">Register Account</h1>
             </div>
-            <?php if (isset($validation)): ?>
+            <?php if ($session->has('success')): ?>
+                <div class="mb-2">
+                    <div class="alert alert-success" role="alert">
+                        <?= $session->getFlashdata('success'); ?>
+
+                    </div>
+                </div>
+            <?php elseif ($session->has('error')): ?>
                 <div class="mb-2">
                     <div class="alert alert-danger" role="alert">
-                        <?= $validation->listErrors(); ?>
-
+                        <?= $session->getFlashdata('error'); ?>
                     </div>
                 </div>
             <?php endif; ?>

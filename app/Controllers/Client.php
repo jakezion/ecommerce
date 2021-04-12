@@ -12,14 +12,16 @@ class Client extends BaseController
         $data = [
             'title' => ucfirst('login')
         ];
-        if($this->session->authenticated){
+
+        if ($this->session->authenticated) {
             return redirect()->to('/logout');
         }
+
         //checks to see if login request is a get or post method
         if ($this->request->getMethod() == 'post') {
+
             $details = $this->request->getPost();
             $client = new Entities\Client($details);
-
             $model = new ClientModel();
 
             $rules = $model->getValidationRules(['only' => ['phone', 'password']]);
@@ -27,9 +29,12 @@ class Client extends BaseController
 
             if (!$this->validate($rules, $messages)) {
 
-                $data['validation'] = $this->validator;
+                return redirect()
+                    ->back()
+                    ->with('error', $this->validator->listErrors())
+                    ->withInput();
 
-                // return redirect()->back()->withInput();
+
             } else {
                 // IF EXISTS
 
@@ -41,7 +46,8 @@ class Client extends BaseController
 
 
                         //SET CLIENT IN SESSION
-                        $this->session->set('client', $client->accountID);
+                        $this->session->set('client', $client->accountID); //TODO fix
+
                         //$this->session->set('admin'$model->admin);
 
                         //SET AUTHENTICATED TO TRUE
@@ -51,16 +57,20 @@ class Client extends BaseController
 
                         // ELSE LOGIN CLIENT
                     } else {
-                        $data['validation'] = $this->validator;
-//                         return redirect()
-//                             ->to('/login')
-//                             ->with( 'validation','The phone number or password entered is incorrect.')
-//                             ->withInput();
+                        // $data['validation'] = $this->validator;
+                        return redirect()
+                            ->back()
+                            ->with('error', 'The phone number or password entered is incorrect.')
+                            ->withInput();
                         //REDIRECT BACK
                     }
                     //ELSE EXISTS
                 } else {
-                    $data['validation'] = $this->validator;
+                    // $data['validation'] = $this->validator;
+                    return redirect()
+                        ->back()
+                        ->with('error', 'The phone number entered is not registered to an account.')
+                        ->withInput();
                     // return redirect()->back()->withInput();
                     // REDIRECT BACK
                 }
@@ -69,22 +79,7 @@ class Client extends BaseController
 
         }
 
-        // else if ($this->request->getMethod() == 'get') {        }
-
-
         return view('client/login', $data);
-    }
-
-    public function exists($phone, $password)
-    {
-
-        //$account = $model->where('phone', $phone)->first();
-        // if ($account !== null) {
-        //    if (password_verify($password, $account['password'])) {
-        //       return $account;
-        //    }
-        // }
-        //   return null;
     }
 
     public function logout()
@@ -92,7 +87,7 @@ class Client extends BaseController
 
         if ($this->session->authenticated) {
             $this->session->destroy();
-            return redirect()->to('/')->with('success', 'You have been logged out successfully.');
+            return redirect()->to('/')->with('success', 'You have been logged out successfully.'); //TODO Fix to display properly
         } else {
             return redirect()->to('/login')->with('error', 'You must be logged in to sign out.');
         }
@@ -107,42 +102,38 @@ class Client extends BaseController
 
             $client = new Entities\Client($details);
             $model = new ClientModel();
-            // echo var_dump($data);
-            // $this->session->set('authenticated', $_POST['phone']);
-            // return redirect()->to('/');
-
-
 
             $rules = $model->getValidationRules();
+            //$rules = $model->getRuleGroup('signup'); //TODO fix
             $messages = $model->getValidationMessages();
 
             if (!$this->validate($rules, $messages)) {
-                $data['validation'] = $this->validator;
+                return redirect()
+                    ->back()
+                    ->with('error', $this->validator->listErrors());
+
             } else {
                 if (!$model->exists($client)) {
-                    if($model->create($client)){
+                    if ($model->create($client)) {
                         return redirect()
                             ->to('/login')
-                            ->with('success','You have successfully registered an account.');
+                            ->with('success', 'You have successfully registered an account.')
+                            ->withInput();
 
                     } else {
-                        $data['validation'] = $this->validator;
+                        return redirect()
+                            ->back()
+                            ->with('error', 'Account could not be registered.');
+
                     }
 
                 } else {
-                    $data['validation'] = $this->validator;
+                    return redirect()
+                        ->back()
+                        ->with('error', 'The phone number entered is already registered to an account.');
+
                 }
             }
-
-
-            // if ($this->exists($_POST['phone'], $_POST['password']) !== null) {
-            //     $this->session->set('authentication', $_POST['phone']);
-            //    return redirect()->to('dashboard/dashboard');
-            //  } else {
-            // $this->session->setFlashData('phone',$this->session->get('authenticated');
-            //      return redirect()->back();
-            //   }
-
 
         }
         $data['title'] = ucfirst($page);
