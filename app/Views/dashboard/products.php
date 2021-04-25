@@ -173,50 +173,61 @@
     }
 </style>
 <?= $this->section('sidebar'); ?>
+<!-- TODO make this a breadcrumb for the current page instead, that can be interacted with-->
 <div class="p-3 bg-white justify-content-end" style="width: 280px;">
     <a href="" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
         <span class="fs-5 fw-semibold">Products</span>
     </a>
     <ul class="list-unstyled ps-0">
         <li class="mb-1">
-            <button class="btn btn-toggle align-items-center active">
+
+            <button class="btn btn-toggle align-items-center collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#products-collapse" aria-expanded="false">
                 <a href="?all">
                     All Products
                 </a>
 
             </button>
-        </li>
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#dashboard-collapse" aria-expanded="false">
-                Laptops
-            </button>
-            <div class="collapse" id="dashboard-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="?lenovo" class="link-dark rounded">Lenovo</a></li>
-                    <li><a href="?hp" class="link-dark rounded">HP</a></li>
-                    <li><a href="?dell" class="link-dark rounded">Dell</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#orders-collapse" aria-expanded="false">
-                Phones
-            </button>
-            <div class="collapse" id="orders-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="?samsung" class="link-dark rounded">Samsung</a>
-                        <span class="badge rounded-pill">88
+
+            <ul class="mb-1">
+                <div class="collapse" id="#products-collapse">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Laptops
+                    </button>
+                </div>
+                <div class="collapse" id="dashboard-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="?lenovo" class="link-dark rounded">Lenovo</a></li>
+                        <li><a href="?hp" class="link-dark rounded">HP</a></li>
+                        <li><a href="?dell" class="link-dark rounded">Dell</a></li>
+                    </ul>
+                </div>
+
+            </ul>
+            <ul class="mb-1">
+                <div class="collapse" id="#products-collapse">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#orders-collapse" aria-expanded="false">
+                        Phones
+                    </button>
+                </div>
+                <div class="collapse" id="orders-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="?samsung" class="link-dark rounded">Samsung</a>
+                            <span class="badge rounded-pill">88
                                 <span class="visually-hidden">shopping items</span>
                         </span>
-                    </li>
-                    <li><a href="?iphone" class="link-dark rounded">iPhone</a></li>
-                    <li><a href="?huawei" class="link-dark rounded">Huawei</a></li>
-                </ul>
-            </div>
-        </li>
+                        </li>
+                        <li><a href="?iphone" class="link-dark rounded">iPhone</a></li>
+                        <li><a href="?huawei" class="link-dark rounded">Huawei</a></li>
+                    </ul>
+                </div>
+
+            </ul>
+
         <li class="border-top my-3"></li>
+        </li>
     </ul>
 </div>
 <?= $this->endSection(); ?>
@@ -227,14 +238,33 @@
 <header class="container-fluid">
     <div class="container text-center" id="searchBox">
         <h1>Product Search</h1>
-        <div class="form col-xs-12">
-            <input class="col-xs-9" id="searchBar" type="text" placeholder="search"/>
-            <span class="bi bi-search col-xs-1" data-toggle="tooltip" title="Search"></span>
-            <span class="bi bar col-xs-1" id="submit"><b>|</b></span>
-            <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><span
-                        class="bi bi-random col-xs-1" data-toggle="tooltip"
-                        title="Random topic"></span></a>
-        </div>
+        <form>
+            <div class="input-group">
+                <div class="row">
+                    <div class="col">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Products</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Brand</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="input-group ">
+                <label><input class="form-control" type="text"></label>
+            </div>
+        </form>
+
     </div>
 </header>
 <div id="mainBody" class="container text-center">
@@ -244,6 +274,37 @@
 <footer class="text-center">
 
 </footer>
+<?= $this->endSection(); ?>
+<?= $this->sectoin('scripts'); ?>
+<script>
+    $(document).ready(function () {
+        $('#product').change(function () {
+            let product = $('#product').val();
+            let type = 'category';
+
+
+            if (product != '') {
+                $.ajax({
+                    url: '<?php echo base_url('/inv')?>',
+                    headers: {'X-Requested-With': 'XMLHttpRequest'},
+                    method: "GET",
+                    data: {product: product, type: type},
+                    dataType: 'JSON',
+                    success: function (data) {
+                        let html = '<option value="Select Brand</option>';
+
+                        data.forEach(items => {
+                            html += '<option value="' + items.brand + '">' + items.name + '</option>';
+                        });
+
+                        $('#state').html(html);
+                    }
+                });
+            }
+        });
+    });
+
+</script>
 <?= $this->endSection(); ?>
 
 

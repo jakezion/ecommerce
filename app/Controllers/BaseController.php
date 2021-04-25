@@ -33,6 +33,7 @@ class BaseController extends Controller
     protected $session;
     protected $request;
     protected $response;
+
         /**
 	 * Constructor.
 	 *
@@ -48,6 +49,7 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
+        $this->validation = Services::validation();
 		$this->session = Services::session();
         $this->request = Services::request();
         $this->response = Services::response();

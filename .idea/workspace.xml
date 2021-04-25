@@ -20,7 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37c63eb1-4b68-422c-a272-ae1d717808d0" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/app/Validation/ClientRules.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/BaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Client.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Entities/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Product.php" afterDir="false" />
@@ -28,7 +32,8 @@
       <change beforePath="$PROJECT_DIR$/app/Models/ProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/client/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/client/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/client/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/client/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/product.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/products.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/template/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/template/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +117,7 @@
     <property name="javascript.nodejs.core.library.configured.version" value="14.14.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.0" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.PHP" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -155,6 +160,14 @@
       <workItem from="1618232036576" duration="6549000" />
       <workItem from="1618250126092" duration="660000" />
       <workItem from="1618254312912" duration="2978000" />
+      <workItem from="1618261255187" duration="34000" />
+      <workItem from="1618307747680" duration="3549000" />
+      <workItem from="1619182780366" duration="13300000" />
+      <workItem from="1619256119351" duration="5882000" />
+      <workItem from="1619284273510" duration="4194000" />
+      <workItem from="1619304354153" duration="18000" />
+      <workItem from="1619304477593" duration="871000" />
+      <workItem from="1619360427159" duration="6432000" />
     </task>
     <task id="LOCAL-00002" summary="Initial Commit">
       <created>1617974515847</created>
@@ -184,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618172815852</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Initial Commit">
+      <created>1618261277726</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618261277726</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,10 +231,15 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1053" y="375" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1618056538319" />
-    <state x="-810" y="469" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618255235037">
-      <screen x="-1080" y="-231" width="1080" height="1890" />
+    <state x="640" y="522" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619195693528">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-810" y="469" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618255235037" />
+    <state x="640" y="522" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619195693528" />
+    <state x="1274" y="401" key="FileChooserDialogImpl" timestamp="1619194058109">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1274" y="401" key="FileChooserDialogImpl/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619194058109" />
     <state x="918" y="466" key="MultipleFileMergeDialog" timestamp="1617555069652">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -223,17 +248,18 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1020" y="428" key="NewPhpClassDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1617987561813" />
-    <state x="1114" y="628" key="NewPhpFileDialog" timestamp="1618059762048">
+    <state x="1114" y="628" key="NewPhpFileDialog" timestamp="1619187423224">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1114" y="628" key="NewPhpFileDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1618059762048" />
-    <state x="781" y="350" key="SettingsEditor" timestamp="1617967377166">
+    <state x="1114" y="628" key="NewPhpFileDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619187423224" />
+    <state x="995" y="305" key="SettingsEditor" timestamp="1619194176234">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="781" y="350" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1617967377166" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1618173746160">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619194176234" />
+    <state x="-816" y="356" key="Vcs.Push.Dialog.v2" timestamp="1618261285062">
+      <screen x="-1080" y="-231" width="1080" height="1890" />
     </state>
+    <state x="-816" y="356" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618261285062" />
     <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1618173746160" />
     <state x="728" y="143" width="1096" height="1397" key="dock-window-1" timestamp="1618080082556">
       <screen x="0" y="0" width="2560" height="1410" />

@@ -9,9 +9,13 @@ class Client extends BaseController
 
     public function login()
     {
+
+
         $data = [
             'title' => ucfirst('login')
         ];
+
+
 
         if ($this->session->authenticated) {
             return redirect()->to('/logout');
@@ -23,11 +27,11 @@ class Client extends BaseController
             $details = $this->request->getPost();
             $client = new Entities\Client($details);
             $model = new ClientModel();
+            $rules =  $this->validation->getRuleGroup('login'); //TODO set up in model and get proper one
+            //$rules = $validation->getValidationRules(['only' => ['phone', 'password']]);
+            //$messages = $model->getValidationMessages();
 
-            $rules = $model->getValidationRules(['only' => ['phone', 'password']]);
-            $messages = $model->getValidationMessages();
-
-            if (!$this->validate($rules, $messages)) {
+            if (!$this->validate($rules)) {
 
                 return redirect()
                     ->back()
@@ -47,7 +51,7 @@ class Client extends BaseController
 
                         //SET CLIENT IN SESSION
                         $this->session->set('client', $client->accountID); //TODO fix
-
+                        //    $this->session->set('admin', $client->accountID); //TODO get admin level if admin id true
                         //$this->session->set('admin'$model->admin);
 
                         //SET AUTHENTICATED TO TRUE
@@ -82,17 +86,6 @@ class Client extends BaseController
         return view('client/login', $data);
     }
 
-    public function logout()
-    {
-
-        if ($this->session->authenticated) {
-            $this->session->destroy();
-            return redirect()->to('/')->with('success', 'You have been logged out successfully.'); //TODO Fix to display properly
-        } else {
-            return redirect()->to('/login')->with('error', 'You must be logged in to sign out.');
-        }
-    }
-
     public function register($page = 'register')
     {
         $data = [];
@@ -103,11 +96,12 @@ class Client extends BaseController
             $client = new Entities\Client($details);
             $model = new ClientModel();
 
-            $rules = $model->getValidationRules();
-            //$rules = $model->getRuleGroup('signup'); //TODO fix
-            $messages = $model->getValidationMessages();
+//            $rules = $model->getValidationRules();
 
-            if (!$this->validate($rules, $messages)) {
+//            $messages = $model->getValidationMessages();
+            $rules =  $this->validation->getRuleGroup('register');
+
+            if (!$this->validate($rules)) {
                 return redirect()
                     ->back()
                     ->with('error', $this->validator->listErrors());
@@ -140,6 +134,17 @@ class Client extends BaseController
         return view('client/register', $data);
 
 
+    }
+
+    public function logout()
+    {
+
+        if ($this->session->authenticated) {
+            $this->session->destroy();
+            return redirect()->to('/')->with('success', 'You have been logged out successfully.'); //TODO Fix to display properly
+        } else {
+            return redirect()->to('/login')->with('error', 'You must be logged in to sign out.');
+        }
     }
 
 }

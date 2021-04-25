@@ -4,7 +4,7 @@ namespace App\Entities;
 use CodeIgniter\Entity;
 
 class Product extends Entity{
-    protected $id;
+    protected $productID;
     protected $category;
     protected $name;
     protected $brand;

@@ -2,9 +2,7 @@
 <!--<i class="bi bi-basket2"></i>-->
 <!--<i class="bi bi-basket2-fill"></i>-->
 <!--https://stackoverflow.com/questions/43439250/bootstrap-4-stop-collapse-from-pushing-content-down-->
-<?php
-$session = Config\Services::session();
-?>
+
 <div class="collapse " id="searchbarCollapse">
     <div class="header-nav navbar navbar-expand-lg navbar-dark bg-dark">
 
@@ -74,12 +72,12 @@ $session = Config\Services::session();
                         <i class="bi bi-search"></i>
                     </a>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item loginlogout">
                     <a href="/login">
                         <div class="input-group">
                             <i class="bi bi-person"></i>
                             <?php
-                            if ($session->authenticated) :
+                            if (session()->authenticated) :
                                 echo 'Logout';
                             else:
                                 echo 'Login';
@@ -88,9 +86,12 @@ $session = Config\Services::session();
                     </a>
 
                 </div>
-                <div class="nav-item">
-                    <i class="bi bi-basket2"></i>
-                </div>
+                <!--         IF        -->
+                <?php if (session()->authenticated): ?>
+                    <div class="nav-item">
+                        <i class="bi bi-basket2"></i>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -113,6 +114,25 @@ $session = Config\Services::session();
 
 
 <style>
+     .loginlogout a{
+        color: #586e75;
+        text-decoration: none;
+    }
+
+     .loginlogout a:visited{
+        color: #586e75;
+        text-decoration: none;
+    }
+
+     .loginlogout a:hover {
+        color: #586e75;
+        text-decoration: none;
+    }
+
+     .loginlogout  a:active {
+        color: #586e75;
+        text-decoration: none;
+    }
     #searchbarCollapse {
         position: absolute;
         width: 100%;

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 use App\Entities\Product;
+
 class ProductModel extends Model
 {
-    protected $table = 'laptops';
-    protected $primaryKey = 'id';
+    protected $table = 'product';
+    protected $primaryKey = 'productID';
     protected $returnType = 'App\Entities\Product';
     protected $allowedFields = ['category', 'name', 'brand', 'description', 'price', 'image'];
 //    protected $beforeInsert = ['hashPassword'];
@@ -15,31 +16,41 @@ class ProductModel extends Model
 
     public function exists(Product $data)
     {
+        $row = $this
+            ->where('id', $data->productID)
+            ->countAllResults();
 
-        $exists = $this
-            ->select(['productID','category', 'name', 'brand', 'description', 'price', 'image'])
-            ->where('category', $data->category)
-            ->where('brand', $data->brand)
-            ->findAll();
+        return ($row == 1);
 
-        if ($exists)
-            return true;
 
-        return false;
     }
 
-    public function getProduct(Product $data)
+    public function getProductCategory(Product $data)
     {
-
-        //$this->hashPassword($data);
-
-        $details = $this
-            ->select('password')
-            ->where('phone', $data->phone)
-            ->first();
-
-        return password_verify($data->password, $details->password);
-
+        if ($data->category == 'all') {
+            return $this
+                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+                ->findAll();
+        } else {
+            return $this
+                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+                ->where('category', $data->category)
+                ->findAll();
+        }
     }
 
+    public function getProductBrand(Product $data)
+    {
+            return $this
+                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+                ->where('brand',$data->brand)
+                ->findAll();
+    }
+
+    public function getProductID(Product $data)
+    {
+        return $this
+            ->where('id', $data->productID)
+            ->first();
+    }
 }

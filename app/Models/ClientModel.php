@@ -14,41 +14,6 @@ class ClientModel extends Model
     protected $beforeInsert = ['hashPassword'];
     protected $beforeUpdate = ['hashPassword'];
     protected $skipValidation = false;
-    protected $validationRules = [
-        'username' => 'required|max_length[255]',
-        'email' => 'required|valid_email|max_length[255]',
-        'phone' => 'required|exact_length[10]|numeric',
-        'password' => 'required|min_length[4]',
-//        'password_confirm' => 'matches[password]'
-        //|is_unique[account.phone]'|validate_user[phone,password]
-    ];
-    //TODO Add unique for email and phone when registering
-    protected $validationMessages = [
-        'username' => [
-            'required' => 'A username must be entered.',
-            'max_length' => 'The username must be entered cannot be longer than 255 characters.'
-        ],
-        'email' => [
-            'required' => 'An email must be entered.',
-            'valid_email' => 'The email entered must be a valid email address.',
-            'max_length' => 'The email entered cannot be longer than 255 characters.'
-        ],
-        'phone' => [
-            'required' => 'A phone number must be entered.',
-            'exact_length' => 'The phone number entered must be exactly 10 digits.',
-            'numeric' => 'The phone number entered can only contain numbers.',
-        ],
-        'password' => [
-            'required' => 'A password must be entered.',
-            'min_length' => 'The password entered must be at least 4 characters.',
-//            'validate_user' => 'The phone number or password is incorrect.'
-
-        ],
-//        'password_confirm' => [
-//            'required' => 'A password must be entered.',
-//            'min_length' => 'The password entered must be at least 8 characters.'
-//        ]
-    ];
 
     protected function beforeInsert(Client $data)
     {

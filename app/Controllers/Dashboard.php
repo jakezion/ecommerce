@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Entities\Product;
 use App\Models\ProductModel;
 
 
@@ -13,22 +14,26 @@ class Dashboard extends BaseController
 
         //$this->session->set('authenticated', true); //TODO fix
         //echo $this->session->get('authenticated');
-        if (!$this->session->get('authenticated', true)) {
 
-            return redirect()
-                ->to('/login')
-                ->with('error', 'Please sign in correctly');
-        }
+//        if (!$this->session->get('authenticated', true)) {
+//
+//            return redirect()
+//                ->to('/login')
+//                ->with('error', 'Please sign in correctly');
+//        }
 
         return view('dashboard/dashboard', $data);
     }
 
     public function inventory($group = 'all')
     {
+        $details = $this->request->getPost(); //get ajax call
+        $product = new Product();
+        $productList = new ProductModel();
 
-        $productModel = new ProductModel();
+        $productList->getProductCategory($product); //TODO getCategory
 
-        $product = $productModel; //TODO getCategory
+
 
         if (empty($product)) ; //TODO say empty
 
@@ -45,7 +50,7 @@ class Dashboard extends BaseController
     {
         $data['title'] = ucfirst('product');
 
-        return view('dashboard/product', $data);
+        return view('dashboard/individual', $data);
     }
 
 }

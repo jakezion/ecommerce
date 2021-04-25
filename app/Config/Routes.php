@@ -35,9 +35,9 @@ $routes->setAutoRoute(false);
 $routes->get('/', 'Dashboard::index');
 
 
-$routes->get('inventory/(:alpha)','Dashboard::inventory/$1');
-$routes->get('inventory/(:num)','Dashboard::product/$1');
-$routes->get('/inventory', 'Dashboard::inventory/all'); //TODO check
+$routes->get('inv/(:alpha)','Dashboard::inventory/$1');
+$routes->get('inv/(:num)','Dashboard::product/$1');
+$routes->get('/inv', 'Dashboard::inventory/all'); //TODO check
 
 
 $routes->match(['get','post'],'/login', 'Client::login');

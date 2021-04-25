@@ -2,8 +2,7 @@
 <?= $this->section('title'); ?>
 <?= esc($title); ?>
 <?= $this->endSection(); ?>
-<?= $this->section('content');
-$session = Config\Services::session(); ?>
+<?= $this->section('content'); ?>
 
 <div class="d-flex justify-content-center">
     <div class="col-6 mt-5 px-5 login-main">
@@ -11,17 +10,17 @@ $session = Config\Services::session(); ?>
             <div class="mb-2">
                 <h1 class="d-flex justify-content-center">Login</h1>
             </div>
-            <?php if ($session->has('success')): ?>
+            <?php if (session()->has('success')): ?>
                 <div class="mb-2">
                     <div class="alert alert-success" role="alert">
-                        <?= $session->getFlashdata('success'); ?>
+                        <?= session()->getFlashdata('success'); ?>
 
                     </div>
                 </div>
-            <?php elseif ($session->has('error')): ?>
+            <?php elseif (session()->has('error')): ?>
                 <div class="mb-2">
                     <div class="alert alert-danger" role="alert">
-                        <?= $session->getFlashdata('error'); ?>
+                        <?= session()->getFlashdata('error'); ?>
                     </div>
                 </div>
             <?php endif; ?>
@@ -45,7 +44,8 @@ $session = Config\Services::session(); ?>
                     <div class="col">
                         <div class="form-text mb-3">Forgot Password?</div>
                         <button type="submit" class="btn btn-dark mb-3">Sign in</button>
-                        <div class="form-text mb-3"><a href="/register">Register account</a>
+                        <div class="form-text mb-3 register">
+                            <a href="/register">Register account</a>
                         </div>
                     </div>
                 </div>
@@ -58,6 +58,25 @@ $session = Config\Services::session(); ?>
 
 
 <style>
+    .register a{
+        color: #586e75;
+
+    }
+
+    .register a:visited{
+        color: #586e75;
+
+    }
+
+    .register a:hover {
+        color: #586e75;
+
+    }
+
+    .register  a:active {
+        color: #586e75;
+
+    }
     .login-main {
         font-family: 'Arvo', sans-serif;
     }
