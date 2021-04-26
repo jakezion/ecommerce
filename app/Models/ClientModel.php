@@ -15,6 +15,8 @@ class ClientModel extends Model
     protected $beforeUpdate = ['hashPassword'];
     protected $skipValidation = false;
 
+    //todo  if register setrValidationRules, setValidationMessages
+
     protected function beforeInsert(Client $data)
     {
         return $this->hashPassword($data);

@@ -27,12 +27,17 @@ class Dashboard extends BaseController
 
     public function inventory($group = 'all')
     {
-        $details = $this->request->getPost(); //get ajax call
-        $product = new Product();
+
+        $request = $this->request->getPost();
+
+        $details = new Product($request);
+
         $productList = new ProductModel();
 
-        $productList->getProductCategory($product); //TODO getCategory
+        $product = $productList->getProductCategory($details); //TODO getCategory
 
+        //        echo var_dump($category);
+        //$this->response->send();
 
 
         if (empty($product)) ; //TODO say empty

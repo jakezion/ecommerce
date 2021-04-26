@@ -9,7 +9,9 @@ class ProductModel extends Model
 {
     protected $table = 'product';
     protected $primaryKey = 'productID';
-    protected $returnType = 'App\Entities\Product';
+    protected $useSoftDeletes = true;
+    //protected $returnType = 'array';
+    protected $returnType = 'App\Entities\Product'; //TODO may be correct testing required
     protected $allowedFields = ['category', 'name', 'brand', 'description', 'price', 'image'];
 //    protected $beforeInsert = ['hashPassword'];
 //    protected $beforeUpdate = ['hashPassword'];
@@ -27,24 +29,26 @@ class ProductModel extends Model
 
     public function getProductCategory(Product $data)
     {
-        if ($data->category == 'all') {
-            return $this
-                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-                ->findAll();
-        } else {
-            return $this
-                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-                ->where('category', $data->category)
-                ->findAll();
-        }
+//        if ($data->category == 'all') {
+//            return $this
+//                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+//                ->findAll();
+//        } else {
+        return $this
+            ->asArray() //todo check
+            ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+            ->where('category', $data->category)
+            ->findAll();
+//            }
     }
 
     public function getProductBrand(Product $data)
     {
-            return $this
-                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-                ->where('brand',$data->brand)
-                ->findAll();
+        //todo get for current category only
+        return $this
+            ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+            ->where('brand', $data->brand)
+            ->findAll();
     }
 
     public function getProductID(Product $data)

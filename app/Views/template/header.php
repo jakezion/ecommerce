@@ -47,19 +47,19 @@
                         Products
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item " href="/inventory">Product Search</a></li>
+                        <li><a class="dropdown-item " href="/inv">Product Search</a></li>
                         <li><a class="dropdown-item" href="/">Upcoming Products</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="/inventory">All Products</a></li>
+                        <li><a class="dropdown-item" href="/inv">All Products</a></li>
                     </ul>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="/inventory/laptops">Laptops</a>
+                    <a class="nav-link" href="/inv/laptops">Laptops</a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="/inventory/phones">Mobile Phones</a>
+                    <a class="nav-link" href="/inv/phones">Mobile Phones</a>
                 </div>
             </div>
         </div>

@@ -100,7 +100,7 @@ class Client extends BaseController
 
 //            $messages = $model->getValidationMessages();
             $rules =  $this->validation->getRuleGroup('register');
-
+//todo $model->setValidationRules($this->validation->getRuleGroup('register')); // $model->getValidationRules(['only' => ['phone','password']]);
             if (!$this->validate($rules)) {
                 return redirect()
                     ->back()

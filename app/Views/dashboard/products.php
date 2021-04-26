@@ -261,7 +261,7 @@
                 </div>
             </div>
             <div class="input-group ">
-                <label><input class="form-control" type="text"></label>
+                <label><input class="form-control"  id="product" type="text"></label>
             </div>
         </form>
 
@@ -275,20 +275,19 @@
 
 </footer>
 <?= $this->endSection(); ?>
-<?= $this->sectoin('scripts'); ?>
+<?= $this->section('scripts'); ?>
 <script>
     $(document).ready(function () {
         $('#product').change(function () {
             let product = $('#product').val();
-            let type = 'category';
-
-
-            if (product != '') {
+            let query = 'category';
+            if (product !== '') {
                 $.ajax({
-                    url: '<?php echo base_url('/inv')?>',
+                    url: '<?php echo base_url('inv')?>',
                     headers: {'X-Requested-With': 'XMLHttpRequest'},
-                    method: "GET",
-                    data: {product: product, type: type},
+                    headers: {'X-Requested-With': 'XMLHttpRequest'},
+                    method: "POST",
+                    data: {product: product, query: query},
                     dataType: 'JSON',
                     success: function (data) {
                         let html = '<option value="Select Brand</option>';
