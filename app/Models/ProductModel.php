@@ -9,7 +9,7 @@ class ProductModel extends Model
 {
     protected $table = 'product';
     protected $primaryKey = 'productID';
-    protected $useSoftDeletes = true;
+    // protected $useSoftDeletes = true;
     //protected $returnType = 'array';
     protected $returnType = 'App\Entities\Product'; //TODO may be correct testing required
     protected $allowedFields = ['category', 'name', 'brand', 'description', 'price', 'image'];
@@ -19,7 +19,7 @@ class ProductModel extends Model
     public function exists(Product $data)
     {
         $row = $this
-            ->where('id', $data->productID)
+            ->where('id', $data->category) //TODO productID poss
             ->countAllResults();
 
         return ($row == 1);
@@ -29,17 +29,17 @@ class ProductModel extends Model
 
     public function getProductCategory(Product $data)
     {
-//        if ($data->category == 'all') {
-//            return $this
-//                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-//                ->findAll();
-//        } else {
-        return $this
-            ->asArray() //todo check
-            ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-            ->where('category', $data->category)
-            ->findAll();
-//            }
+        if ($data->category == 'all') {
+            return $this
+                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+                ->findAll();
+        } else {
+            return $this
+                ->asArray() //todo check
+                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+                ->where('category', $data->category)
+                ->findAll();
+        }
     }
 
     public function getProductBrand(Product $data)

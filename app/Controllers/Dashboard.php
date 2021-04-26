@@ -2,6 +2,7 @@
 
 use App\Entities\Product;
 use App\Models\ProductModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 
 class Dashboard extends BaseController
@@ -25,34 +26,41 @@ class Dashboard extends BaseController
         return view('dashboard/dashboard', $data);
     }
 
-    public function inventory($group = 'all')
+    public function inventory($category = 'all')
     {
 
-        $request = $this->request->getPost();
+        //$request = $this->request->getPost();
 
-        $details = new Product($request);
+        $details = new Product(['category' => $category]); //TODO handle if set or not
 
-        $productList = new ProductModel();
+        $product = new ProductModel();
 
-        $product = $productList->getProductCategory($details); //TODO getCategory
+        $products = $product->getProductCategory($details);
 
-        //        echo var_dump($category);
-        //$this->response->send();
+        //shuffles returned order of products for variety on page
+        shuffle($products);
 
+        //if (empty($product)) return new PageNotFoundException('product category doesn\'t exist.'); //TODO say empty
+        if (empty($products)) throw new PageNotFoundException('This category does not contain any products.', 404);
 
-        if (empty($product)) ; //TODO say empty
 
         $data = [
             'title' => ucfirst('products'),
-            'group' => $group,
-            'products' => $product
+            'category' => $category,
+            'products' => $products
         ];
 
         return view('dashboard/products', $data);
     }
 
-    public function product($id)
+    public function brand($brand){
+
+    }
+
+    public function product($productID)
     {
+
+        $details = new Product(['productID' => $productID]);
         $data['title'] = ucfirst('product');
 
         return view('dashboard/individual', $data);

@@ -5,6 +5,5 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
-    <h2><?= esc($product['title']) ?></h2>
-    <p><?= esc($product['body']) ?></p>
+    <p>eeeeeeeeeeeeeeeeeeeeeeeee</p>
 <?= $this->endSection(); ?>

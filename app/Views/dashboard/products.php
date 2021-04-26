@@ -239,10 +239,10 @@
     <div class="container text-center" id="searchBox">
         <h1>Product Search</h1>
         <form>
-            <div class="input-group">
+            <div class="input-group form-control">
                 <div class="row">
                     <div class="col">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select form-control" aria-label="Default select example">
                             <option selected>Products</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
@@ -250,7 +250,7 @@
                         </select>
                     </div>
                     <div class="col">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select form-control" aria-label="Default select example">
                             <option selected>Brand</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
@@ -260,15 +260,15 @@
 
                 </div>
             </div>
-            <div class="input-group ">
-                <label><input class="form-control"  id="product" type="text"></label>
+            <div class="input-group form-control">
+                <label><input class="form-control" id="product" type="text"></label>
             </div>
         </form>
-
     </div>
 </header>
 <div id="mainBody" class="container text-center">
     <ul id="results">
+        <?=         highlight_string("<?php\n" . var_export($products, true) . ";\n?>"); ?>
     </ul>
 </div>
 <footer class="text-center">
@@ -284,7 +284,6 @@
             if (product !== '') {
                 $.ajax({
                     url: '<?php echo base_url('inv')?>',
-                    headers: {'X-Requested-With': 'XMLHttpRequest'},
                     headers: {'X-Requested-With': 'XMLHttpRequest'},
                     method: "POST",
                     data: {product: product, query: query},

@@ -16,7 +16,6 @@ class Client extends BaseController
         ];
 
 
-
         if ($this->session->authenticated) {
             return redirect()->to('/logout');
         }
@@ -27,7 +26,11 @@ class Client extends BaseController
             $details = $this->request->getPost();
             $client = new Entities\Client($details);
             $model = new ClientModel();
-            $rules =  $this->validation->getRuleGroup('login'); //TODO set up in model and get proper one
+            // $rules = $this->validation->getRuleGroup('login'); //TODO set up in model and get proper one
+
+            $model->setValidationRules($this->validation->getRuleGroup('login'));
+
+            $rules = $model->getValidationRules();
             //$rules = $validation->getValidationRules(['only' => ['phone', 'password']]);
             //$messages = $model->getValidationMessages();
 
@@ -96,11 +99,14 @@ class Client extends BaseController
             $client = new Entities\Client($details);
             $model = new ClientModel();
 
-//            $rules = $model->getValidationRules();
 
 //            $messages = $model->getValidationMessages();
-            $rules =  $this->validation->getRuleGroup('register');
-//todo $model->setValidationRules($this->validation->getRuleGroup('register')); // $model->getValidationRules(['only' => ['phone','password']]);
+            // $rules = $this->validation->getRuleGroup('register');
+            $model->setValidationRules($this->validation->getRuleGroup('register'));
+
+            $rules = $model->getValidationRules();
+
+            //todo   $model->getValidationRules(['only' => ['phone','password']]);
             if (!$this->validate($rules)) {
                 return redirect()
                     ->back()
@@ -141,7 +147,7 @@ class Client extends BaseController
 
         if ($this->session->authenticated) {
             $this->session->destroy();
-            return redirect()->to('/')->with('success', 'You have been logged out successfully.'); //TODO Fix to display properly
+            return redirect()->to('/login')->with('success', 'You have been logged out successfully.'); //TODO Fix to display properly
         } else {
             return redirect()->to('/login')->with('error', 'You must be logged in to sign out.');
         }

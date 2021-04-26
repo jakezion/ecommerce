@@ -20,13 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37c63eb1-4b68-422c-a272-ae1d717808d0" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/app/Controllers/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Client.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ClientModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ClientModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Database.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/ProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/individual.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/individual.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/dashboard/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/template/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/template/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +162,8 @@
       <workItem from="1619304354153" duration="18000" />
       <workItem from="1619304477593" duration="871000" />
       <workItem from="1619360427159" duration="14160000" />
-      <workItem from="1619395111815" duration="595000" />
+      <workItem from="1619395111815" duration="616000" />
+      <workItem from="1619430546032" duration="6134000" />
     </task>
     <task id="LOCAL-00002" summary="Initial Commit">
       <created>1617974515847</created>
@@ -204,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619370885007</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Initial Commit">
+      <created>1619395733239</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1619395733239</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,23 +254,23 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="918" y="466" key="MultipleFileMergeDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1617555069652" />
-    <state x="1020" y="428" key="NewPhpClassDialog" timestamp="1617987561813">
+    <state x="1020" y="428" key="NewPhpClassDialog" timestamp="1619433109825">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1020" y="428" key="NewPhpClassDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1617987561813" />
-    <state x="1114" y="628" key="NewPhpFileDialog" timestamp="1619187423224">
+    <state x="1020" y="428" key="NewPhpClassDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619433109825" />
+    <state x="1114" y="628" key="NewPhpFileDialog" timestamp="1619433100220">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1114" y="628" key="NewPhpFileDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619187423224" />
+    <state x="1114" y="628" key="NewPhpFileDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619433100220" />
     <state x="995" y="305" key="SettingsEditor" timestamp="1619194176234">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619194176234" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1619370887862">
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1619395742737">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-816" y="356" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618261285062" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619370887862" />
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619395742737" />
     <state x="728" y="143" width="1096" height="1397" key="dock-window-1" timestamp="1618080082556">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>

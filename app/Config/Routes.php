@@ -36,7 +36,7 @@ $routes->get('/', 'Dashboard::index');
 
 
 $routes->get('inv/(:alpha)','Dashboard::inventory/$1');
-$routes->get('inv/(:num)','Dashboard::product/$1');
+$routes->get('inv/(:alpha)/(:num)','Dashboard::product/$1/$1'); //TODO check for category as well
 $routes->get('/inv', 'Dashboard::inventory/all'); //TODO check
 
 
