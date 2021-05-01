@@ -1,4 +1,4 @@
-<?= $this->extend('simple_layout'); helper('html');?>
+<?= $this->extend('layout'); helper('html');?>
 
 <?= $this->section('title'); ?>
 <?= esc($title); ?>

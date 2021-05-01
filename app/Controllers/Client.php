@@ -10,6 +10,9 @@ class Client extends BaseController
     public function login()
     {
 
+        if (!$this->request->isSecure()) {
+            force_https();
+        }
 
         $data = [
             'title' => ucfirst('login')
@@ -53,33 +56,36 @@ class Client extends BaseController
 
 
                         //SET CLIENT IN SESSION
-                        $this->session->set('client', $client->accountID); //TODO fix
+//                      TODO  $id = $model->id($client);
+//                        $this->session->set('client',$id);
                         //    $this->session->set('admin', $client->accountID); //TODO get admin level if admin id true
                         //$this->session->set('admin'$model->admin);
 
                         //SET AUTHENTICATED TO TRUE
                         $this->session->set('authenticated', true);
-                        //REDIRECT TO DASHBOARD
+
+                        //TODO fix this IMPORTANT
+//                        if ($model->isAdmin($client)) $this->session->set('admin', true);
+
                         return redirect()->to('/');
 
-                        // ELSE LOGIN CLIENT
+
                     } else {
                         // $data['validation'] = $this->validator;
                         return redirect()
                             ->back()
                             ->with('error', 'The phone number or password entered is incorrect.')
                             ->withInput();
-                        //REDIRECT BACK
+
                     }
-                    //ELSE EXISTS
+
                 } else {
                     // $data['validation'] = $this->validator;
                     return redirect()
                         ->back()
                         ->with('error', 'The phone number entered is not registered to an account.')
                         ->withInput();
-                    // return redirect()->back()->withInput();
-                    // REDIRECT BACK
+
                 }
 
             }
@@ -89,24 +95,30 @@ class Client extends BaseController
         return view('client/login', $data);
     }
 
+
     public function register($page = 'register')
     {
-        $data = [];
+        if (!$this->request->isSecure()) {
+            force_https();
+        }
+
+        $data = [
+            'title' => ucfirst($page),
+        ];
 
         if ($this->request->getMethod() == 'post') {
+
             $details = $this->request->getPost();
 
             $client = new Entities\Client($details);
+
             $model = new ClientModel();
 
 
-//            $messages = $model->getValidationMessages();
-            // $rules = $this->validation->getRuleGroup('register');
             $model->setValidationRules($this->validation->getRuleGroup('register'));
 
             $rules = $model->getValidationRules();
 
-            //todo   $model->getValidationRules(['only' => ['phone','password']]);
             if (!$this->validate($rules)) {
                 return redirect()
                     ->back()
@@ -136,7 +148,7 @@ class Client extends BaseController
             }
 
         }
-        $data['title'] = ucfirst($page);
+
         return view('client/register', $data);
 
 
@@ -147,10 +159,20 @@ class Client extends BaseController
 
         if ($this->session->authenticated) {
             $this->session->destroy();
-            return redirect()->to('/login')->with('success', 'You have been logged out successfully.'); //TODO Fix to display properly
+            return redirect()
+                ->to('/login')
+                ->with('success', 'You have been logged out successfully.'); //TODO Fix to display properly
         } else {
-            return redirect()->to('/login')->with('error', 'You must be logged in to sign out.');
+            return redirect()
+                ->to('/login')
+                ->with('error', 'You must be logged in to sign out.');
         }
+    }
+
+//TODO make profile for letting client view their previous purchases and possibly their details
+    public function profile()
+    {
+
     }
 
 }

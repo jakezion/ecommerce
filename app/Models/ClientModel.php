@@ -31,24 +31,14 @@ class ClientModel extends Model
 
     protected function hashPassword(array $data)
     {
-        if (! isset($data['data']['password'])) return $data;
+        if (!isset($data['data']['password'])) return $data;
 
         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_BCRYPT);
-       // unset($data['data']['password']);
+        // unset($data['data']['password']);
 
         return $data;
     }
 
-    /*
-    protected function hashPassword(Client $data)
-    {
-        if (!isset($data->password)) return $data;
-
-        $data->password = password_hash($data->password, PASSWORD_BCRYPT);
-
-        return $data;
-    }
-*/
 
     public function match(Client $data): bool
     {
@@ -71,17 +61,56 @@ class ClientModel extends Model
             $this->save($data);
             return true;
         } catch (\ReflectionException $e) {
-            echo $e;
+            log_message('err', $e);
         }
 
         return false;
     }
 
+    public function isAdmin(Client $data)
+    {
+        $val = $this
+            ->select()
+            ->where('phone', $data->phone)
+            ->select('admin', '1')
+            ->countAllResults();
+
+        if ($val == 1) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public function id(Client $data, bool $array = false)
+    {
+        if (!$array) {
+            return $this
+                ->select('accountID, username, phone, email, password')
+                ->where('accountID', $data->accountID)
+                ->first();
+        } else {
+            return $this
+                ->asArray()
+                ->select('accountID, username, phone, email, password')
+                ->where('accountID', $data->accountID)
+                ->first();
+        }
+
+    }
+
+    public function phone(Client $data)
+    {
+            return $this
+                ->select('accountID, username, phone, email, password')
+                ->where('phone', $data->phone)
+                ->first();
+
+    }
+
     public function exists(Client $data): bool
     {
 
-        //echo $data->password;
-        //echo $data->phone;
         $exists = $this
             ->select('accountID,username,email,phone')
             ->where('phone', $data->phone)
@@ -93,9 +122,5 @@ class ClientModel extends Model
         return false;
     }
 
-    public function getPhone(Client $data)
-    {
-
-    }
 }
 

@@ -171,138 +171,255 @@
             font-size: 28px;
         }
     }
+
 </style>
-<?= $this->section('sidebar'); ?>
-<!-- TODO make this a breadcrumb for the current page instead, that can be interacted with-->
-<div class="p-3 bg-white justify-content-end" style="width: 280px;">
-    <a href="" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-        <span class="fs-5 fw-semibold">Products</span>
-    </a>
-    <ul class="list-unstyled ps-0">
-        <li class="mb-1">
 
-            <button class="btn btn-toggle align-items-center collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#products-collapse" aria-expanded="false">
-                <a href="?all">
-                    All Products
-                </a>
-
-            </button>
-
-            <ul class="mb-1">
-                <div class="collapse" id="#products-collapse">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#dashboard-collapse" aria-expanded="false">
-                        Laptops
-                    </button>
-                </div>
-                <div class="collapse" id="dashboard-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="?lenovo" class="link-dark rounded">Lenovo</a></li>
-                        <li><a href="?hp" class="link-dark rounded">HP</a></li>
-                        <li><a href="?dell" class="link-dark rounded">Dell</a></li>
-                    </ul>
-                </div>
-
-            </ul>
-            <ul class="mb-1">
-                <div class="collapse" id="#products-collapse">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#orders-collapse" aria-expanded="false">
-                        Phones
-                    </button>
-                </div>
-                <div class="collapse" id="orders-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="?samsung" class="link-dark rounded">Samsung</a>
-                            <span class="badge rounded-pill">88
-                                <span class="visually-hidden">shopping items</span>
-                        </span>
-                        </li>
-                        <li><a href="?iphone" class="link-dark rounded">iPhone</a></li>
-                        <li><a href="?huawei" class="link-dark rounded">Huawei</a></li>
-                    </ul>
-                </div>
-
-            </ul>
-
-        <li class="border-top my-3"></li>
-        </li>
-    </ul>
-</div>
-<?= $this->endSection(); ?>
-
-<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 
 <?= $this->section('content'); ?>
 <header class="container-fluid">
     <div class="container text-center" id="searchBox">
         <h1>Product Search</h1>
-        <form>
-            <div class="input-group form-control">
-                <div class="row">
-                    <div class="col">
-                        <select class="form-select form-control" aria-label="Default select example">
-                            <option selected>Products</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="form-select form-control" aria-label="Default select example">
-                            <option selected>Brand</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
 
-                </div>
+        <div class="input-group mb-4">
+            <div class="col-1"></div>
+            <div class="col">
+                <select class="form-select form-control" name="category" id="category" aria-label="Select Category">
+                </select>
             </div>
-            <div class="input-group form-control">
-                <label><input class="form-control" id="product" type="text"></label>
+            <div class="col-1"></div>
+            <div class="col">
+                <select class="form-select form-control" name="brand" id="brand" aria-label="Select Brand">
+                </select>
             </div>
-        </form>
+            <div class="col-1"></div>
+        </div>
+
     </div>
 </header>
-<div id="mainBody" class="container text-center">
-    <ul id="results">
-        <?=         highlight_string("<?php\n" . var_export($products, true) . ";\n?>"); ?>
-    </ul>
+<div class="container text-center">
+    <div name="results" id="results">
+
+    </div>
 </div>
-<footer class="text-center">
 
-</footer>
 <?= $this->endSection(); ?>
+
+
 <?= $this->section('scripts'); ?>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script>
+
+    //todo on doc ready on page create do an ajax call for data gathered in categories
     $(document).ready(function () {
-        $('#product').change(function () {
-            let product = $('#product').val();
-            let query = 'category';
-            if (product !== '') {
-                $.ajax({
-                    url: '<?php echo base_url('inv')?>',
-                    headers: {'X-Requested-With': 'XMLHttpRequest'},
-                    method: "POST",
-                    data: {product: product, query: query},
-                    dataType: 'JSON',
-                    success: function (data) {
-                        let html = '<option value="Select Brand</option>';
 
-                        data.forEach(items => {
-                            html += '<option value="' + items.brand + '">' + items.name + '</option>';
-                        });
+        getCategory();
 
-                        $('#state').html(html);
-                    }
+        $("#category").on("change", function (e) {
+            getBrand(e);
+        });
+
+        $("#brand").on("change", function (e) {
+            e.preventDefault();
+
+            let brand = $('#brand').val();
+            let category = $('#category').val();
+            let url = `<?= base_url('inv');?>/${category}/${brand}`;
+
+            history.pushState({'category': category, 'brand': brand}, '', url);
+
+            getProducts();
+
+        });
+
+    });
+
+    function getCategory() {
+        //$.post("<?//= base_url('inv/get')?>//", {'category': 'all'}, function (data) {
+        //    console.log('Successful Request Send');
+        //})
+        //    .done(function (data) {
+        //        getProducts();
+        //        let html = '<option selected disabled>Select Category</option>';
+        //        html += '<option value="">All Products</option>';
+        //        data.forEach(category => {
+        //            html += `<option value="${category}">${category}</option>`;
+        //        });
+        //        $('#category').html(html);
+        //    })
+        //    .fail(function (data) {
+        //        console.log('No Categories Exist');
+        //       // $("#category").html('');
+        //    });
+
+        $.ajax({
+            type: "post",
+            url: "<?= base_url('inv/get')?>",
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            data: {'categories': 'all'},
+            dataType: "json", //todo fix by parsing json data and then encoding it on return
+            success: function (data) {
+                getProducts();
+                let html = '<option selected disabled>Select Category</option>';
+                html += '<option value="">All Products</option>'; //todo change to allow products to be getted for ajax
+                data.forEach(category => {
+                    html += `<option value="${category}">${category.charAt(0).toUpperCase() + category.slice(1)}</option>`;
                 });
+                $('#category').html(html);
+            },
+            error: function (e) {
+
+                //getProducts();
+                console.error("error", e); //todo change to something appropriate
+            },
+        });
+    }
+
+    function getBrand(e) {
+        e.preventDefault();
+
+        //post data to correct url with category data to display related brands
+        let category = $("#category").val();
+
+        let url = `<?= base_url('inv');?>/${category}`;
+
+        history.pushState(category, '', url);
+
+        if (category !== '') {
+            $.post("<?= base_url('inv/get')?>", {'category': category}, function (data) {
+                console.log('Successful Request Send');
+            })
+                .done(function (data) {
+                    getProducts();
+                    let html = '<option selected disabled>Select Brand</option>';
+                    data.forEach(brand => {
+                        html += `<option value="${brand}">${brand.charAt(0).toUpperCase() + brand.slice(1)}</option>`;
+                    });
+                    $('#brand').html(html);
+                })
+                .fail(function (data) {
+                    console.log('No Brands Exist');
+                });
+
+        } else {
+            getProducts();
+            $('#brand').html('<option selected disabled>Select Brand</option>');
+
+        }
+    }
+
+    function getProducts() {
+        let path = location.pathname.split("/");
+        let segments = [];
+
+        path.forEach(segment => {
+            if (segment !== '') {
+                segments.push(segment);
             }
         });
-    });
+
+        let category = typeof segments[1] !== 'undefined' ? segments[1] : segments[1] = 'all';
+        let brand = typeof segments[2] !== 'undefined' ? segments[2] : segments[2] = 'all';
+        let url = '<?= base_url()?>' + location.pathname;
+
+        /* TODO FIX ${description.forEach(line => {
+                                   console.log(line);
+                               })}*/
+
+        $.post(url, {"product_category": category, "product_brand": brand}, function (data) {
+            console.log('Successful Request Send');
+        })
+            .done(function (data) {
+                console.log(data);
+                let html = `<div class="row row-cols-1 row-cols-md-3 g-4">`;
+                data.forEach(product => {
+                    let description = product.description.split("-");
+
+
+                    html += `<div class="col">
+            <div class="card h-100">
+            <a style="text-decoration: none; color: black" href="/inv/${product.productID}">
+            <img src="${product.image}" class="card-img-top" alt="${product.name}"">
+            </a>
+            <div class="card-body">
+            <hr/>
+                <h5 class="card-title">${product.name} |
+                <a style="text-decoration: none; color: black" href="/inv/${product.category}"><kbd>${product.category}</kbd></a> |
+                <a style="text-decoration: none; color: black" href="/inv/${product.category}/${product.brand}"><kbd>${product.brand}</kbd></a>
+            </h5>
+                 <hr/>
+
+
+                <p class="card-text" id="description">${product.description} </p>
+                <div class="row">
+                     <div class="col">
+                           <div class="form-control">&pound;${product.price}</div>
+                                </div>
+                                    <div class="col">
+                                        <div class="btn-group">
+                                        <a class="btn btn btn-outline-secondary" href="/inv/${product.productID}">
+                                        <i class="fas fa-eye"></i> View</a>
+                                        <?php if (session()->get('authenticated')):?>
+                                            <button class="btn btn-dark" type="submit" onclick="addToBasket(${product.productID});">Add To Cart</button>
+                                         <?php endif; ?>
+                                        </div>
+                                   </div>
+                               </div>
+                          </div>
+                     </div>
+                </div>`;
+
+                });
+                html += `</div>`;
+                $('#results').html(html);
+            })
+            .fail(function (data) {
+                console.log('Products Do Not Exist');
+                $("#results").html('');
+            });
+
+    }
+
+
+    function addToBasket(productID) {
+        let quantity = 1;
+        console.log(productID);
+        $.post(`/basket/add/${productID}/${quantity}`, function (data) {
+            console.log('Cart Successfully Reached');
+        }
+            .done(function (data) {
+                console.log(data);
+            })
+            .fail(function () {
+                console.log('Product Couldn\'t be added to the basket.');
+
+            });
+
+        // switch (data.status) {
+        //     case 200:
+        //         $("#addButton-" + productID).html("Added").prop("disabled", true);
+        //         setTimeout(function () {
+        //             $("#addButton-" + productID).html("<i class=\"fas fa-cart-plus\"></i> Add").prop("disabled", false);
+        //         }, 1000);
+        //         break;
+        //     case 404:
+        //         alert("Product not found!");
+        //         break;
+        //     default:
+        //         break;
+        //
+        // }
+    }
+
+    )
+    ;
+    }
+
+    //todo on change of brand value update
 
 </script>
 <?= $this->endSection(); ?>
+
+
+
 
 

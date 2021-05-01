@@ -2,40 +2,58 @@
 <!--<i class="bi bi-basket2"></i>-->
 <!--<i class="bi bi-basket2-fill"></i>-->
 <!--https://stackoverflow.com/questions/43439250/bootstrap-4-stop-collapse-from-pushing-content-down-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
 
-        <div class="col-3">
+
+        <div class="col-4">
             <a class="navbar-brand" href="/">Web Technologies</a>
         </div>
 
-        <div class="col-6">
+        <div class="col-4">
 
-            <form action="inv" method="post">
+                <nav class="navbar-expand-sm navbar-dark bg-dark">
 
-                <div class="search" id="searchBox">
+                    <div class="container-fluid">
 
-                    <div class="input-group">
+                        <div class="d-flex justify-content-center">
 
-                        <label for="searchBar"></label>
-                        <input class="form-control" id="searchBar" type="text" placeholder="search"
-                               aria-describedby="searchButton">
+                            <div class="navbar-nav">
 
-                        <button id="searchButton" onclick="" class="bi bi-search input-group-text"
-                                data-toggle="tooltip"
-                                title="Search"></button>
+                                <a class="nav-link" aria-current="page" href="/">Home</a>
 
+                                <a class="nav-link" href="/inv">Product Search</a>
+
+                                <a class="nav-link" href="/inv">All Products</a>
+
+                                <a class="nav-link" href="/inv/laptop">Laptops</a>
+
+                                <a class="nav-link" href="/inv/phone">Mobile Phones</a>
+
+                                <?php if (session()->authenticated): ?>
+
+                                    <a class="nav-link" href="/profile">Profile</a>
+
+                                    <a class="nav-link" href="/basket">Shopping Basket</a>
+
+                                <?php endif; ?>
+
+                                <?php if (session()->admin): ?>
+
+                                    <a class="nav-link" href="/basket">All Purchases</a>
+
+                                <?php endif; ?>
+                            </div>
+
+
+                        </div>
                     </div>
-                </div>
-
-            </form>
-
 
         </div>
 
-        <div class="col-3">
 
+        <div class="col-4">
             <div class="navbar-nav d-flex justify-content-end">
 
                 <a class="nav-link " href="/login"> <i class="bi bi-person"></i>
@@ -45,223 +63,48 @@
                     <?php else: ?>
                         <?= 'Login'; ?>
                     <?php endif; ?>
+
                 </a>
 
-                <?php if (session()->authenticated): ?>
-                    <a class="nav-link " aria-current="page" href="/basket"><i class="bi bi-basket2"></i>
-                        Basket</a>
-                <?php endif; ?>
-
             </div>
-
         </div>
 </nav>
-
-<div class="col-sm-12">
-    <nav class="navbar-expand-sm navbar-deep bg-deep">
-
-        <div class="container-fluid">
-
-            <div class="d-flex justify-content-center">
-
-                <div class="navbar-nav">
-
-                    <a class="nav-link" aria-current="page" href="/">Home</a>
-
-                    <a class="nav-link" href="/inv">Product Search</a>
-
-                    <a class="nav-link" href="/inv">All Products</a>
-
-                    <a class="nav-link" href="/inv/laptop">Laptops</a>
-
-                    <a class="nav-link" href="/inv/phone">Mobile Phones</a>
-
-                    <?php if (session()->authenticated): ?>
-
-                        <a class="nav-link" href="/profile">Profile</a>
-
-                        <a class="nav-link" href="/basket">Shopping Basket</a>
-
-                    <?php endif; ?>
-
-                    <?php if (session()->admin): ?>
-
-                        <a class="nav-link" href="/basket">All Purchases</a>
-
-                    <?php endif; ?>
-                </div>
-
-
-            </div>
-        </div>
-
-</div>
-
-
-<!--
-         <div id="cart">
-                    <button type="button" class="button">
-                        <i class="bi bi-basket2"></i>
-                        <span class="badge rounded-pill">9
-                                <span class="visually-hidden">shopping items</span>
-                </span>
-                    </button>
-                </div>
-
-
-
-<div class="collapse " id="searchbarCollapse">
-    <div class="header-nav navbar navbar-expand-lg navbar-dark bg-dark">
-
-        <div class="container-fluid justify-content-center">
-            <div class="col-4"></div>
-            <div class="col-4">
-                <div class="search" id="searchBox">
-                    <label for="searchBar"></label>
-                    <div class="input-group">
-                        <input class="form-control" id="searchBar" type="text" placeholder="search"
-                               aria-describedby="searchButton">
-                        <span id="searchButton" class="bi bi-search input-group-text" data-toggle="tooltip"
-                              title="Search"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4 d-flex justify-content-end">
-                <a data-bs-toggle="collapse" href="#searchbarCollapse" role="button" aria-expanded="false"
-                   aria-controls="searchbarCollapse">
-                    <i class="ex bi bi-x"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-TODO make searchbar full screen and move other items underneath like in amazon
-<nav class="header-nav navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <div class="col-4">
-            <a class="navbar-brand" href="/">Web Technologies</a>
-        </div>
-        <div class="col-4">
-            <div class="navbar-nav d-flex justify-content-center">
-                <div class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </div>
-
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Products
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item " href="/inv">Product Search</a></li>
-                        <li><a class="dropdown-item" href="/">Upcoming Products</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="/inv">All Products</a></li>
-                    </ul>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link" href="/inv/laptop">Laptops</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link" href="/inv/phone">Mobile Phones</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="navbar-nav d-flex justify-content-end">
-                <div class="nav-item">
-                    <a data-bs-toggle="collapse" href="#searchbarCollapse" role="button" aria-expanded="false"
-                       aria-controls="searchbarCollapse">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </div>
-                <div class="nav-item loginlogout">
-                    <a href="/login">
-                        <div class="input-group">
-                            <i class="bi bi-person"></i>
-                            <?php
-//if (session()->authenticated) :
-//echo 'Logout';
-//else:
-//echo 'Login';
-//endif; ?>
-                </div>
-                </a>
-
-            </div>
-
-            <?php //if (session()->authenticated): ?>
-            <div class="nav-item">
-                <i class="bi bi-basket2"></i>
-            </div>
-            <?php //endif; ?>
-        </div>
-</div>
-</div>
-
-</nav>
--->
 
 
 <style>
-
-
-    /*.navbar .navbar-nav {*/
-    /*    display: inline-block;*/
-    /*    float: none;*/
-    /*    vertical-align: top;*/
-    /*}*/
-
-    /*.navbar .navbar-collapse {*/
-    /*    text-align: center;*/
-    /*}*/
-    /*.navbar-deep {*/
-    /*    background: #586e75;*/
-    /*    !*color: #6c757d;*!*/
-    /*}*/
-
-    .bg-deep {
-        background: #383d41;
-        /*color: #6c757d;*/
-    }
-
-    .bg-deep a {
-        color: #95999c;
+    .loginlogout a {
+        color: #586e75;
         text-decoration: none;
     }
 
-    .bg-deep a:visited {
-        color: #95999c;
+    .loginlogout a:visited {
+        color: #586e75;
         text-decoration: none;
     }
 
-    .bg-deep a:hover {
-        color: #95999c;
+    .loginlogout a:hover {
+        color: #586e75;
         text-decoration: none;
     }
 
-    .bg-deep a:active {
-        color: #95999c;
+    .loginlogout a:active {
+        color: #586e75;
         text-decoration: none;
     }
 
-    /*#searchbarCollapse {*/
-    /*    position: absolute;*/
-    /*    width: 100%;*/
-    /*    z-index: 1;*/
-    /*}*/
+    #searchbarCollapse {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+    }
 
-    /*.header-nav {*/
-    /*    position: relative;*/
-    /*}*/
+    .header-nav {
+        position: relative;
+    }
 
-    /*.header-nav a:hover, a:active {*/
-    /*    text-decoration: none;*/
-    /*}*/
+    .header-nav a:hover, a:active {
+        text-decoration: none;
+    }
 
     .header-nav input[type="text"], select {
         outline: none;
@@ -321,7 +164,7 @@ TODO make searchbar full screen and move other items underneath like in amazon
         border-radius: 0;
         border: none;
         font-size: 20px;
-        color: #95999c;
+        color: #383e40;
         background: none;
         letter-spacing: 1px;
         word-spacing: 10px;
@@ -336,7 +179,7 @@ TODO make searchbar full screen and move other items underneath like in amazon
     }
 
     .search .form-control:focus {
-        color: #95999c;
+        color: #666;
         background-color: transparent;
         border-color: transparent;
         outline: 0;
@@ -345,7 +188,7 @@ TODO make searchbar full screen and move other items underneath like in amazon
 
 
     .search select.form-control:focus::-ms-value {
-        color: #95999c;
+        color: #666;
         background-color: transparent;
     }
 
@@ -361,10 +204,10 @@ TODO make searchbar full screen and move other items underneath like in amazon
     }
 
     .search {
-        /*padding: 2px 0;*/
+        padding: 2px 0;
         /*padding-right: 15px;*/
-        border: 3px solid #95999c;
-        /*width: 100%;*/
+        border: 3px solid #383e40;
+        /*width: 75%;*/
 
     }
 
@@ -373,19 +216,19 @@ TODO make searchbar full screen and move other items underneath like in amazon
     /*    padding-left: 0;*/
     /*}*/
     .ex .bi {
-        color: #95999c;
+        color: #383e40;
         font-size: 25px;
         line-height: 25px;
     }
 
     .header-nav .bi {
-        color: #95999c;
+        color: #383e40;
         font-size: 25px;
         line-height: 25px;
     }
 
     .search .bi {
-        color: #95999c;
+        color: #383e40;
         font-size: 20px;
         line-height: 25px;
     }
@@ -445,7 +288,7 @@ TODO make searchbar full screen and move other items underneath like in amazon
     }
 
     .header-nav :-moz-placeholder { /* Firefox 18- */
-        color: #95999c;
+        color: #383e40;
         opacity: 1;
     }
 

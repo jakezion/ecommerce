@@ -30,10 +30,8 @@ encode_php_tags('scripts');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="site">
-<?= $this->include('template/header'); ?>
-<?= $this->renderSection('features'); ?>
+<?= $this->include('template/login_header'); ?>
 <main class="main">
-    <?= $this->renderSection('sidebar'); ?>
     <div class="container">
         <div class="row">
             <?= $this->renderSection('content'); ?>

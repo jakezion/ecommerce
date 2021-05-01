@@ -16,45 +16,73 @@ class ProductModel extends Model
 //    protected $beforeInsert = ['hashPassword'];
 //    protected $beforeUpdate = ['hashPassword'];
 
-    public function exists(Product $data)
+    public function exists(Product $data): bool
     {
-        $row = $this
-            ->where('id', $data->category) //TODO productID poss
+        return $this
+            ->where('productID', $data->productID) //TODO productID poss
             ->countAllResults();
 
-        return ($row == 1);
 
+    }
 
+    public function getAllProducts()
+    {
+        return $this
+            ->asArray()
+            ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+            ->findAll();
     }
 
     public function getProductCategory(Product $data)
     {
-        if ($data->category == 'all') {
-            return $this
-                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-                ->findAll();
-        } else {
-            return $this
-                ->asArray() //todo check
-                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-                ->where('category', $data->category)
-                ->findAll();
-        }
+        return $this
+            ->asArray()
+            ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+            ->where('category', $data->category)
+            ->findAll();
+
     }
 
-    public function getProductBrand(Product $data)
+    public
+    function getProductBrand(Product $data)
     {
-        //todo get for current category only
+
         return $this
+            ->asArray()
             ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+            ->where('category', $data->category)
             ->where('brand', $data->brand)
             ->findAll();
     }
 
-    public function getProductID(Product $data)
+    public
+    function getProductID(Product $data)
+    {
+            return $this
+                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+                ->where('productID', $data->productID)
+                ->first();
+
+    }
+
+    public
+    function getBrands($category)
     {
         return $this
-            ->where('id', $data->productID)
-            ->first();
+            ->distinct(true)
+            ->asArray()
+            ->where('category', $category)
+            ->findColumn('brand');
     }
+
+    public
+    function getCategories()
+    {
+        return $this
+            ->distinct(true)
+            ->asArray()
+            ->findColumn('category');
+    }
+
+
 }

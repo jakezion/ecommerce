@@ -70,7 +70,7 @@ class ContentSecurityPolicy extends BaseConfig
 	public $styleSrc = 'self';
 
 	/**
-	 * Defines the origins from which images can be loaded.
+	 * Defines the origins from which pictures can be loaded.
 	 *
 	 * @var string|string[]
 	 */

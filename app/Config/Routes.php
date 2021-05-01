@@ -7,9 +7,8 @@ $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
-	require SYSTEMPATH . 'Config/Routes.php';
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
+    require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /**
@@ -34,16 +33,21 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/', 'Dashboard::index');
 
+$routes->post('inv/get', 'Dashboard::ajax/$1');
+$routes->match(['get', 'post'], 'inv/(:alpha)', 'Dashboard::inventory/$1');
+$routes->match(['get', 'post'], 'inv/(:alpha)/(:alpha)', 'Dashboard::inventory/$1');
+$routes->match(['get', 'post'], 'inv/(:num)', 'Dashboard::product/$1');
+$routes->match(['get','post'],'/inv', 'Dashboard::inventory/all');
 
-$routes->get('inv/(:alpha)','Dashboard::inventory/$1');
-$routes->get('inv/(:alpha)/(:num)','Dashboard::product/$1/$1'); //TODO check for category as well
-$routes->get('/inv', 'Dashboard::inventory/all'); //TODO check
+
+$routes->match(['get','post'],'/basket', 'Basket::shoppingBasket/all'); //TODO check
+$routes->match(['get','post'],'/basket/add/(:alpha)/(:alpha)', 'Basket::shoppingBasket/$1'); //TODO check
 
 
-$routes->match(['get','post'],'/login', 'Client::login');
+$routes->match(['get', 'post'], '/login', 'Client::login');
 
 $routes->get('/logout', 'Client::logout');
-$routes->match(['get','post'],'/register', 'Client::register');
+$routes->match(['get', 'post'], '/register', 'Client::register');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
@@ -57,7 +61,6 @@ $routes->match(['get','post'],'/register', 'Client::register');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
-	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
+    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

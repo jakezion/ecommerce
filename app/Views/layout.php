@@ -32,7 +32,6 @@ encode_php_tags('scripts');
 <body class="site">
 <?= $this->include('template/header'); ?>
 <main class="main">
-    <?= $this->renderSection('sidebar'); ?>
     <div class="container">
         <div class="row">
             <?= $this->renderSection('content'); ?>
