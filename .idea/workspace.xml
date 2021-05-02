@@ -21,10 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="37c63eb1-4b68-422c-a272-ae1d717808d0" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Basket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Basket.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BasketModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BasketProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketProductModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +43,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/jakezion/Advanced-Web-Technologies" />
+      </set>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4 XAMPP">
     <include_path>
@@ -114,7 +117,7 @@
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.0" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -191,7 +194,7 @@
       <workItem from="1619857001412" duration="23252000" />
       <workItem from="1619885769677" duration="21422000" />
       <workItem from="1619913571199" duration="752000" />
-      <workItem from="1619948417291" duration="23322000" />
+      <workItem from="1619948417291" duration="24301000" />
     </task>
     <task id="LOCAL-00002" summary="Initial Commit">
       <created>1617974515847</created>
@@ -263,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619973775965</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Initial Commit">
+      <created>1619986865320</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1619986865320</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +317,10 @@
     </state>
     <state x="-810" y="469" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618255235037" />
     <state x="640" y="522" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619859813391" />
+    <state x="92" y="92" width="2376" height="1226" key="DiffContextDialog" timestamp="1619987259602">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="92" y="92" width="2376" height="1226" key="DiffContextDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987259602" />
     <state x="1274" y="401" key="FileChooserDialogImpl" timestamp="1619791762558">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -339,15 +353,23 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1114" y="628" key="NewPhpFileDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619972749590" />
-    <state x="995" y="305" key="SettingsEditor" timestamp="1619791632652">
+    <state x="995" y="305" key="SettingsEditor" timestamp="1619986997407">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619791632652" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1619973781330">
+    <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619986997407" />
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1619986874288">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-816" y="356" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618261285062" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619973781330" />
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619986874288" />
+    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1619987259602">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987259602" />
+    <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619987271977">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987271977" />
     <state x="1273" y="0" width="1294" height="1417" key="dock-window-1" timestamp="1619889805632">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
