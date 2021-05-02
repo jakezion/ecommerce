@@ -23,8 +23,6 @@ class ProductModel extends Model
             ->countAllResults();
 
 
-
-
     }
 
     public function getAllProducts()

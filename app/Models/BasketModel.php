@@ -3,8 +3,12 @@
 use App\Entities;
 
 use App\Entities\Basket;
+use App\Entities\BasketProduct;
 use App\Entities\Product;
+use App\Entities\Client;
+
 use CodeIgniter\Model;
+use ReflectionException;
 
 class BasketModel extends Model
 {
@@ -24,46 +28,56 @@ class BasketModel extends Model
     public function add(Client $account, Product $product, int $quantity)
     {
 
-        $basket = $this->basket($account);
+        $basket = new Basket($this->basket($account));
 
         $model = new BasketProductModel();
 
-        return $model->createProduct($basket, $product, $quantity);
+        return $model->addToBasket($basket, $product, $quantity);
 
     }
 
     public function basket(Client $account)
     {
-        // 1. Check if user has cart already.
-        // a. If not, create one and pass back.
-        // b. If yes, pass back.
-        // 2. Return the cart.
-        if (!$this->cartExists($account)) {
-            // The client does not have a cart.
+
+        if (!$this->exists($account)) {
+
+                $basket = new Basket(['accountID' => $account->accountID]);
+
             try {
-                // Create a new cart row for the client.
-                $cart = new Cart([
-                    'client_id' => $account->id
-                ]);
-                if ($this->insert($cart)) {
-                    // Return the cart to the caller.
-                    return $this->readCartByClientID($account);
+                if ($this->insert($basket)) {
+
+                    return $this->id($account);
+
                 } else {
+
                     return false;
                 }
-            } catch (\ReflectionException $e) {
-
-                return false;
+            } catch (ReflectionException $e) {
+                return $e;
             }
-        } else {
-            // The cart already exists so return to caller.
 
-            return $this->readCartByClientID($account);
+        } else {
+
+            return $this->id($account);
+
         }
+
     }
 
-    public function exists(Entities\Client $account){
+    public function id(Client $account)
+    {
+        return $this
+            ->where('accountID', $account->accountID)
+            ->first();
+    }
 
+    public function exists(Client $account)
+    {
+        $data = $this
+            ->where('accountID', $account->accountID)
+            ->countAllResults();
+
+        return ($data === 1);
     }
 
 }

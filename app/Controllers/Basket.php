@@ -64,7 +64,7 @@ class Basket extends BaseController
 
     }
 
-    private function check(int $productID = null, bool $authenticated = true, bool $requireAccount = true, bool $requireAJAX = false)
+    private function check(int $productID = null, bool $authenticated = true, bool $requireAccount = true)
     {
         $data = [];
         //if product exists
@@ -85,11 +85,11 @@ class Basket extends BaseController
         }
 
         if (isset($productID)) {
-            $product = new Product(['productID' => $productID]);
-
             $model = new ProductModel();
 
-            if ($model->exists($product) !== 1) {
+            $product = new Product(['productID' => $productID]);
+
+            if ($model->exists($product->productID) !== 1) {
                 return $this->failNotFound('Product doesnt exist in database');
             }
 
@@ -97,6 +97,7 @@ class Basket extends BaseController
         }
 
         return $data;
+
         //see if ajax call or http request
     }
 
