@@ -3,6 +3,9 @@
 
 namespace App\Controllers;
 
+use App\Entities\Product;
+use App\Entities\Client;
+
 use App\Models\ClientModel;
 use App\Models\ProductModel;
 
@@ -10,43 +13,39 @@ use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\Response;
 
 
-
-
-class Basket
+class Basket extends BaseController
 {
     use ResponseTrait;
+
 
     public function add(int $productID, int $quantity = 1)
     {
 
-        if ($quantity < 1) return $this->failValidationError('Invalid quantity supplied.');
+        if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.');
 
+        $check = $this->check($productID, true, true);
 
-//        $prepResult = $this->prepare($productID, true, true);
-//
-//        // Check if the result was a HTTP response (failure).
-//        if ($prepResult instanceof Response) {
-//            return $prepResult;
-//        } else {
-//            $client = $prepResult['client'];
-//            $product = $prepResult['product'];
-//        }
-//
-//
-//        // Product exists so try and add it to the cart.
-//        $cartModel = new CartModel();
-//        if ($cartModel->addProduct($client, $product, $quantity)) {
-//            log_message('debug', '[DEBUG] addProduct() called from Cart.');
-//            return $this->respondCreated([
-//                'status' => 200,
-//                'code' => 200,
-//                'message' => [
-//                    'success' => 'Product added successfully.'
-//                ]
-//            ]);
-//        } else {
-//            return $this->failValidationError('Failed to add product to cart.');
-//        }
+        $account = $check['account'];
+        $product = $check['product'];
+
+        $basket = new BasketModel();
+
+        if ($basket->add($account, $product, $quantity)) {
+
+            return $this->respondCreated([
+                'status' => 200,
+                'code' => 200,
+                'message' => [
+                    'success' => 'Product has been added successfully to basket.'
+                ]
+            ]);
+
+        } else {
+
+            return $this->failValidationError('Product could not be added to the shopping basket');
+
+        }
+
     }
 
 
@@ -65,7 +64,48 @@ class Basket
 
     }
 
+    private function check(int $productID = null, bool $authenticated = true, bool $requireAccount = true, bool $requireAJAX = false)
+    {
+        $data = [];
+        //if product exists
+
+        //check if account is authenticated otherwise redirect to login as they need to be signed in
+        if (!$this->session->authenticated)
+            return $this->failUnauthorized('No account is signed in. Action cannot be completed ');
+        //check if user account exists
+        if ($requireAccount) {
+            $model = new ClientModel();
+
+            $details = $model->id(new Client(['accountID' => $this->session->accountID]), true);
+
+            $account = new Client($details);
+
+            array_push($data, ['account' => $account]);
+
+        }
+
+        if (isset($productID)) {
+            $product = new Product(['productID' => $productID]);
+
+            $model = new ProductModel();
+
+            if ($model->exists($product) !== 1) {
+                return $this->failNotFound('Product doesnt exist in database');
+            }
+
+            array_push($data, ['product' => $product]);
+        }
+
+        return $data;
+        //see if ajax call or http request
+    }
+
     public function purchase()
+    {
+
+    }
+
+    public function get()
     {
 
     }

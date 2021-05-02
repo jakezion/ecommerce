@@ -46,7 +46,7 @@ class ClientModel extends Model
         //$this->hashPassword($data);
 
         $details = $this
-            ->select('password')
+            ->select('accountID, username, phone, email, password')
             ->where('phone', $data->phone)
             ->first();
 

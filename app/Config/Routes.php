@@ -3,7 +3,7 @@
 namespace Config;
 
 // Create a new instance of our RouteCollection class.
-$routes = Services::routes();
+$routes = Services::routes(true);
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
@@ -21,7 +21,7 @@ $routes->setDefaultController('Dashboard');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -31,23 +31,32 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+//client
+$routes->post('/login', 'Client::login');
+$routes->get('/logout', 'Client::logout');
+$routes->post('/register', 'Client::register');
 $routes->get('/', 'Dashboard::index');
 
+//inventory
 $routes->post('inv/get', 'Dashboard::ajax/$1');
 $routes->match(['get', 'post'], 'inv/(:alpha)', 'Dashboard::inventory/$1');
 $routes->match(['get', 'post'], 'inv/(:alpha)/(:alpha)', 'Dashboard::inventory/$1');
 $routes->match(['get', 'post'], 'inv/(:num)', 'Dashboard::product/$1');
-$routes->match(['get','post'],'/inv', 'Dashboard::inventory/all');
+$routes->match(['get', 'post'], '/inv', 'Dashboard::inventory/all');
+
+//basket
+$routes->get('/basket/purchases', 'Basket::purchase'); //TODO check
 
 
-$routes->match(['get','post'],'/basket', 'Basket::shoppingBasket/all'); //TODO check
-$routes->match(['get','post'],'/basket/add/(:alpha)/(:alpha)', 'Basket::shoppingBasket/$1'); //TODO check
 
 
-$routes->match(['get', 'post'], '/login', 'Client::login');
 
-$routes->get('/logout', 'Client::logout');
-$routes->match(['get', 'post'], '/register', 'Client::register');
+
+
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

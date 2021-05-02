@@ -41,15 +41,15 @@
                                 <strong>Price</strong>:&nbsp;&nbsp;<kbd>&pound;<?= $product->price; ?></kbd></h5>
                             <br/>
                             <h5 class="card-subtitle"><strong>Description:</strong></h5>
-                            <p class="card-text">
-                            <ul>
+
+                            <ul class="card-text">
                                 <?php foreach (@explode("-", $product->description) as $description) : ?>
                                     <?php if ($description !== ''): ?>
                                         <li><?= $description; ?></li>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </ul>
-                            </p>
+
                             <?php if (session()->get('authenticated')): ?>
 
                                 <div class="row">
@@ -85,26 +85,24 @@
 <script>
     function addToBasket(productID) {
         let quantity = parseInt($('#quantity').val());
-        console.log("quantity", quantity);
+
 
         if (Number.isInteger(quantity)) {
 
             $.getJSON("/basket/add/" + productID + "/" + quantity, function (data) {
-                console.log(data);
-                // switch (data.status) {
-                //     case 200:
+                console.log("data",data);
+            })
+            .done(function (data){
                 //         $("#addButton-" + productID).html("Added").prop("disabled", true);
                 //         setTimeout(function () {
                 //             $("#addButton-" + productID).html("<i class=\"fas fa-cart-plus\"></i> Add").prop("disabled", false);
                 //         }, 1000);
-                //         break;
-                //     case 404:
-                //         alert("Product not found!");
-                //         break;
-                //     default:
-                //         break;
-                // }
+            })
+            .fail(function(e){
+                console.log('Product wasn\'t added to your basket.\nerror occurred.');
+                console.log('error',e);
             });
+
         } else {
             alert("Please only use a number!");
         }

@@ -27,8 +27,11 @@ class Client extends BaseController
         if ($this->request->getMethod() == 'post') {
 
             $details = $this->request->getPost();
+
             $client = new Entities\Client($details);
+
             $model = new ClientModel();
+
             // $rules = $this->validation->getRuleGroup('login'); //TODO set up in model and get proper one
 
             $model->setValidationRules($this->validation->getRuleGroup('login'));
@@ -46,22 +49,15 @@ class Client extends BaseController
 
 
             } else {
-                // IF EXISTS
 
                 if ($model->exists($client)) {
 
-                    // IF LOGIN CLIENT
                     if ($model->match($client)) {
-                        //GET DATABASE ENTITY
 
+                        $account = $model->phone($client);
 
-                        //SET CLIENT IN SESSION
-//                      TODO  $id = $model->id($client);
-//                        $this->session->set('client',$id);
-                        //    $this->session->set('admin', $client->accountID); //TODO get admin level if admin id true
-                        //$this->session->set('admin'$model->admin);
+                        $this->session->set('accountID',$account->accountID);
 
-                        //SET AUTHENTICATED TO TRUE
                         $this->session->set('authenticated', true);
 
                         //TODO fix this IMPORTANT
@@ -69,27 +65,23 @@ class Client extends BaseController
 
                         return redirect()->to('/');
 
-
                     } else {
-                        // $data['validation'] = $this->validator;
+
                         return redirect()
                             ->back()
                             ->with('error', 'The phone number or password entered is incorrect.')
                             ->withInput();
 
                     }
-
                 } else {
-                    // $data['validation'] = $this->validator;
+
                     return redirect()
                         ->back()
                         ->with('error', 'The phone number entered is not registered to an account.')
                         ->withInput();
 
                 }
-
             }
-
         }
 
         return view('client/login', $data);

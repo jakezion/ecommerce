@@ -31,6 +31,8 @@ encode_php_tags('scripts');
 </head>
 <body class="site">
 <?= $this->include('template/header'); ?>
+
+<?= $this->renderSection('features'); ?>
 <main class="main">
     <div class="container">
         <div class="row">

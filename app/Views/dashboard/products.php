@@ -385,7 +385,7 @@
         console.log(productID);
         $.post(`/basket/add/${productID}/${quantity}`, function (data) {
             console.log('Cart Successfully Reached');
-        }
+        })
             .done(function (data) {
                 console.log(data);
             })
@@ -410,9 +410,6 @@
         // }
     }
 
-    )
-    ;
-    }
 
     //todo on change of brand value update
 
