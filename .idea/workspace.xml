@@ -21,12 +21,20 @@
   <component name="ChangeListManager">
     <list default="true" id="37c63eb1-4b68-422c-a272-ae1d717808d0" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/App.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Config/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Validation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Basket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Basket.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Account.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Account.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/BasketModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/BasketProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketProductModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ClientModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AccountModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Validation/ClientRules.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Validation/AccountRules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/client/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/account/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/client/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/account/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/client/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/account/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/template/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/template/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +212,7 @@
       <workItem from="1619988150224" duration="4639000" />
       <workItem from="1619995027053" duration="4288000" />
       <workItem from="1620029280934" duration="45000" />
-      <workItem from="1620033355442" duration="10716000" />
+      <workItem from="1620033355442" duration="14925000" />
     </task>
     <task id="LOCAL-00002" summary="Initial Commit">
       <created>1617974515847</created>
@@ -297,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620043254717</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Initial Commit">
+      <created>1620044942428</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1620044942428</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,10 +351,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="734" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619791769954" />
-    <state x="1053" y="375" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1619907614176">
+    <state x="1053" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1620045069432">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1053" y="375" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619907614176" />
+    <state x="1053" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620045069432" />
     <state x="640" y="522" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620043656747">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -389,11 +404,11 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619991443312" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1620043257113">
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1620044945714">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-816" y="356" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618261285062" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620043257113" />
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620044945714" />
     <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1619987259602">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -402,10 +417,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987904589" />
-    <state x="-1345" y="-248" width="1096" height="1397" key="dock-window-1" timestamp="1620041945914">
+    <state x="-1345" y="-248" width="1096" height="1397" maximized="true" key="dock-window-1" timestamp="1620045139363">
       <screen x="-1080" y="-231" width="1080" height="1890" />
     </state>
-    <state x="-1345" y="-248" width="1096" height="1397" key="dock-window-1/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620041945914" />
+    <state x="-1345" y="-248" width="1096" height="1397" maximized="true" key="dock-window-1/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620045139363" />
     <state x="997" y="476" key="refactoring.ChangeSignatureDialog" timestamp="1619521937423">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>

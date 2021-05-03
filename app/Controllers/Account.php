@@ -1,10 +1,10 @@
 <?php namespace App\Controllers;
 
 use App\Entities;
-use App\Models\ClientModel;
+use App\Models\AccountModel;
 
 
-class Client extends BaseController
+class Account extends BaseController
 {
 //todo session not remaining if you go back
     public function login()
@@ -28,9 +28,9 @@ class Client extends BaseController
 
             $details = $this->request->getPost();
 
-            $client = new Entities\Client($details);
+            $account = new Entities\Account($details);
 
-            $model = new ClientModel();
+            $model = new AccountModel();
 
             // $rules = $this->validation->getRuleGroup('login'); //TODO set up in model and get proper one
 
@@ -50,18 +50,18 @@ class Client extends BaseController
 
             } else {
 
-                if ($model->exists($client)) {
+                if ($model->exists($account)) {
 
-                    if ($model->match($client)) {
+                    if ($model->match($account)) {
 
-                        $account = $model->phone($client);
+                        $account = $model->phone($account);
 
                         $this->session->set('accountID', $account->accountID);
 
                         $this->session->set('authenticated', true);
 
                         //TODO fix this IMPORTANT
-//                        if ($model->isAdmin($client)) $this->session->set('admin', true);
+//                        if ($model->isAdmin($account)) $this->session->set('admin', true);
 
                         return redirect()->to('/');
 
@@ -84,7 +84,7 @@ class Client extends BaseController
             }
         }
 
-        return view('client/login', $data);
+        return view('account/login', $data);
     }
 
 
@@ -102,9 +102,9 @@ class Client extends BaseController
 
             $details = $this->request->getPost();
 
-            $client = new Entities\Client($details);
+            $account = new Entities\Account($details);
 
-            $model = new ClientModel();
+            $model = new AccountModel();
 
 
             $model->setValidationRules($this->validation->getRuleGroup('register'));
@@ -117,8 +117,8 @@ class Client extends BaseController
                     ->with('error', $this->validator->listErrors());
 
             } else {
-                if (!$model->exists($client)) {
-                    if ($model->create($client)) {
+                if (!$model->exists($account)) {
+                    if ($model->create($account)) {
                         return redirect()
                             ->to('/login')
                             ->with('success', 'You have successfully registered an account.')
@@ -141,7 +141,7 @@ class Client extends BaseController
 
         }
 
-        return view('client/register', $data);
+        return view('account/register', $data);
 
 
     }
@@ -161,7 +161,7 @@ class Client extends BaseController
         }
     }
 
-//TODO make profile for letting client view their previous purchases and possibly their details
+//TODO make profile for letting account view their previous purchases and possibly their details
     public function profile()
     {
 

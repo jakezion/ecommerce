@@ -27,7 +27,7 @@ class App extends BaseConfig
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Client File
+	 * Account File
 	 * --------------------------------------------------------------------------
 	 *
 	 * Typically this will be your index.php file, unless you've renamed it to
@@ -140,14 +140,14 @@ class App extends BaseConfig
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Client Driver
+	 * Account Driver
 	 * --------------------------------------------------------------------------
 	 *
 	 * The session storage driver to use:
-	 * - `CodeIgniter\Client\Handlers\FileHandler`
-	 * - `CodeIgniter\Client\Handlers\DatabaseHandler`
-	 * - `CodeIgniter\Client\Handlers\MemcachedHandler`
-	 * - `CodeIgniter\Client\Handlers\RedisHandler`
+	 * - `CodeIgniter\Account\Handlers\FileHandler`
+	 * - `CodeIgniter\Account\Handlers\DatabaseHandler`
+	 * - `CodeIgniter\Account\Handlers\MemcachedHandler`
+	 * - `CodeIgniter\Account\Handlers\RedisHandler`
 	 *
 	 * @var string
 	 */
@@ -155,7 +155,7 @@ class App extends BaseConfig
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Client Cookie Name
+	 * Account Cookie Name
 	 * --------------------------------------------------------------------------
 	 *
 	 * The session cookie name, must contain only [0-9a-z_-] characters
@@ -166,7 +166,7 @@ class App extends BaseConfig
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Client Expiration
+	 * Account Expiration
 	 * --------------------------------------------------------------------------
 	 *
 	 * The number of SECONDS you want the session to last.
@@ -178,7 +178,7 @@ class App extends BaseConfig
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Client Save Path
+	 * Account Save Path
 	 * --------------------------------------------------------------------------
 	 *
 	 * The location to save sessions to and is driver dependent.
@@ -197,7 +197,7 @@ class App extends BaseConfig
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Client Match IP
+	 * Account Match IP
 	 * --------------------------------------------------------------------------
 	 *
 	 * Whether to match the user's IP address when reading the session data.
@@ -211,7 +211,7 @@ class App extends BaseConfig
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Client Time to Update
+	 * Account Time to Update
 	 * --------------------------------------------------------------------------
 	 *
 	 * How many seconds between CI regenerating the session ID.
@@ -222,7 +222,7 @@ class App extends BaseConfig
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Client Regenerate Destroy
+	 * Account Regenerate Destroy
 	 * --------------------------------------------------------------------------
 	 *
 	 * Whether to destroy session data associated with the old session ID

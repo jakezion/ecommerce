@@ -68,9 +68,13 @@ class BasketProductModel extends Model
         return ($data == 1);
     }
 
-    public function getBasket()
+    public function getBasket(Basket $basket)
     {
-
+        return $this
+            ->asArray()
+            ->select()
+            ->where('basketFK', $basket->basketID)
+            ->findAll();
     }
 
     public function updateBasket(Product $product)

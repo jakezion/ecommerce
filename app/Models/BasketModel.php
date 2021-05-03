@@ -3,7 +3,7 @@
 use App\Entities\Basket;
 use App\Entities\BasketProduct;
 use App\Entities\Product;
-use App\Entities\Client;
+use App\Entities\Account;
 
 use CodeIgniter\Model;
 use ReflectionException;
@@ -23,7 +23,13 @@ class BasketModel extends Model
     protected $useAutoIncrement = true;
 
 
-    public function add(Client $account, Product $product, int $quantity)
+    /**
+     * @param Account $account
+     * @param Product $product
+     * @param int $quantity
+     * @return \CodeIgniter\Database\BaseResult|false|int|object|string
+     */
+    public function add(Account $account, Product $product, int $quantity)
     {
 
         $basket = $this->basket($account);
@@ -31,19 +37,21 @@ class BasketModel extends Model
         $model = new BasketProductModel();
 
 
-
         return $model->addToBasket($basket, $product, $quantity);
 
     }
 
-    public function basket(Client $account)
+    /**
+     * @param Account $account
+     * @return array|false|object|null
+     */
+    public function basket(Account $account)
     {
-
 
 
         //if account doesnt have basket
         //todo change to find if the accountID exists within the basket database
-       //   then when checking if basket exists if the basket that exists is purchased, make a new basket
+        //   then when checking if basket exists if the basket that exists is purchased, make a new basket
         if (!$this->exists($account)) {
             //create new basket
 
@@ -70,18 +78,55 @@ class BasketModel extends Model
             return $this->id($account); //todo change this to correct return data
 
         }
+    }
 
+    /**
+     * @param Account $account
+     * @return array|false
+     */
+    public function getProducts(Account $account)
+    {
+        /*
+         *
+         * check if account basket exists
+         * get basketproduct entity for basket id related to basket id (with accountFK)
+         * bsketproduct get all results where basketFK == basketID
+         * return as array
+         */
+
+        if (!$this->exists($account))
+            return false;
+
+        //$basket = $this->id($account);
+
+        $model = new BasketProductModel();
+
+        return $model->getBasket($basket);
 
     }
 
-    public function id(Client $account)
+
+    /**
+     * @param Account $account
+     * @return array|object|null
+     *
+     * get basket Associated with an account
+     *
+     */
+    public function id(Account $account)
     {
         return $this
             ->where('accountFK', $account->accountID)
             ->first();
     }
 
-    public function exists(Client $account)
+    /**
+     * @param Account $account
+     * @return bool
+     *
+     * Check if account already has a pre-existing basket
+     */
+    public function exists(Account $account)
     {
         $data = $this
             ->select()

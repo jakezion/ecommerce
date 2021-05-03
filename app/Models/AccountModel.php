@@ -1,13 +1,13 @@
 <?php namespace App\Models;
 
-use App\Entities\Client;
+use App\Entities\Account;
 use CodeIgniter\Model;
 
-class ClientModel extends Model
+class AccountModel extends Model
 {
     protected $table = 'account';
     protected $primaryKey = 'accountID';
-    protected $returnType = 'App\Entities\Client';
+    protected $returnType = 'App\Entities\Account';
     protected $allowedFields = ['username', 'phone', 'email', 'password']; //TODO MAYBE CHECK IF ADMIN AS WELL?
     protected $beforeInsert = ['hashPassword'];
     protected $beforeUpdate = ['hashPassword'];
@@ -15,12 +15,12 @@ class ClientModel extends Model
 
     //todo  if register setrValidationRules, setValidationMessages
 
-    protected function beforeInsert(Client $data)
+    protected function beforeInsert(Account $data)
     {
         return $this->hashPassword($data);
     }
 
-    protected function beforeUpdate(Client $data)
+    protected function beforeUpdate(Account $data)
     {
 
         return $data;
@@ -38,7 +38,7 @@ class ClientModel extends Model
     }
 
 
-    public function match(Client $data): bool
+    public function match(Account $data): bool
     {
 
         //$this->hashPassword($data);
@@ -52,7 +52,7 @@ class ClientModel extends Model
 
     }
 
-    public function create(Client $data): bool
+    public function create(Account $data): bool
     {
 
         try {
@@ -65,7 +65,7 @@ class ClientModel extends Model
         return false;
     }
 
-    public function isAdmin(Client $data)
+    public function isAdmin(Account $data)
     {
         $val = $this
             ->select()
@@ -80,7 +80,7 @@ class ClientModel extends Model
 
     }
 
-    public function id(Client $data, bool $array = false)
+    public function id(Account $data, bool $array = false)
     {
         if (!$array) {
             return $this
@@ -97,7 +97,7 @@ class ClientModel extends Model
 
     }
 
-    public function phone(Client $data)
+    public function phone(Account $data)
     {
             return $this
                 ->select('accountID, username, phone, email')
@@ -106,7 +106,7 @@ class ClientModel extends Model
 
     }
 
-    public function exists(Client $data): bool
+    public function exists(Account $data): bool
     {
 
         $exists = $this

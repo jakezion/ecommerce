@@ -24,7 +24,7 @@ class Validation
         FormatRules::class,
         FileRules::class,
         CreditCardRules::class,
-        \App\Validation\ClientRules::class
+        \App\Validation\AccountRules::class
     ];
 
     /**

@@ -2,7 +2,7 @@
 
 use CodeIgniter\Entity;
 
-class Client extends Entity{
+class Account extends Entity{
     protected $accountID;
     protected $admin;
     protected $username;
