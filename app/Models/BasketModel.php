@@ -16,7 +16,7 @@ class BasketModel extends Model
     protected $returnType = 'App\Entities\Basket';
     protected $allowedFields = ['accountFK', 'purchased'];
     //protected $skipValidation = false;
-    protected $useTimestamps = false;
+
 //    protected $createdField = 'created_at';
 //    protected $updatedField = 'updated_at';
 //    protected $deletedField = 'deleted_at';
@@ -86,21 +86,18 @@ class BasketModel extends Model
      */
     public function getProducts(Account $account)
     {
-        /*
-         *
-         * check if account basket exists
-         * get basketproduct entity for basket id related to basket id (with accountFK)
-         * bsketproduct get all results where basketFK == basketID
-         * return as array
-         */
-
+        // check if account basket exists
         if (!$this->exists($account))
             return false;
 
-        //$basket = $this->id($account);
+        // get basketproduct entity for basket id related to basket id (with accountFK)
+        $basket = $this->basket($account);
+
+        // bsketproduct get all results where basketFK == basketID
 
         $model = new BasketProductModel();
 
+        // return as array
         return $model->getBasket($basket);
 
     }
@@ -117,6 +114,7 @@ class BasketModel extends Model
     {
         return $this
             ->where('accountFK', $account->accountID)
+            ->where('purchased', false)
             ->first();
     }
 
@@ -131,9 +129,33 @@ class BasketModel extends Model
         $data = $this
             ->select()
             ->where('accountFK', $account->accountID)
+            ->where('purchased', false)
             ->countAllResults();
 
         return ($data === 1);
+    }
+
+    public function setPurchased(Account $account)
+    {
+        $basket = $this
+            ->select()
+            ->where('accountFK', $account->accountID)
+            ->where('purchased', false)
+            ->first();
+
+
+        $data = ['purchased' => true];
+
+        try {
+
+            return $this->update($basket->basketID, $data); //todo fix
+
+        } catch (\ReflectionException $e) {
+
+            return $e;
+
+        }
+
     }
 
 }

@@ -17,7 +17,8 @@ class Basket extends BaseController
 
     public function add(int $productID, int $quantity = 1)
     {
-        //if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.');
+        if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.');
+
 
         $check = $this->check($productID, true, true);
 
@@ -31,13 +32,11 @@ class Basket extends BaseController
         }
 
 
-//      //  log_message('debug', '[DEBUG] Cart with id [{cart_id}] already has Product with id [{product_id}].', ['cart_id' => $account, 'product_id' => $product]);
-//
         $basket = new BasketModel();
 
-        $add = $basket->add($account, $product, $quantity);
+        // $add = $basket->add($account, $product, $quantity);
 
-        return $this->respondCreated($add);
+//        return $this->respondCreated($add);
 
         if ($basket->add($account, $product, $quantity)) {
 
@@ -81,14 +80,26 @@ class Basket extends BaseController
 
 
         //check if account is authenticated otherwise redirect to login as they need to be signed in
-        if (!$this->session->authenticated)
-            //  return redirect()->to('/login')->with('error','No account is signed in. Action cannot be completed.');
-            return $this->failUnauthorized('No account is signed in. Action cannot be completed ');
-        //check if user account exists
+        if ($authenticated) {
+            if (!$this->session->authenticated) {
+                return redirect()->to('/login')->with('error', 'No account is signed in. Action cannot be completed.');
+                // return $this->failUnauthorized('No account is signed in. Action cannot be completed ');
+            }
+            //check if user account exists
+        }
 
 
-        if ($requireAccount)
-            $data['account'] = $this->sessionAccount();
+        if ($requireAccount) {
+
+            $model = new AccountModel();
+
+            $details = $model->id(new Account(['accountID' => $this->session->accountID]), true);
+
+            $account = new Account($details);
+
+            $data['account'] = $account;
+
+        }
 
 
         if (isset($productID)) {
@@ -99,6 +110,7 @@ class Basket extends BaseController
 
             if (!$model->find($product->productID))
                 return $this->failNotFound('Product doesnt exist in database');
+
             $data['product'] = $product;
 
         }
@@ -113,29 +125,49 @@ class Basket extends BaseController
     /**
      * gets the account for the current session
      */
-    private function sessionAccount()
-    {
-        $model = new AccountModel();
-
-        $details = $model->id(new Account(['accountID' => $this->session->accountID]), true);
-
-        return new Account($details);
-    }
 
     public function purchase()
     {
+        if (!$this->session->authenticated)
+            return redirect()->to('/login')->with('error', 'A valid account must be used to purchase your basket.');
+
+        $accountModel = new AccountModel();
+
+        $details = $accountModel->id(new Account(['accountID' => $this->session->accountID]), true);
+
+        $account = new Account($details);
+
+        $model = new BasketModel();
+
+        $basket = $model->setPurchased($account);
+
+
+        if (empty($basket))
+            return $this->failNotFound('Basket has no items');
+
+        return redirect()
+            ->to('/')
+            ->with('success', 'Basket has successfully been purchased');
 
     }
 
-    private function getBasket()
+    public function getBasket()
     {
 
+
         if (!$this->session->authenticated)
-            return redirect()->to('/login')->with('error', 'A valid account must be used to access your basket.');
-            //$this->failUnauthorized('User must be logged in to access their basket');
+            return redirect()
+                ->to('/login')
+                ->with('error', 'A valid account must be used to access your basket.');
+        //$this->failUnauthorized('User must be logged in to access their basket');
 
         //get the current account in the session
-        $account = $this->sessionAccount();
+        $accountModel = new AccountModel();
+
+        $details = $accountModel->id(new Account(['accountID' => $this->session->accountID]), true);
+
+        $account = new Account($details);
+
 
         // Get the basket items for the current account in the session.
         $model = new BasketModel();
@@ -143,12 +175,21 @@ class Basket extends BaseController
         //get contents of basket_product database for current id
         $basket = $model->getProducts($account);
 
+        //todo get product values based on returned product id
+
         // If the cart has no products return a 404 and empty message.
         if (empty($basket))
-            return $this->failNotFound('Basket has no items');
-            //return redirect()->to('/empty')->with('error','Basket has no items.');
+            //return $this->failNotFound('Basket has no items');
+            return redirect()
+                ->to('/empty')
+                ->with('error', 'Basket has no items.');
 
-        return $basket;
+        $data = [
+            'title' => 'Basket',
+            'products' => $basket,
+        ];
+
+        return view('basket/basket', $data);
 
     }
 

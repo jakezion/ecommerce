@@ -383,30 +383,21 @@
     function addToBasket(productID) {
         let quantity = 1;
 
-        $.getJSON(`/basket/add/${productID}/${quantity}`, function (data) {
+        $.getJSON('/basket/add/' + productID + '/' + quantity, function (data) {
+
             console.log('Cart Successfully Reached');
         })
             .done(function (data) {
                 console.log(data);
+                // $("#addButton-" + productID).html("Added").prop("disabled", true);
+                //         setTimeout(function () {
+                //             $("#addButton-" + productID).html("<i class=\"fas fa-cart-plus\"></i> Add").prop("disabled", false);
+                //         }, 1000);
             })
             .fail(function () {
                 console.log('Product Couldn\'t be added to the basket.');
             });
 
-        // switch (data.status) {
-        //     case 200:
-        //         $("#addButton-" + productID).html("Added").prop("disabled", true);
-        //         setTimeout(function () {
-        //             $("#addButton-" + productID).html("<i class=\"fas fa-cart-plus\"></i> Add").prop("disabled", false);
-        //         }, 1000);
-        //         break;
-        //     case 404:
-        //         alert("Product not found!");
-        //         break;
-        //     default:
-        //         break;
-        //
-        // }
     }
 
 

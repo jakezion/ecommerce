@@ -7,13 +7,14 @@ use App\Entities\Product;
 use App\Models\ProductModel;
 use CodeIgniter\Model;
 
+
 class BasketProductModel extends Model
 {
     protected $table = 'basket_product';
     protected $primaryKey = 'id';
-
+    protected $useTimestamps = false;
     protected $returnType = 'App\Entities\BasketProduct';
-    protected $useSoftDeletes = true; //might be false if multiple baskets are used
+    protected $useSoftDeletes = false; //might be false if multiple baskets are used
     protected $allowedFields = ['basketFK', 'productFK', 'quantity', 'price'];
 
 //    protected $useTimestamps = true;
@@ -25,7 +26,7 @@ class BasketProductModel extends Model
 
     public function addToBasket(Basket $basket, Product $product, int $quantity)
     {
-        //get current price for product for
+
         $price = $this->currentPrice($product);
 
         $basketProduct = new BasketProduct([
@@ -35,15 +36,25 @@ class BasketProductModel extends Model
             'price' => $price,
         ]);
 
-//        if ($this->exists($product)) {
-//            return $this->updateBasket($product);
-//        } else {
-        try {
-            return $this->insert($basketProduct);
-        } catch (\ReflectionException $e) {
-            return false;
+//todo handle if basket is purchsased then use the non purchased account basket as long as only 1 non purchased one exists
+        if ($this->exists($basket, $product)) {
+
+            return $this->updateProduct($basketProduct, $quantity, $price);
+
+        } else {
+
+            // get current price for product for
+
+            try {
+
+                return $this->insert($basketProduct);
+
+            } catch (\ReflectionException $e) {
+
+                return false;
+
+            }
         }
-        //  }
 
     }
 
@@ -58,14 +69,14 @@ class BasketProductModel extends Model
     }
 
     //--------------------------
-    public function exists(Product $product)
+    public function exists(Basket $basket, Product $product)
     {
-        $data = $this
-            ->select()
-            ->where('productFK', $product->productID)
-            ->countAllResults();
 
-        return ($data == 1);
+        return $this
+            ->select()
+            ->where('basketFK', $basket->basketID)
+            ->where('productFK', $product->productID)
+            ->find();
     }
 
     public function getBasket(Basket $basket)
@@ -77,12 +88,32 @@ class BasketProductModel extends Model
             ->findAll();
     }
 
-    public function updateBasket(Product $product)
+    public function getBasketProduct(BasketProduct $basketProduct)
     {
-//        return $this
-//            ->update('quantity')
-//            ->where('productFK', $product->productID)
-//        return $this->update($product);
+        return $this
+            ->select()
+            ->where('basketFK', $basketProduct->basketFK)
+            ->where('productFK', $basketProduct->productFK)
+            ->first();
+
+    }
+
+    public function updateProduct(BasketProduct $basketProduct, int $quantity, $price)
+    {
+        $bp = $this->getBasketProduct($basketProduct);
+
+//todo +=   quantity is wtong
+
+        $data = [
+            'quantity' => $bp->quantity += $quantity,
+            'price' => $bp->price = $price //todo do this price update on a timer every 30mins
+        ];
+
+        try {
+            return $this->update($bp->id, $data);
+        } catch (\ReflectionException $e) {
+            return $e;
+        }
     }
 
     public function purchased()

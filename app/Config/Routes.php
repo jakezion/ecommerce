@@ -33,9 +33,9 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 
 //account
-$routes->match(['get', 'post'],'/login', 'Account::login');
-$routes->match(['get', 'post'],'/logout', 'Account::logout');
-$routes->match(['get', 'post'],'/register', 'Account::register');
+$routes->match(['get', 'post'], '/login', 'Account::login');
+$routes->match(['get', 'post'], '/logout', 'Account::logout');
+$routes->match(['get', 'post'], '/register', 'Account::register');
 $routes->get('/', 'Dashboard::index');
 
 //inventory
@@ -47,15 +47,8 @@ $routes->match(['get', 'post'], '/inv', 'Dashboard::inventory/all');
 
 //basket
 $routes->post('/basket/purchase', 'Basket::purchase'); //TODO check
-$routes->get('/basket', 'Basket::getBasket'); //TODO check
 $routes->get('/basket/add/(:num)/(:num)', 'Basket::add/$1/$2'); //TODO check
-
-
-
-
-
-
-
+$routes->get('/basket', 'Basket::getBasket'); //TODO check
 
 
 /*
