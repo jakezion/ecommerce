@@ -1,12 +1,11 @@
 <?php namespace App\Controllers;
 
 use App\Entities\Product;
+use App\Models\AccountModel;
 use App\Models\ProductModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\Response;
-
-
 
 
 class Dashboard extends BaseController
@@ -15,16 +14,19 @@ class Dashboard extends BaseController
 
     public function index()
     {
-        $data = [
-            'title' => ucfirst('dashboard')
-        ];
+        $data = ['title' => ucfirst('dashboard')];
 
-//        if (!$this->session->get('admin', true)) {
-//            return redirect()
-//                ->to('/purchases');
+//        if ($this->)
+//        $account = new AccountModel();
+
+//        if ($this->session->get('admin', true)) {
+//            return redirect()->to('/purchases');
+//        } else if ($this->session->get('admin', false)) {
+//            return redirect()->to('/profile');
 //        }
 
         return view('dashboard/dashboard', $data);
+
     }
 
 
@@ -36,19 +38,19 @@ class Dashboard extends BaseController
 
             if ($this->request->getPost('categories')) {
                 return $this->respond($product->getCategories());
-               // echo json_encode($product->getCategories());
+                // echo json_encode($product->getCategories());
 
             } elseif ($this->request->getPost('category')) {
 
-                   $category = $this->request->getPost('category');
-                   return $this->respond($product->getBrands($category));
+                $category = $this->request->getPost('category');
+                return $this->respond($product->getBrands($category));
 
 
             } elseif ($this->request->getPost('brands')) {
 
                 $brand = $this->request->getPost('brand');
                 return $this->respond($brand);
-              //  echo json_encode($brand);
+                //  echo json_encode($brand);
 
             }
 
@@ -91,7 +93,7 @@ class Dashboard extends BaseController
 //            if (empty($products)) throw new PageNotFoundException('This category does not contain any products.', 404);
 
             return $this->respond($products);
-           // echo json_encode($products);
+            // echo json_encode($products);
 
         } else {
             return view('dashboard/products', $data);

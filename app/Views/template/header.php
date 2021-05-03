@@ -38,18 +38,24 @@
 
             <div class="navbar-nav d-flex justify-content-end">
                 <?php if (session()->authenticated) : ?>
-                <a class="nav-link " href="/logout"> <i class="bi bi-person"></i>
+                <a class="nav-link" href="/logout"> <i class="bi bi-person-fill"></i>
                     <?= 'Logout'; ?>
+                </a>
                     <?php else: ?>
-                    <a class="nav-link " href="/login"> <i class="bi bi-person"></i>
-                        <?= 'Login'; ?>
-                        <?php endif; ?>
+                    <a class="nav-link" href="/login">
+                        <i class="bi bi-person-fill"></i> <?= 'Login'; ?>
+                    </a>
+                    <a class="nav-link" href="/register">
+                        <i class="bi bi-person"></i> <?= 'Register'; ?>
                     </a>
 
-                    <?php if (session()->authenticated): ?>
-                        <a class="nav-link " aria-current="page" href="/basket"><i class="bi bi-basket2"></i>
-                            Basket</a>
                     <?php endif; ?>
+
+
+                <?php if (session()->authenticated): ?>
+                    <a class="nav-link " aria-current="page" href="/basket"><i class="bi bi-basket2"></i>
+                        Basket</a>
+                <?php endif; ?>
 
             </div>
 

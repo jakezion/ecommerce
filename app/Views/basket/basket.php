@@ -12,9 +12,9 @@ helper('html'); ?>
     <div class="col-md-12 border-right">
         <div class="p-3 bg-white">
             <div class="d-flex justify-content-between align-items-center">
-                <h6 class="heading1">Recently Sold Items</h6>
-                <div class="d-flex flex-row align-items-center text-muted"><span class=" days mr-2">Last 7 Days</span>
-                    <i class="fa fa-angle-down"></i></div>
+                <h6 class="heading1 ">Shopping Basket</h6>
+                <div class="d-flex flex-row align-items-center text-muted">
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-borderless">
@@ -23,17 +23,16 @@ helper('html'); ?>
                     <th>Product</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th>Subtotal</th>
                     <th></th>
                     </thead>
                     <tbody>
                     <?php foreach (@$products as $product): ?>
-
                         <tr>
-
-
                             <td><img src="https://i.imgur.com/VMsimw4.jpg" width="35"></td>
                             <td>   <?= $product['productFK']; ?></td>
                             <td>   <?= $product['quantity']; ?></td>
+                            <td> £<?= $product['price']; ?></td>
                             <td> £<?= $product['price'] * $product['quantity']; ?></td>
 
                             <td><i class="fa fa-ellipsis-v"></i></td>
@@ -47,7 +46,7 @@ helper('html'); ?>
             <form action="/basket/purchase" method="post">
 
                 <button class="btn btn-dark btn-block">
-                  Checkout
+                    Checkout
                 </button>
             </form>
         </div>
