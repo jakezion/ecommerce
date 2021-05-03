@@ -1,4 +1,4 @@
-<?php namespace App\Controllers;
+<?php namespace App\Models;
 
 use App\Entities;
 use App\Entities\Basket;
@@ -16,10 +16,10 @@ class BasketProductModel extends Model
     protected $useSoftDeletes = true; //might be false if multiple baskets are used
     protected $allowedFields = ['basketFK', 'productFK', 'quantity', 'price'];
 
-    protected $useTimestamps = true;
-    protected $createdField = 'created_at';
-    protected $updatedField = 'updated_at';
-    protected $deletedField = 'deleted_at';
+//    protected $useTimestamps = true;
+//    protected $createdField = 'created_at';
+//    protected $updatedField = 'updated_at';
+//    protected $deletedField = 'deleted_at';
 
     //todo validation rules for required and their formats
 
@@ -34,6 +34,10 @@ class BasketProductModel extends Model
             'quantity' => $quantity,
             'price' => $price,
         ]);
+
+        if($this->exists($product))
+            $this->updateBasket($product);
+
 
         try {
             return $this->insert($basketProduct);
@@ -54,7 +58,7 @@ class BasketProductModel extends Model
     }
 
     //--------------------------
-    public function exists()
+    public function exists(Product $product)
     {
 
     }
@@ -64,7 +68,7 @@ class BasketProductModel extends Model
 
     }
 
-    public function updateBasket()
+    public function updateBasket(Product $product)
     {
 
     }

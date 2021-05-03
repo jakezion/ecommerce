@@ -1,11 +1,9 @@
-<?php
-
-
-namespace App\Controllers;
+<?php namespace App\Controllers;
 
 use App\Entities\Product;
 use App\Entities\Client;
 
+use App\Models\BasketModel;
 use App\Models\ClientModel;
 use App\Models\ProductModel;
 
@@ -17,23 +15,29 @@ class Basket extends BaseController
 {
     use ResponseTrait;
 
-
     public function add(int $productID, int $quantity = 1)
     {
-        if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.');
+        //if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.');
 
         $check = $this->check($productID, true, true);
 
+
         if ($check instanceof Response) {
 
-            return redirect()->back()->with('error',$check);
+            return redirect()->back()->with('error', $check);
         } else {
-            $account = $check['account'];
-            $product = $check['product'];
+            $account = $check["account"];
+            $product = $check["product"];
         }
-      //  log_message('debug', '[DEBUG] Cart with id [{cart_id}] already has Product with id [{product_id}].', ['cart_id' => $account, 'product_id' => $product]);
 
+
+//      //  log_message('debug', '[DEBUG] Cart with id [{cart_id}] already has Product with id [{product_id}].', ['cart_id' => $account, 'product_id' => $product]);
+//
         $basket = new BasketModel();
+
+        $add = $basket->add($account, $product, $quantity);
+
+        return $this->respondCreated($add);
 
         if ($basket->add($account, $product, $quantity)) {
 
@@ -50,6 +54,7 @@ class Basket extends BaseController
             return $this->failValidationError('Product could not be added to the shopping basket');
 
         }
+
 
     }
 
@@ -73,19 +78,12 @@ class Basket extends BaseController
     {
         $data = [];
         //if product exists
-//     todo   return $this->respondCreated([
-//            'status' => 200,
-//            'code' => 200,
-//            'message' => [
-//                'success' => 'Product has been added successfully to basket.'
-//            ]
-//        ]);
+
 
         //check if account is authenticated otherwise redirect to login as they need to be signed in
         if (!$this->session->authenticated)
             return $this->failUnauthorized('No account is signed in. Action cannot be completed ');
         //check if user account exists
-
 
 
         if ($requireAccount) {
@@ -95,25 +93,26 @@ class Basket extends BaseController
 
             $account = new Client($details);
 
-            array_push($data, ['account' => $account]);
+            $data['account'] = $account;
 
         }
 
+
         if (isset($productID)) {
+
             $model = new ProductModel();
 
             $product = new Product(['productID' => $productID]);
 
-            if ($model->exists($product->productID) !== 1) {
+            if (!$model->find($product->productID))
                 return $this->failNotFound('Product doesnt exist in database');
-            }
+            $data['product'] = $product;
 
-            array_push($data, ['product' => $product]);
         }
 
 
-
         return $data;
+
 
         //see if ajax call or http request
     }

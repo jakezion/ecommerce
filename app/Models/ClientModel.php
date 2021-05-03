@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Models;
+<?php namespace App\Models;
 
 use App\Entities\Client;
 use CodeIgniter\Model;
@@ -86,13 +84,13 @@ class ClientModel extends Model
     {
         if (!$array) {
             return $this
-                ->select('accountID, username, phone, email, password')
+                ->select('accountID, username, phone, email')
                 ->where('accountID', $data->accountID)
                 ->first();
         } else {
             return $this
                 ->asArray()
-                ->select('accountID, username, phone, email, password')
+                ->select('accountID, username, phone, email')
                 ->where('accountID', $data->accountID)
                 ->first();
         }
@@ -102,7 +100,7 @@ class ClientModel extends Model
     public function phone(Client $data)
     {
             return $this
-                ->select('accountID, username, phone, email, password')
+                ->select('accountID, username, phone, email')
                 ->where('phone', $data->phone)
                 ->first();
 

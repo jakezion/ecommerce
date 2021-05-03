@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Models;
+<?php namespace App\Models;
 
 use CodeIgniter\Model;
 use App\Entities\Product;
@@ -18,19 +16,12 @@ class ProductModel extends Model
 
     public function exists(Product $data): bool
     {
-        return $this
+        $data = $this
+            ->select()
             ->where('productID', $data->productID) //TODO productID poss
             ->countAllResults();
 
-
-    }
-
-    public function getAllProducts()
-    {
-        return $this
-            ->asArray()
-            ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-            ->findAll();
+        return ($data == 1);
     }
 
     public function getProductCategory(Product $data)
@@ -65,6 +56,24 @@ class ProductModel extends Model
 
     }
 
+    public function getAllProducts()
+    {
+        return $this
+            ->asArray()
+            ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+            ->findAll();
+    }
+
+
+    public
+    function getCategories()
+    {
+        return $this
+            ->distinct(true)
+            ->asArray()
+            ->findColumn('category');
+    }
+
     public
     function getBrands($category)
     {
@@ -75,14 +84,6 @@ class ProductModel extends Model
             ->findColumn('brand');
     }
 
-    public
-    function getCategories()
-    {
-        return $this
-            ->distinct(true)
-            ->asArray()
-            ->findColumn('category');
-    }
 
 
 }

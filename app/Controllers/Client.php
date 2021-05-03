@@ -6,7 +6,7 @@ use App\Models\ClientModel;
 
 class Client extends BaseController
 {
-
+//todo session not remaining if you go back
     public function login()
     {
 
@@ -20,7 +20,7 @@ class Client extends BaseController
 
 
         if ($this->session->authenticated) {
-            return redirect()->to('/logout');
+            return redirect()->to('/');
         }
 
         //checks to see if login request is a get or post method
