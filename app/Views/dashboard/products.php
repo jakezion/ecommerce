@@ -382,8 +382,8 @@
 
     function addToBasket(productID) {
         let quantity = 1;
-        console.log(productID);
-        $.post(`/basket/add/${productID}/${quantity}`, function (data) {
+
+        $.getJSON(`/basket/add/${productID}/${quantity}`, function (data) {
             console.log('Cart Successfully Reached');
         })
             .done(function (data) {
@@ -391,7 +391,6 @@
             })
             .fail(function () {
                 console.log('Product Couldn\'t be added to the basket.');
-
             });
 
         // switch (data.status) {

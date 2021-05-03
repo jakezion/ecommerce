@@ -89,7 +89,7 @@
 
         if (Number.isInteger(quantity)) {
 
-            $.getJSON("/basket/add/" + productID + "/" + quantity, function (data) {
+            $.getJSON(`/basket/add/${productID}/${quantity}`, function (data) {
                 console.log("data",data);
             })
             .done(function (data){

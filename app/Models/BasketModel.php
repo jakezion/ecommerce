@@ -16,7 +16,7 @@ class BasketModel extends Model
     protected $returnType = 'App\Entities\Basket';
     protected $allowedFields = ['accountFK', 'purchased'];
     //protected $skipValidation = false;
-//    protected $useTimestamps = true;
+    protected $useTimestamps = false;
 //    protected $createdField = 'created_at';
 //    protected $updatedField = 'updated_at';
 //    protected $deletedField = 'deleted_at';
@@ -43,6 +43,7 @@ class BasketModel extends Model
 
         //if account doesnt have basket
         //todo change to find if the accountID exists within the basket database
+       //   then when checking if basket exists if the basket that exists is purchased, make a new basket
         if (!$this->exists($account)) {
             //create new basket
 

@@ -46,7 +46,8 @@ $routes->match(['get', 'post'], 'inv/(:num)', 'Dashboard::product/$1');
 $routes->match(['get', 'post'], '/inv', 'Dashboard::inventory/all');
 
 //basket
-$routes->get('/basket/purchases', 'Basket::purchase'); //TODO check
+$routes->post('/basket/purchase', 'Basket::purchase'); //TODO check
+$routes->get('/basket', 'Basket::currentBasket'); //TODO check
 $routes->get('/basket/add/(:num)/(:num)', 'Basket::add/$1/$2'); //TODO check
 
 

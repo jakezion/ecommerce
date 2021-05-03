@@ -122,7 +122,7 @@ class Basket extends BaseController
 
     }
 
-    public function get()
+    public function getBasket()
     {
 
     }

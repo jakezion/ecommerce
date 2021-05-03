@@ -35,15 +35,15 @@ class BasketProductModel extends Model
             'price' => $price,
         ]);
 
-        if($this->exists($product))
-            $this->updateBasket($product);
-
-
+//        if ($this->exists($product)) {
+//            return $this->updateBasket($product);
+//        } else {
         try {
             return $this->insert($basketProduct);
         } catch (\ReflectionException $e) {
             return false;
         }
+        //  }
 
     }
 
@@ -60,7 +60,12 @@ class BasketProductModel extends Model
     //--------------------------
     public function exists(Product $product)
     {
+        $data = $this
+            ->select()
+            ->where('productFK', $product->productID)
+            ->countAllResults();
 
+        return ($data == 1);
     }
 
     public function getBasket()
@@ -70,12 +75,15 @@ class BasketProductModel extends Model
 
     public function updateBasket(Product $product)
     {
-
+//        return $this
+//            ->update('quantity')
+//            ->where('productFK', $product->productID)
+//        return $this->update($product);
     }
 
     public function purchased()
     {
-
+//todo soft delete the rows in basket_product and update the basket to purchased, then when checking if basket exists if the basket that exists is purchased, make a new product
     }
 
     public function deleteProduct()
