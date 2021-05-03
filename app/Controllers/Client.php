@@ -3,9 +3,9 @@
 use App\Entities;
 use App\Models\ClientModel;
 
+
 class Client extends BaseController
 {
-
 
     public function login()
     {
@@ -56,7 +56,7 @@ class Client extends BaseController
 
                         $account = $model->phone($client);
 
-                        $this->session->set('accountID',$account->accountID);
+                        $this->session->set('accountID', $account->accountID);
 
                         $this->session->set('authenticated', true);
 

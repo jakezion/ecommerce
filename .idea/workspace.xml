@@ -21,6 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="37c63eb1-4b68-422c-a272-ae1d717808d0" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Logger.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Logger.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Basket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Basket.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BasketProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketProductModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +49,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
@@ -194,7 +201,9 @@
       <workItem from="1619857001412" duration="23252000" />
       <workItem from="1619885769677" duration="21422000" />
       <workItem from="1619913571199" duration="752000" />
-      <workItem from="1619948417291" duration="24301000" />
+      <workItem from="1619948417291" duration="24633000" />
+      <workItem from="1619988150224" duration="4639000" />
+      <workItem from="1619995027053" duration="4288000" />
     </task>
     <task id="LOCAL-00002" summary="Initial Commit">
       <created>1617974515847</created>
@@ -304,6 +313,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="872" y="363" key="#Deployment/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619791478480" />
+    <state x="986" y="476" key="#Log_Highlighting_(ideolog)" timestamp="1619991016023">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="986" y="476" key="#Log_Highlighting_(ideolog)/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619991016023" />
     <state x="734" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619791769954">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -341,10 +354,14 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="2517" height="404" key="GridCell.Tab.0.right/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619795195632" />
-    <state x="918" y="466" key="MultipleFileMergeDialog" timestamp="1617555069652">
+    <state x="248" y="123" key="MergeDialog" timestamp="1619987896196">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="918" y="466" key="MultipleFileMergeDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1617555069652" />
+    <state x="248" y="123" key="MergeDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987896196" />
+    <state x="918" y="466" key="MultipleFileMergeDialog" timestamp="1619987896201">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="918" y="466" key="MultipleFileMergeDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987896201" />
     <state x="1020" y="428" key="NewPhpClassDialog" timestamp="1619889481903">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -353,23 +370,23 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1114" y="628" key="NewPhpFileDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619972749590" />
-    <state x="995" y="305" key="SettingsEditor" timestamp="1619986997407">
+    <state x="995" y="305" key="SettingsEditor" timestamp="1619991443312">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619986997407" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1619986874288">
+    <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619991443312" />
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1619987738580">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-816" y="356" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618261285062" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619986874288" />
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987738580" />
     <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1619987259602">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987259602" />
-    <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619987271977">
+    <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619987904589">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987271977" />
+    <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987904589" />
     <state x="1273" y="0" width="1294" height="1417" key="dock-window-1" timestamp="1619889805632">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>

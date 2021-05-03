@@ -16,10 +16,10 @@ class BasketProductModel extends Model
     protected $useSoftDeletes = true; //might be false if multiple baskets are used
     protected $allowedFields = ['basketFK', 'productFK', 'quantity', 'price'];
 
-//    protected $useTimestamps = true;
-//    protected $createdField = 'created_at';
-//    protected $updatedField = 'updated_at';
-//    protected $deletedField = 'deleted_at';
+    protected $useTimestamps = true;
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
 
     //todo validation rules for required and their formats
 
@@ -28,18 +28,23 @@ class BasketProductModel extends Model
         //get current price for product for
         $price = $this->currentPrice($product);
 
-        $product = new BasketProduct([
+        $basketProduct = new BasketProduct([
             'basketFK' => $basket->basketID,
             'productFK' => $product->productID,
             'quantity' => $quantity,
             'price' => $price,
         ]);
 
-
+        try {
+            return $this->insert($basketProduct);
+        } catch (\ReflectionException $e) {
+            return false;
+        }
 
     }
 
-    public function currentPrice(Product $product){
+    public function currentPrice(Product $product)
+    {
 
         $model = new ProductModel();
 
@@ -48,6 +53,7 @@ class BasketProductModel extends Model
         return $price->price;
     }
 
+    //--------------------------
     public function exists()
     {
 

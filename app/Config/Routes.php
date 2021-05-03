@@ -3,7 +3,7 @@
 namespace Config;
 
 // Create a new instance of our RouteCollection class.
-$routes = Services::routes(true);
+$routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
@@ -21,7 +21,7 @@ $routes->setDefaultController('Dashboard');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -33,9 +33,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 //client
-$routes->post('/login', 'Client::login');
-$routes->get('/logout', 'Client::logout');
-$routes->post('/register', 'Client::register');
+$routes->match(['get', 'post'],'/login', 'Client::login');
+$routes->match(['get', 'post'],'/logout', 'Client::logout');
+$routes->match(['get', 'post'],'/register', 'Client::register');
 $routes->get('/', 'Dashboard::index');
 
 //inventory
@@ -47,7 +47,7 @@ $routes->match(['get', 'post'], '/inv', 'Dashboard::inventory/all');
 
 //basket
 $routes->get('/basket/purchases', 'Basket::purchase'); //TODO check
-
+$routes->get('/basket/add/(:num)/(:num)', 'Basket::add/$1/$2'); //TODO check
 
 
 

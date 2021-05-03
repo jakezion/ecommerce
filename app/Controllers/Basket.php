@@ -20,13 +20,18 @@ class Basket extends BaseController
 
     public function add(int $productID, int $quantity = 1)
     {
-
         if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.');
 
         $check = $this->check($productID, true, true);
 
-        $account = $check['account'];
-        $product = $check['product'];
+        if ($check instanceof Response) {
+
+            return redirect()->back()->with('error',$check);
+        } else {
+            $account = $check['account'];
+            $product = $check['product'];
+        }
+      //  log_message('debug', '[DEBUG] Cart with id [{cart_id}] already has Product with id [{product_id}].', ['cart_id' => $account, 'product_id' => $product]);
 
         $basket = new BasketModel();
 
@@ -68,11 +73,21 @@ class Basket extends BaseController
     {
         $data = [];
         //if product exists
+//     todo   return $this->respondCreated([
+//            'status' => 200,
+//            'code' => 200,
+//            'message' => [
+//                'success' => 'Product has been added successfully to basket.'
+//            ]
+//        ]);
 
         //check if account is authenticated otherwise redirect to login as they need to be signed in
         if (!$this->session->authenticated)
             return $this->failUnauthorized('No account is signed in. Action cannot be completed ');
         //check if user account exists
+
+
+
         if ($requireAccount) {
             $model = new ClientModel();
 
@@ -95,6 +110,8 @@ class Basket extends BaseController
 
             array_push($data, ['product' => $product]);
         }
+
+
 
         return $data;
 
