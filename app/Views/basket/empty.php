@@ -1,13 +1,17 @@
-<div class="row">
-    <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
-        <div class="card shadow-sm my-5">
-            <div class="card-body">
-                <h2 class="card-title text-center">Shopping Basket</h2>
-                <hr/>
-                <div class="list-group-flush">
-                    <h5 class="list-group-item text-center">Your Shopping Basket is empty</h5>
-                </div>
-            </div>
+<?= $this->extend('layout'); ?>
+
+<?= $this->section('title'); ?>
+<?= esc($title); ?>
+<?= $this->endSection(); ?>
+
+<?= $this->section('content'); ?>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3 class="text-center">Shopping Basket</h3>
+            <hr/>
+            <br>
+            <p class="card-text text-center">Your Shopping Basket is empty</p>
+            <br>
         </div>
     </div>
-</div>
+<?= $this->endSection(); ?>

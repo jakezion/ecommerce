@@ -23,9 +23,9 @@ class Basket extends BaseController
         $check = $this->check($productID, true);
 
 
-        if ($check instanceof Response) {
+        if ($this->request->getMethod() == 'get') {
 
-            return redirect()->back()->with('error', $check);
+            return $this->failValidationError('Product not added through ajax all.');
         } else {
             $account = $check["account"];
             $product = $check["product"];
@@ -198,6 +198,15 @@ class Basket extends BaseController
 
         return view('basket/basket', $data);
 
+    }
+
+    public function empty()
+    {
+        $data = [
+          'title'=> 'Basket'
+
+        ];
+        return view('basket/empty',$data);
     }
 
 }

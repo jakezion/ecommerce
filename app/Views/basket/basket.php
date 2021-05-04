@@ -33,7 +33,7 @@ helper('html'); ?>
 
                     <?php foreach (@$products as $product): ?>
                         <tr>
-                            <td><img src="https://i.imgur.com/VMsimw4.jpg" width="35"></td>
+                            <td><img src="" width="35" alt="<?=$product['productFK']?>"></td>
                             <td>   <?= $product['productFK']; ?></td>
                             <td>   <?= $product['quantity']; ?></td>
                             <td> £<?= $product['price']; ?></td>

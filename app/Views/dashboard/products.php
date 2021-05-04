@@ -329,14 +329,22 @@
             console.log('Successful Request Send');
         })
             .done(function (data) {
-                console.log(data);
+                // console.log(data);
                 let html = ``;
-                data.forEach(product => {
-                    let description = product.description.split("-");
 
+                data.forEach(product => {
+
+                    let bullets = product.description.split("-");
+
+                    let description = `<ul class="text-start">`;
+
+                    bullets.forEach(i => {
+                        description += `<li>${i} </li>`;
+                    });
+                    description += `</ul>`;
 
                     html += `
-                    <div class="card mb-3 h-15">
+                    <div class="card mb-3 h-15 p-2">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <a style="text-decoration: none; color: black" href="/inv/${product.productID}">
@@ -345,9 +353,9 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">${product.name}</h5>
+                                    <h5 class="card-title"><strong>${product.name}</strong></h5>
                                     <hr/>
-                                    <p class="card-text text-start" id="description">${product.description} </p>
+                                    <p class="card-text text-start" name="description2" id="description2">${description}</p>
                                     <hr/>
                                     <p class="card-text">
                                     <div class="row">
@@ -378,6 +386,8 @@
                 });
 
                 $('#results').html(html);
+
+
             })
             .fail(function (data) {
                 console.log('Products Do Not Exist');
