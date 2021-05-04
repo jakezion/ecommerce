@@ -83,17 +83,17 @@
 
                     <?php if (session()->authenticated): ?>
 
-                        <a class="nav-link" href="/profile">Profile</a>
+                        <a class="nav-link" href="/profile">Orders</a>
 
                         <a class="nav-link" href="/basket">Shopping Basket</a>
 
                     <?php endif; ?>
 
-                    <?php if (session()->admin): ?>
-
-                        <a class="nav-link" href="/basket">All Purchases</a>
-
-                    <?php endif; ?>
+<!--                    --><?php //if (session()->admin): ?>
+<!---->
+<!--                        <a class="nav-link" href="/basket">All Purchases</a>-->
+<!---->
+<!--                    --><?php //endif; ?>
                 </div>
 
 

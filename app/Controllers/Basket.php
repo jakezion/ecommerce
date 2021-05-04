@@ -23,9 +23,9 @@ class Basket extends BaseController
         $check = $this->check($productID, true);
 
 
-        if ($this->request->getMethod() == 'get') {
+        if ($check instanceof Response) {
 
-            return $this->failValidationError('Product not added through ajax all.');
+            return $this->failValidationError('Product not added through ajax');
         } else {
             $account = $check["account"];
             $product = $check["product"];
@@ -184,6 +184,7 @@ class Basket extends BaseController
                 ->to('basket/empty')
                 ->with('error', 'Basket has no items.');
 
+
         $total = 0;
         foreach ($basket as $product) {
             $subtotal = $product['price'] * $product['quantity'];
@@ -203,10 +204,10 @@ class Basket extends BaseController
     public function empty()
     {
         $data = [
-          'title'=> 'Basket'
+            'title' => 'Basket'
 
         ];
-        return view('basket/empty',$data);
+        return view('basket/empty', $data);
     }
 
 }
