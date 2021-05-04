@@ -32,7 +32,7 @@ encode_php_tags('scripts'); ?>
     <meta property="og:url" content="https://localhost/<?= base_url(); ?>"/>
 
     <?php helper('requires'); ?>
-    <link href="/favico.ico" rel="shortcut icon" type="image/ico" />
+    <link href="/awt.ico" rel="shortcut icon" type="image/ico" />
     <link href="/assets/css/styles.css" type="text/css" rel="stylesheet">
 
 </head>

@@ -19,11 +19,8 @@ class Dashboard extends BaseController
 //        if ($this->)
 //        $account = new AccountModel();
 
-//        if ($this->session->get('admin', true)) {
-//            return redirect()->to('/purchases');
-//        } else if ($this->session->get('admin', false)) {
-//            return redirect()->to('/profile');
-//        }
+            return redirect()->to('/inv');
+
 
         return view('dashboard/dashboard', $data);
 

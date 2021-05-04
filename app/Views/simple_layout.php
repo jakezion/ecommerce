@@ -32,7 +32,7 @@
     <meta name="author" content="Jake Sumner">
     <meta property="og:locale" content="en_GB"/>
     <meta property="og:url" content="https://localhost/<?= base_url(); ?>"/>
-
+    <link href="/awt.ico" rel="shortcut icon" type="image/ico" />
 </head>
 <body class="site">
 <?= $this->include('template/login_header'); ?>

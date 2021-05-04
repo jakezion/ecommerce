@@ -316,7 +316,7 @@
                     let description = `<ul class="text-start">`;
 
                     bullets.forEach(i => {
-                        description += `<li>${i} </li>`;
+                        description += `<li>${i}</li>`;
                     });
                     description += `</ul>`;
 
