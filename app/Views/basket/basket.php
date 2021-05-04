@@ -5,57 +5,63 @@ helper('html'); ?>
 <?= esc($title); ?>
 <?= $this->endSection(); ?>
 
+
+
+
+
 <?= $this->section('content'); ?>
 
 
-<div class="row">
-    <div class="col-md-12 border-right">
-        <div class="p-3 bg-white">
-            <div class="d-flex justify-content-between align-items-center">
-                <h5 class="heading1"><strong>Shopping Basket</strong></h5>
-                <div class="d-flex flex-row align-items-center text-muted">
-                </div>
-            </div>
-            <div class="table-hover table-responsive">
-                <table class="table table-borderless">
-                    <thead>
-                    <th></th>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Subtotal</th>
+<div class="col-md-12 border-right">
+    <div class="p-3 bg-white">
+        <h3 class="heading1 text-center m-4">Shopping Basket</h3>
 
-                    <th></th>
 
-                    </thead>
-                    <hr/>
-                    <tbody>
+        <div class="table-hover table-responsive">
+            <table class="table table-borderless">
 
-                    <?php foreach (@$products as $product): ?>
+                <thead>
+                <th></th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Subtotal</th>
 
-                        <tr>
-                            <td><img src="<?=$product['image']?>" height="180" width="180" alt="<?=$product['name']?>"></td>
-                            <td><h5 class="text-start">   <?= $product['name']; ?></h5></td>
-                            <td>   <?= $product['quantity']; ?></td>
-                            <td>&pound;<?= $product['price']; ?></td>
-                            <td>&pound;<?= $product['price'] * $product['quantity']; ?></td>
+                <th></th>
 
-                            <td><i class="fa fa-ellipsis-v"></i></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+                </thead>
+
+                <tbody>
+
+
+                <?php foreach (@$products as $product): ?>
+
+                    <tr class="border-top">
+                        <td><img src="<?= $product['image'] ?>" height="180" width="180"
+                                 alt="<?= $product['name'] ?>"></td>
+                        <td><h5 class="text-start">   <?= $product['name']; ?></h5></td>
+                        <td>   <?= $product['quantity']; ?></td>
+                        <td>&pound;<?= number_format($product['price'], 2); ?></td>
+                        <td>&pound;<?= number_format($product['price'] * $product['quantity'], 2); ?></td>
+
+                        <td><i class="fa fa-ellipsis-v"></i></td>
+                    </tr>
+                <?php endforeach; ?>
+                <tr class="border-top">
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Total Price:</strong></td>
+                    <td><kbd>&pound;<?= number_format($total, 2); ?></kbd></td>
+                </tr>
+
+                </tbody>
+            </table>
         </div>
-        <div class="border-top p-3">
-            <strong>Total:</strong>&pound;<?= esc($total); ?>
-                    <form action="/basket/purchase" method="post">
-                        <button class="btn btn-dark btn-block">
-                            Checkout
-                        </button>
-                    </form>
-
-        </div>
+        <form action="/basket/purchase" method="post">
+            <button class="btn btn-dark form-control">Checkout</button>
+        </form>
     </div>
 
 

@@ -26,10 +26,8 @@ class Api extends BaseController
 
             $admin = $model->isAdmin($account);
 
-            if (!$admin) return $this->failUnauthorized($admin);
-//                return redirect()
-//                    ->to('/login')
-//                    ->with('error', 'you are not an admin. please login with your admin credentials');
+            if (!$admin) return $this->failUnauthorized('This account is not authorised to use this API.');
+
 
             if ($basketID) {
 
@@ -39,10 +37,7 @@ class Api extends BaseController
 
                 $basket = $model->purchased($details);
 
-                if (!$basket) return $this->failNotFound('$basket not purchased');
-//                        redirect()
-//                            ->to('/')
-//                            ->with('error', 'no purchased basket with this id exists');
+                if (!$basket) return $this->failNotFound('A Basket with this id does not exist.');
 
 
                 $basketProduct = new BasketProductModel();
@@ -54,10 +49,15 @@ class Api extends BaseController
 
             } else {
                 //todo return all purchases ever made
-                return $this->respondCreated(true);
+                $basketProduct = new BasketProductModel();
+
+                $products = $basketProduct->getAllBaskets();
+
+                return $this->respondCreated($products);
+
             }
 
         }
-        return $this->respondCreated(false);
+        return $this->failUnauthorized('No account is logged in. To use this API please login.');
     }
 }

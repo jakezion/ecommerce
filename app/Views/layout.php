@@ -43,13 +43,19 @@ encode_php_tags('scripts');
 <?= $this->include('template/header'); ?>
 
 <?= $this->renderSection('features'); ?>
+
 <main class="main">
+
     <div class="container">
         <div class="row">
+
             <?= $this->renderSection('content'); ?>
         </div>
+
     </div>
 </main>
+
+
 <?= $this->include('template/footer'); ?>
 <?= $this->renderSection('scripts'); ?>
 </body>

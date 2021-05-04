@@ -21,12 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="37c63eb1-4b68-422c-a272-ae1d717808d0" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Ajax.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/API.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/API.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Basket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Basket.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BasketModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/BasketProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketProductModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/basket/basket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/basket/basket.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/template/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/template/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/layout.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +208,7 @@
       <workItem from="1619995027053" duration="4288000" />
       <workItem from="1620029280934" duration="45000" />
       <workItem from="1620033355442" duration="41013000" />
-      <workItem from="1620115575215" duration="22028000" />
+      <workItem from="1620115575215" duration="26863000" />
     </task>
     <task id="LOCAL-00002" summary="Initial Commit">
       <created>1617974515847</created>
@@ -349,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620143520658</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Initial Commit">
+      <created>1620145192378</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1620145192378</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,11 +449,11 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620067027824" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1620143524651">
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1620145194844">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-816" y="356" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618261285062" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620143524651" />
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620145194844" />
     <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1619987259602">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>

@@ -234,42 +234,23 @@
     });
 
     function getCategory() {
-        //$.post("<?//= base_url('inv/get')?>//", {'category': 'all'}, function (data) {
-        //    console.log('Successful Request Send');
-        //})
-        //    .done(function (data) {
-        //        getProducts();
-        //        let html = '<option selected disabled>Select Category</option>';
-        //        html += '<option value="">All Products</option>';
-        //        data.forEach(category => {
-        //            html += `<option value="${category}">${category}</option>`;
-        //        });
-        //        $('#category').html(html);
-        //    })
-        //    .fail(function (data) {
-        //        console.log('No Categories Exist');
-        //       // $("#category").html('');
-        //    });
-
         $.ajax({
             type: "post",
             url: "<?= base_url('inv/get')?>",
             headers: {'X-Requested-With': 'XMLHttpRequest'},
             data: {'categories': 'all'},
-            dataType: "json", //todo fix by parsing json data and then encoding it on return
+            dataType: "json",
             success: function (data) {
                 getProducts();
                 let html = '<option selected disabled>Select Category</option>';
-                html += '<option value="">All Products</option>'; //todo change to allow products to be getted for ajax
+                html += '<option value="">All Products</option>';
                 data.forEach(category => {
                     html += `<option value="${category}">${category.charAt(0).toUpperCase() + category.slice(1)}</option>`;
                 });
                 $('#category').html(html);
             },
             error: function (e) {
-
-                //getProducts();
-                console.error("error", e); //todo change to something appropriate
+                console.error("error: categories couldn\'t be found");
             },
         });
     }
@@ -321,15 +302,12 @@
         let brand = typeof segments[2] !== 'undefined' ? segments[2] : segments[2] = 'all';
         let url = '<?= base_url()?>' + location.pathname;
 
-        /* TODO FIX ${description.forEach(line => {
-                                   console.log(line);
-                               })}*/
 
         $.post(url, {"product_category": category, "product_brand": brand}, function (data) {
             console.log('Successful Request Send');
         })
             .done(function (data) {
-                // console.log(data);
+
                 let html = ``;
 
                 data.forEach(product => {
@@ -367,7 +345,8 @@
                                                      <div class="input-group">
                                             <a class="btn btn-outline-secondary" href="/inv/${product.productID}">
                                             <i class="bi bi-arrow-down-short"></i>&nbsp; &nbsp; &nbsp; View  &nbsp; &nbsp; &nbsp;&nbsp;</a>
-                                            <button class="btn btn-dark form-control" type="submit" name="basketButton${product.productID}" id="basketButton${product.productID}" onclick="addToBasket(${product.productID});"><i class="bi bi-basket3"></i>  Add To Basket</button>
+                                            <button class="btn btn-dark form-control" type="submit" name="basketButton${product.productID}" id="basketButton${product.productID}" onclick="addToBasket(${product.productID});">
+                                            <i class="bi bi-basket3"></i>  Add To Basket</button>
                                             </div>
                                                  <?php else : ?>
                                                  <a class="btn form-control btn-outline-secondary" href="/inv/${product.productID}">

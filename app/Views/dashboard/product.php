@@ -23,7 +23,7 @@
                     </h5>
                     <br/>
                     <h5 class="card-subtitle">
-                        <strong>Price</strong>:&nbsp;&nbsp;<kbd>&pound;<?= $product->price; ?></kbd></h5>
+                        <strong>Price</strong>:&nbsp;&nbsp;<kbd>&pound;<?= number_format($product->price); ?></kbd></h5>
                     <br/>
                     <h5 class="card-subtitle"><strong>Description:</strong></h5>
 
@@ -39,7 +39,6 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- todo update max to the stock limit value -->
                                 <label for="quantity">
                                 </label><input type="number" id="quantity" class="form-control"
                                                min="1" max="20" value="1">
@@ -83,7 +82,6 @@
                 })
                 .fail(function (e) {
                     console.log('Product wasn\'t added to your basket.\nerror occurred.');
-                    console.log('error', e);
                 });
 
         } else {

@@ -85,7 +85,16 @@ class BasketProductModel extends Model
             ->asArray()
             ->select()
             ->where('basketFK', $basket->basketID)
-            ->join('product','basket_product.productFK = product.productID')
+            ->join('product', 'basket_product.productFK = product.productID')
+            ->findAll();
+    }
+
+    public function getAllBaskets()
+    {
+        return $this
+            ->asArray()
+            ->select()
+            ->join('product', 'basket_product.productFK = product.productID')
             ->findAll();
     }
 

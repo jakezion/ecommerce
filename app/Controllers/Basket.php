@@ -26,6 +26,7 @@ class Basket extends BaseController
         if ($check instanceof Response) {
 
             return $this->failValidationError('Product not added through ajax');
+
         } else {
             $account = $check["account"];
             $product = $check["product"];
@@ -81,7 +82,7 @@ class Basket extends BaseController
 
         //check if account is authenticated otherwise redirect to login as they need to be signed in
         if (!$this->session->authenticated) {
-            return redirect()->to('/login')->with('error', 'No account is signed in. Action cannot be completed.');
+            return redirect()->to('/login')->with('error', 'No account is signed in. Please sign in to continue.');
             // return $this->failUnauthorized('No account is signed in. Action cannot be completed ');
         }
         //check if user account exists
@@ -128,7 +129,7 @@ class Basket extends BaseController
     {
         //todo stop purchae from being called when not pressed in basket
         if (!$this->session->authenticated)
-            return redirect()->to('/login')->with('error', 'A valid account must be used to purchase your basket.');
+            return redirect()->to('/login')->with('error', 'An account must be logged in to purchase a basket.');
 
         $accountModel = new AccountModel();
 
