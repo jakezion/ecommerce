@@ -23,13 +23,13 @@
                     </h5>
                     <br/>
                     <h5 class="card-subtitle">
-                        <strong>Price</strong>:&nbsp;&nbsp;<kbd>&pound;<?= number_format($product->price); ?></kbd></h5>
+                        <strong>Price</strong>:&nbsp;&nbsp;<kbd>&pound;<?= number_format($product->price,2); ?></kbd></h5>
                     <br/>
                     <h5 class="card-subtitle"><strong>Description:</strong></h5>
 
                     <ul class="card-text">
                         <?php foreach (@explode("-", $product->description) as $description) : ?>
-                            <?php if ($description !== '' || empty($description)): ?>
+                            <?php if ($description !== ''): ?>
                                 <li><?= $description; ?></li>
                             <?php endif; ?>
                         <?php endforeach; ?>

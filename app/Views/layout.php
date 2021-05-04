@@ -1,7 +1,5 @@
-<?php helper('security'); //TODO check
-
-encode_php_tags('scripts');
-?>
+<?php helper('security');
+encode_php_tags('scripts'); ?>
 <style>
     .site {
         display: flex;
@@ -37,25 +35,20 @@ encode_php_tags('scripts');
 
     <link href="/assets/css/styles.css" type="text/css" rel="stylesheet">
 
-
 </head>
+
 <body class="site">
 <?= $this->include('template/header'); ?>
-
 <?= $this->renderSection('features'); ?>
-
 <main class="main">
-
     <div class="container">
         <div class="row">
 
             <?= $this->renderSection('content'); ?>
-        </div>
 
+        </div>
     </div>
 </main>
-
-
 <?= $this->include('template/footer'); ?>
 <?= $this->renderSection('scripts'); ?>
 </body>

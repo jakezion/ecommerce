@@ -209,7 +209,6 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script>
 
-    //todo on doc ready on page create do an ajax call for data gathered in categories
     $(document).ready(function () {
 
         getCategory();
@@ -384,7 +383,6 @@
             console.log('Cart Successfully Reached');
         })
             .done(function (data) {
-                //console.log(data);
 
                 $("#basketButton" + productID).removeClass('btn-dark').addClass('btn-secondary').html("<i class=\"bi bi-basket3-fill\"> Added");
                 setTimeout(function () {

@@ -1,7 +1,4 @@
-<?php helper('security'); //TODO check
-
-encode_php_tags('scripts');
-?>
+<?php helper('security');encode_php_tags('scripts'); ?>
 <style>
     .site {
         display: flex;
@@ -20,14 +17,22 @@ encode_php_tags('scripts');
 </style>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://localhost/">
 <head>
     <title><?= $this->renderSection('title'); ?></title>
     <?php helper('requires'); ?>
     <link href="/assets/css/styles.css" type="text/css" rel="stylesheet">
+
     <!--meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:site_name" content="AWTechnology"/>
+    <meta property="og:title" content="<?= $this->renderSection('title'); ?>"/>
+    <meta name="language" content="EN">
+    <meta name="author" content="Jake Sumner">
+    <meta property="og:locale" content="en_GB"/>
+    <meta property="og:url" content="https://localhost/<?= base_url(); ?>"/>
+
 </head>
 <body class="site">
 <?= $this->include('template/login_header'); ?>
