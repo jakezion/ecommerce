@@ -177,7 +177,7 @@
                 //     });
                 // });
                 //alert(this.state.username + this.state.phone + this.state.email + this.state.password);
-               // event.preventDefault();
+                // event.preventDefault();
 
             }
 
@@ -185,9 +185,10 @@
             render() {
                 return (
 
-                    <form onSubmit={this.handleSubmit} method="post" >
+                    <form onSubmit={this.handleSubmit} method="post">
 
-                                          <div className="mb-3">
+                        <div className="mb-3">
+                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>"/>
                             <label htmlFor="username"> Username:</label>
                             <div className="input-group">
 
@@ -207,7 +208,7 @@
                             </div>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="phone">  Phone Number:</label>
+                            <label htmlFor="phone"> Phone Number:</label>
                             <div className="input-group">
                                 <span className="input-group-text">+44</span>
                                 <input
@@ -281,11 +282,11 @@
 
     </script>
 
-<!--TODO add Confirm password
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-  <span class="input-group-text">@</span>
-  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-</div>
--->
+    <!--TODO add Confirm password
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+      <span class="input-group-text">@</span>
+      <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+    </div>
+    -->
 <?= $this->endSection(); ?>

@@ -20,7 +20,7 @@ class Basket extends BaseController
         if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.');
 
 
-        $check = $this->check($productID, true, true);
+        $check = $this->check($productID, true);
 
 
         if ($check instanceof Response) {
@@ -73,20 +73,18 @@ class Basket extends BaseController
 
     }
 
-    private function check(int $productID = null, bool $authenticated = true, bool $requireAccount = true)
+    private function check(int $productID = null, bool $requireAccount = true)
     {
         $data = [];
         //if product exists
 
 
         //check if account is authenticated otherwise redirect to login as they need to be signed in
-        if ($authenticated) {
-            if (!$this->session->authenticated) {
-                return redirect()->to('/login')->with('error', 'No account is signed in. Action cannot be completed.');
-                // return $this->failUnauthorized('No account is signed in. Action cannot be completed ');
-            }
-            //check if user account exists
+        if (!$this->session->authenticated) {
+            return redirect()->to('/login')->with('error', 'No account is signed in. Action cannot be completed.');
+            // return $this->failUnauthorized('No account is signed in. Action cannot be completed ');
         }
+        //check if user account exists
 
 
         if ($requireAccount) {
@@ -128,6 +126,7 @@ class Basket extends BaseController
 
     public function purchase()
     {
+        //todo stop purchae from being called when not pressed in basket
         if (!$this->session->authenticated)
             return redirect()->to('/login')->with('error', 'A valid account must be used to purchase your basket.');
 
@@ -175,18 +174,26 @@ class Basket extends BaseController
         //get contents of basket_product database for current id
         $basket = $model->getProducts($account);
 
+
         //todo get product values based on returned product id
 
         // If the cart has no products return a 404 and empty message.
         if (empty($basket))
             //return $this->failNotFound('Basket has no items');
             return redirect()
-                ->to('/empty')
+                ->to('basket/empty')
                 ->with('error', 'Basket has no items.');
+
+        $total = 0;
+        foreach ($basket as $product) {
+            $subtotal = $product['price'] * $product['quantity'];
+            $total += $subtotal;
+        }
 
         $data = [
             'title' => 'Basket',
             'products' => $basket,
+            'total' => $total
         ];
 
         return view('basket/basket', $data);

@@ -7,7 +7,7 @@
     <div class="container-fluid">
 
         <div class="col-3">
-            <a class="navbar-brand" href="/">Web Technologies</a>
+            <a class="navbar-brand" href="/">AWTechnology</a>
         </div>
 
         <div class="col-6">

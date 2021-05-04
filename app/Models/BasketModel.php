@@ -135,6 +135,9 @@ class BasketModel extends Model
         return ($data === 1);
     }
 
+
+
+
     public function setPurchased(Account $account)
     {
         $basket = $this
@@ -156,6 +159,15 @@ class BasketModel extends Model
 
         }
 
+    }
+
+    public function purchased(Basket $basket)
+    {
+        return $this
+            ->select()
+            ->where('basketID', $basket->basketID)
+            ->where('purchased', true)
+            ->first();
     }
 
 }

@@ -12,11 +12,11 @@ helper('html'); ?>
     <div class="col-md-12 border-right">
         <div class="p-3 bg-white">
             <div class="d-flex justify-content-between align-items-center">
-                <h6 class="heading1 ">Shopping Basket</h6>
+                <h5 class="heading1"><strong>Shopping Basket</strong></h5>
                 <div class="d-flex flex-row align-items-center text-muted">
                 </div>
             </div>
-            <div class="table-responsive">
+            <div class="table-hover table-responsive">
                 <table class="table table-borderless">
                     <thead>
                     <th></th>
@@ -24,9 +24,13 @@ helper('html'); ?>
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Subtotal</th>
+
                     <th></th>
+
                     </thead>
+                    <hr/>
                     <tbody>
+
                     <?php foreach (@$products as $product): ?>
                         <tr>
                             <td><img src="https://i.imgur.com/VMsimw4.jpg" width="35"></td>
@@ -43,12 +47,13 @@ helper('html'); ?>
             </div>
         </div>
         <div class="border-top p-3">
-            <form action="/basket/purchase" method="post">
+            <strong>Total:</strong> £<?= esc($total); ?>
+                    <form action="/basket/purchase" method="post">
+                        <button class="btn btn-dark btn-block">
+                            Checkout
+                        </button>
+                    </form>
 
-                <button class="btn btn-dark btn-block">
-                    Checkout
-                </button>
-            </form>
         </div>
     </div>
 

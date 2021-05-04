@@ -14,13 +14,13 @@
                     <div class="col-lg-4 col-md-12 col-sm-12 col-12">
                         <div class="card-body">
                             <?php if ($product->picture): ?>
-                                <a href="/catalog/<?= $product->accountID; ?>">
+                                <a href="/inv/<?= $product->productID; ?>">
                                     <img class="card-img-top"
                                          src="/images/<?= $product->picture; ?>"
                                          alt="Product Image">
                                 </a>
                             <?php else: ?>
-                                <a href="/catalog/<?= $product->accountID; ?>">
+                                <a href="/inv/<?= $product->productID; ?>">
                                     <img class="card-img-top"
                                          data-src="holder.js/300x300?auto=yes&text=<?= $product->name; ?>"
                                          alt="<?= $product->name; ?>">
@@ -61,7 +61,7 @@
                                     </div>
 
                                     <div class="col-md-8">
-                                        <button class="form-control btn btn-dark" type="submit"
+                                        <button class="form-control btn btn-dark" type="submit" id="basketButton<?= $product->productID; ?>"
                                                 onclick="addToBasket(<?= $product->productID; ?>);">Add To Cart
                                         </button>
                                     </div>
@@ -90,18 +90,18 @@
         if (Number.isInteger(quantity)) {
 
             $.getJSON('/basket/add/' + productID + '/' + quantity, function (data) {
-                console.log("data",data);
+                console.log("data", data);
             })
-            .done(function (data){
-                //         $("#addButton-" + productID).html("Added").prop("disabled", true);
-                //         setTimeout(function () {
-                //             $("#addButton-" + productID).html("<i class=\"fas fa-cart-plus\"></i> Add").prop("disabled", false);
-                //         }, 1000);
-            })
-            .fail(function(e){
-                console.log('Product wasn\'t added to your basket.\nerror occurred.');
-                console.log('error',e);
-            });
+                .done(function (data) {
+                    $("#basketButton" + productID).removeClass('btn-dark').addClass('btn-secondary').html("<i class=\"bi bi-basket3-fill\"> Added");
+                    setTimeout(function () {
+                        $("#basketButton" + productID).removeClass('btn-secondary').addClass('btn-dark').html("<i class=\"bi bi-basket3\"> Add to Basket");
+                    }, 1000);
+                })
+                .fail(function (e) {
+                    console.log('Product wasn\'t added to your basket.\nerror occurred.');
+                    console.log('error', e);
+                });
 
         } else {
             alert("Please only use a number!");

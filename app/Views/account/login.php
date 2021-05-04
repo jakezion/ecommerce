@@ -24,6 +24,7 @@
                     </div>
                 </div>
             <?php endif; ?>
+            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>"/>
             <div class="mb-3">
                 <label for="phone" class="form-label">Phone number</label>
                 <div class="input-group">
@@ -58,12 +59,12 @@
 
 
 <style>
-    .register a{
+    .register a {
         color: #586e75;
 
     }
 
-    .register a:visited{
+    .register a:visited {
         color: #586e75;
 
     }
@@ -73,10 +74,11 @@
 
     }
 
-    .register  a:active {
+    .register a:active {
         color: #586e75;
 
     }
+
     .login-main {
         font-family: 'Arvo', sans-serif;
     }

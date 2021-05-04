@@ -13,50 +13,49 @@ class AccountModel extends Model
     protected $beforeUpdate = ['hashPassword'];
     protected $skipValidation = false;
 
-    //todo  if register setrValidationRules, setValidationMessages
 
-    protected function beforeInsert(Account $data)
+    protected function beforeInsert(Account $account)
     {
-        return $this->hashPassword($data);
+        return $this->hashPassword($account); //todo check
     }
 
-    protected function beforeUpdate(Account $data)
+    protected function beforeUpdate(Account $account)
     {
 
-        return $data;
+        return $account;
     }
 
 
-    protected function hashPassword(array $data)
+    protected function hashPassword(array $account)
     {
-        if (!isset($data['data']['password'])) return $data;
+        if (!isset($account['data']['password'])) return $account;
 
-        $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_BCRYPT);
+        $account['data']['password'] = password_hash($account['data']['password'], PASSWORD_BCRYPT);
         // unset($data['data']['password']);
 
-        return $data;
+        return $account;
     }
 
 
-    public function match(Account $data): bool
+    public function match(Account $account): bool
     {
 
         //$this->hashPassword($data);
 
         $details = $this
             ->select('accountID, username, phone, email, password')
-            ->where('phone', $data->phone)
+            ->where('phone', $account->phone)
             ->first();
 
-        return password_verify($data->password, $details->password);
+        return password_verify($account->password, $details->password);
 
     }
 
-    public function create(Account $data): bool
+    public function create(Account $account): bool
     {
 
         try {
-            $this->save($data);
+            $this->save($account);
             return true;
         } catch (\ReflectionException $e) {
             log_message('err', $e);
@@ -65,12 +64,12 @@ class AccountModel extends Model
         return false;
     }
 
-    public function isAdmin(Account $data)
+    public function isAdmin(Account $account)
     {
         $val = $this
             ->select()
-            ->where('phone', $data->phone)
-            ->select('admin', '1')
+            ->where('accountID', $account->accountID)
+            ->where('admin', true)
             ->countAllResults();
 
         if ($val == 1) {
@@ -80,38 +79,38 @@ class AccountModel extends Model
 
     }
 
-    public function id(Account $data, bool $array = false)
+    public function id(Account $account, bool $array = false)
     {
         if (!$array) {
             return $this
                 ->select('accountID, username, phone, email')
-                ->where('accountID', $data->accountID)
+                ->where('accountID', $account->accountID)
                 ->first();
         } else {
             return $this
                 ->asArray()
                 ->select('accountID, username, phone, email')
-                ->where('accountID', $data->accountID)
+                ->where('accountID', $account->accountID)
                 ->first();
         }
 
     }
 
-    public function phone(Account $data)
+    public function phone(Account $account)
     {
             return $this
                 ->select('accountID, username, phone, email')
-                ->where('phone', $data->phone)
+                ->where('phone', $account->phone)
                 ->first();
 
     }
 
-    public function exists(Account $data): bool
+    public function exists(Account $account): bool
     {
 
         $exists = $this
             ->select('accountID,username,email,phone')
-            ->where('phone', $data->phone)
+            ->where('phone', $account->phone)
             ->first();
 
         if ($exists)

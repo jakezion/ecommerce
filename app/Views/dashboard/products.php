@@ -177,9 +177,9 @@
 
 <?= $this->section('content'); ?>
 <header class="container-fluid">
-    <div class="container text-center" id="searchBox">
+    <div class="container text-center mb-4 mt-4" id="searchBox">
         <h1>Product Search</h1>
-
+        <hr>
         <div class="input-group mb-4">
             <div class="col-1"></div>
             <div class="col">
@@ -193,10 +193,10 @@
             </div>
             <div class="col-1"></div>
         </div>
-
+        <hr>
     </div>
 </header>
-<div class="container text-center">
+<div class="container text-center mt-4">
     <div name="results" id="results">
 
     </div>
@@ -330,46 +330,53 @@
         })
             .done(function (data) {
                 console.log(data);
-                let html = `<div class="row row-cols-1 row-cols-md-3 g-4">`;
+                let html = ``;
                 data.forEach(product => {
                     let description = product.description.split("-");
 
 
-                    html += `<div class="col">
-            <div class="card h-100">
-            <a style="text-decoration: none; color: black" href="/inv/${product.productID}">
-            <img src="${product.image}" class="card-img-top" alt="${product.name}"">
-            </a>
-            <div class="card-body">
-            <hr/>
-                <h5 class="card-title">${product.name} |
-                <a style="text-decoration: none; color: black" href="/inv/${product.category}"><kbd>${product.category}</kbd></a> |
-                <a style="text-decoration: none; color: black" href="/inv/${product.category}/${product.brand}"><kbd>${product.brand}</kbd></a>
-            </h5>
-                 <hr/>
-
-
-                <p class="card-text" id="description">${product.description} </p>
-                <div class="row">
-                     <div class="col">
-                           <div class="form-control">&pound;${product.price}</div>
-                                </div>
-                                    <div class="col">
-                                        <div class="btn-group">
-                                        <a class="btn btn btn-outline-secondary" href="/inv/${product.productID}">
-                                        <i class="fas fa-eye"></i> View</a>
-                                        <?php if (session()->get('authenticated')):?>
-                                            <button class="btn btn-dark" type="submit" onclick="addToBasket(${product.productID});">Add To Cart</button>
-                                         <?php endif; ?>
+                    html += `
+                    <div class="card mb-3 h-15">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <a style="text-decoration: none; color: black" href="/inv/${product.productID}">
+                                <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">${product.name}</h5>
+                                    <hr/>
+                                    <p class="card-text text-start" id="description">${product.description} </p>
+                                    <hr/>
+                                    <p class="card-text">
+                                    <div class="row">
+                                        <div class="col">
+                                                <div class="form-control">&pound;${product.price}</div>
                                         </div>
-                                   </div>
-                               </div>
-                          </div>
-                     </div>
-                </div>`;
+                                        <div class="col">
+                                                     <?php if (session()->get('authenticated')):?>
+                                                     <div class="input-group">
+                                            <a class="btn btn-outline-secondary" href="/inv/${product.productID}">
+                                            <i class="bi bi-arrow-down-short"></i>&nbsp; &nbsp; &nbsp; View  &nbsp; &nbsp; &nbsp;&nbsp;</a>
+                                            <button class="btn btn-dark form-control" type="submit" name="basketButton${product.productID}" id="basketButton${product.productID}" onclick="addToBasket(${product.productID});"><i class="bi bi-basket3"></i>  Add To Basket</button>
+                                            </div>
+                                                 <?php else : ?>
+                                                 <a class="btn form-control btn-outline-secondary" href="/inv/${product.productID}">
+                                                 <i class="bi bi-arrow-down-short"></i>View
+                                                 </a>
+                                                 <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
 
                 });
-                html += `</div>`;
+
                 $('#results').html(html);
             })
             .fail(function (data) {
@@ -388,11 +395,12 @@
             console.log('Cart Successfully Reached');
         })
             .done(function (data) {
-                console.log(data);
-                // $("#addButton-" + productID).html("Added").prop("disabled", true);
-                //         setTimeout(function () {
-                //             $("#addButton-" + productID).html("<i class=\"fas fa-cart-plus\"></i> Add").prop("disabled", false);
-                //         }, 1000);
+                //console.log(data);
+
+                $("#basketButton" + productID).removeClass('btn-dark').addClass('btn-secondary').html("<i class=\"bi bi-basket3-fill\"> Added");
+                setTimeout(function () {
+                    $("#basketButton" + productID).removeClass('btn-secondary').addClass('btn-dark').html("<i class=\"bi bi-basket3\"> Add to Basket");
+                }, 1000);
             })
             .fail(function () {
                 console.log('Product Couldn\'t be added to the basket.');
