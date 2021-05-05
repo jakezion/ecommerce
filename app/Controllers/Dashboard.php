@@ -27,36 +27,34 @@ class Dashboard extends BaseController
     }
 
 
-    public function ajax($category = 'all', $brand = 'all')
+    public function categories($category = 'all', $brand = 'all')
     {
         if ($this->request->isAjax()) {
-
             $product = new ProductModel();
 
-            if ($this->request->getPost('categories')) {
-                return $this->respond($product->getCategories());
-                // echo json_encode($product->getCategories());
-
-            } elseif ($this->request->getPost('category')) {
-
-                $category = $this->request->getPost('category');
-                return $this->respond($product->getBrands($category));
-
-
-            } elseif ($this->request->getPost('brands')) {
-
-                $brand = $this->request->getPost('brand');
-                return $this->respond($brand);
-            }
+            return $this->respond($product->getCategories());
         }
         return $this->failServerError('Request does not appear to be made using AJAX.');
     }
 
 
+    public function brand($category = 'all', $brand = 'all')
+    {
+        if ($this->request->isAjax()) {
+            $product = new ProductModel();
+
+
+
+            return $this->respond($product->getBrands($category));
+        }
+        return $this->failServerError('Request does not appear to be made using AJAX.');
+    }
+
     public function inventory($category = 'all', $brand = 'all')
     {
 
         $data = [
+
             'title' => ucfirst('products'),
             'category' => $category,
             'brand' => $brand,
@@ -64,15 +62,16 @@ class Dashboard extends BaseController
 
         if ($this->request->isAjax()) {
 
-            if ($category) $category = $this->request->getPost('product_category');
+            //if ($category) $category = $this->request->getPost('product_category');
 
-            if ($brand) $brand = $this->request->getPost('product_brand');
+            //if ($brand) $brand = $this->request->getPost('product_brand');
 
             $details = new Product(['category' => $category, 'brand' => $brand]);
 
             $product = new ProductModel();
 
-            if ($category == null || $category == 'all') {
+
+            if ($category == 'all') {
                 $products = $product->getAllProducts();
             } else if ($brand == 'all') {
                 $products = $product->getProductCategory($details);

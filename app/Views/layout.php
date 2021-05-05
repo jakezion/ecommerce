@@ -30,13 +30,16 @@ encode_php_tags('scripts'); ?>
     <meta name="author" content="Jake Sumner">
     <meta property="og:locale" content="en_GB"/>
     <meta property="og:url" content="https://localhost/<?= base_url(); ?>"/>
-
+    <?= csrf_meta() ?>
+    <meta name="{csrf_header}" content="{csrf_hash}" />
     <?php helper('requires'); ?>
     <link href="/awt.ico" rel="shortcut icon" type="image/ico" />
     <link href="/assets/css/styles.css" type="text/css" rel="stylesheet">
 
 </head>
-
+<!-- view partial creates a template for every page that includes it within its view
+repeated data can be placed into their relevant sections/ included and keeps formatting
+between pages identical -->
 <body class="site">
 <?= $this->include('template/header'); ?>
 <?= $this->renderSection('features'); ?>

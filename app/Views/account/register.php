@@ -1,17 +1,17 @@
 <?= $this->extend('simple_layout'); ?>
-<style>
-    .register-main {
-        font-family: 'Arvo', sans-serif;
-    }
+    <style>
+        .register-main {
+            font-family: 'Arvo', sans-serif;
+        }
 
-    .register-main input {
-        font-size: 22px;
-    }
-</style>
+        .register-main input {
+            font-size: 22px;
+        }
+    </style>
 
 
 <?= $this->section('title'); ?>
-<?= esc($title);?>
+<?= esc($title); ?>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
     <div class="d-flex justify-content-center">
@@ -95,8 +95,8 @@
 
             validateUsername() {
                 let username = this.state.username;
-                let symbols = new RegExp(/[^a-zA-Z0-9\s]/);
-                if (symbols.test(username)) {
+                let format = new RegExp(/[^a-zA-Z0-9\s]/);
+                if (format.test(username)) {
 
                     this.setState({nameError: 'Your username is invalid.'});
                 } else {
@@ -149,22 +149,16 @@
                 return (
 
                     <form onSubmit={this.handleSubmit} method="post">
-
+                        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>"/>
                         <div className="mb-3">
-                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>"/>
                             <label htmlFor="username"> Username:</label>
                             <div className="input-group">
 
                                 <input
-                                    name="username"
-                                    type="text"
-                                    className={
-                                        `form-control ` + `${this.state.nameError ? 'is-invalid' : ''}`}
-                                    value={
-                                        this.state.username}
-                                    id="username"
-                                    onChange={this.handleUsername}
-                                    placeholder="Username"
+                                    name="username" type="text"
+                                    className={`form-control ` + `${this.state.nameError ? 'is-invalid' : ''}`}
+                                    value={this.state.username}
+                                    id="username" onChange={this.handleUsername} placeholder="Username"
                                 />
                                 <div className='invalid-feedback'>{this.state.nameError}</div>
                             </div>
@@ -174,15 +168,9 @@
                             <div className="input-group">
                                 <span className="input-group-text">+44</span>
                                 <input
-                                    name="phone"
-                                    type="text"
-                                    value={this.state.phone}
-                                    className={
-                                        `form-control ` + `${this.state.phoneError ? 'is-invalid' : ''}`}
-                                    id="phone"
-                                    onChange={this.handlePhone}
-
-                                    placeholder="Phone Number"
+                                    name="phone" type="text" value={this.state.phone}
+                                    className={`form-control ` + `${this.state.phoneError ? 'is-invalid' : ''}`}
+                                    id="phone" onChange={this.handlePhone} placeholder="Phone Number"
                                 />
                                 <div className='invalid-feedback'>{this.state.phoneError}</div>
                             </div>
@@ -190,17 +178,9 @@
                         <div className="mb-3">
                             <label htmlFor="email"> Email Address:</label>
                             <div className="input-group">
-                                <input
-                                    name="email"
-                                    type="email"
-                                    value={this.state.email}
-                                    className={
-                                        `form-control ` + `${this.state.emailError ? 'is-invalid' : ''}`}
-                                    id="email"
-                                    onChange={this.handleEmail}
-
-                                    placeholder="name@example.co.uk"
-
+                                <input name="email" type="email" value={this.state.email}
+                                       className={`form-control ` + `${this.state.emailError ? 'is-invalid' : ''}`}
+                                       id="email" onChange={this.handleEmail} placeholder="name@example.co.uk"
                                 />
                                 <div className='invalid-feedback'>{this.state.emailError}</div>
                             </div>
@@ -210,14 +190,8 @@
                             <label htmlFor="password"> Password:</label>
                             <div className="input-group">
                                 <input
-                                    name="password"
-                                    type="password"
-                                    className='form-control'
-                                    value={
-                                        this.state.password}
-                                    id="password"
-                                    onChange={this.handlePassword}
-
+                                    name="password" type="password" className='form-control'
+                                    value={this.state.password} id="password" onChange={this.handlePassword}
                                     placeholder="Password"
                                 />
 

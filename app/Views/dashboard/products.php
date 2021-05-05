@@ -180,6 +180,7 @@
     <div class="container text-center mb-4 mt-4" id="searchBox">
         <h1>Product Search</h1>
         <hr>
+        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>"/>
         <div class="input-group mb-4">
             <div class="col-1"></div>
             <div class="col">
@@ -211,12 +212,17 @@
 
     $(document).ready(function () {
 
+        //get inital categories available
         getCategory();
 
+
+        //on category change, get brands for that category
         $("#category").on("change", function (e) {
-            getBrand(e);
+            getBrand();
         });
 
+
+        //on brand change, get products for that category and brand
         $("#brand").on("change", function (e) {
             e.preventDefault();
 
@@ -232,62 +238,8 @@
 
     });
 
-    function getCategory() {
-        $.ajax({
-            type: "post",
-            url: "<?= base_url('inv/get')?>",
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
-            data: {'categories': 'all'},
-            dataType: "json",
-            success: function (data) {
-                getProducts();
-                let html = '<option selected disabled>Select Category</option>';
-                html += '<option value="">All Products</option>';
-                data.forEach(category => {
-                    html += `<option value="${category}">${category.charAt(0).toUpperCase() + category.slice(1)}</option>`;
-                });
-                $('#category').html(html);
-            },
-            error: function (e) {
-                console.error("error: categories couldn\'t be found");
-            },
-        });
-    }
-
-    function getBrand(e) {
-        e.preventDefault();
-
-        //post data to correct url with category data to display related brands
-        let category = $("#category").val();
-
-        let url = `<?= base_url('inv');?>/${category}`;
-
-        history.pushState(category, '', url);
-
-        if (category !== '') {
-            $.post("<?= base_url('inv/get')?>", {'category': category}, function (data) {
-                console.log('Successful Request Send');
-            })
-                .done(function (data) {
-                    getProducts();
-                    let html = '<option selected disabled>Select Brand</option>';
-                    data.forEach(brand => {
-                        html += `<option value="${brand}">${brand.charAt(0).toUpperCase() + brand.slice(1)}</option>`;
-                    });
-                    $('#brand').html(html);
-                })
-                .fail(function (data) {
-                    console.log('No Brands Exist');
-                });
-
-        } else {
-            getProducts();
-            $('#brand').html('<option selected disabled>Select Brand</option>');
-
-        }
-    }
-
-    function getProducts() {
+    //get the current url value and return its category and brand
+    function categoryBrand() {
         let path = location.pathname.split("/");
         let segments = [];
 
@@ -299,14 +251,79 @@
 
         let category = typeof segments[1] !== 'undefined' ? segments[1] : segments[1] = 'all';
         let brand = typeof segments[2] !== 'undefined' ? segments[2] : segments[2] = 'all';
-        let url = '<?= base_url()?>' + location.pathname;
+        return {'category': category, 'brand': brand};
 
+    }
 
-        $.post(url, {"product_category": category, "product_brand": brand}, function (data) {
-            console.log('Successful Request Send');
+    //get the categories available, populate the dropdown box and get the products for category
+    function getCategory() {
+
+        let data = categoryBrand();
+
+        $.getJSON('/dashboard/categories/' + data.category + '/' + data.brand, function (data) {
+            //console.log('category Successfully Reached');
         })
             .done(function (data) {
+                getProducts();
+                let html = '<option selected disabled>Select Category</option>';
+                html += '<option value="">All Products</option>';
+                data.forEach(category => {
+                    html += `<option value="${category}">${category.charAt(0).toUpperCase() + category.slice(1)}</option>`;
+                });
+                $('#category').html(html);
+            })
+            .fail(function (e) {
+                //console.error("error: categories couldn\'t be found");
+            });
+    }
 
+
+    //get the brands available for that category, populate the brands dropdown box and get the products for category and brand
+    function getBrand() {
+
+
+        //get data to correct url with category data to display related brands
+        let category = $("#category").val();
+
+        let url = `<?= base_url('inv');?>/${category}`;
+
+        history.pushState(category, '', url);
+
+        let data = categoryBrand();
+
+        //if cateogry isnt 'all' then get category brands, otherwise display disabled brand option
+        if (data.category !== 'all') {
+            $.getJSON('/dashboard/brand/' + data.category + '/' + data.brand, function (data) {
+                //console.log('Successful Request Send');
+            })
+                .done(function (data) {
+                    //console.log(data);
+                    getProducts();
+                    let html = '<option selected disabled>Select Brand</option>';
+                    data.forEach(brand => {
+                        html += `<option value="${brand}">${brand.charAt(0).toUpperCase() + brand.slice(1)}</option>`;
+                    });
+                    $('#brand').html(html);
+                })
+                .fail(function (data) {
+                    //console.log('No Brands Exist');
+                });
+        } else {
+            getProducts();
+            $('#brand').html('<option selected disabled>Select Brand</option>');
+        }
+    }
+
+    //get products with provided category and brand
+    function getProducts() {
+
+        let data = categoryBrand();
+//jquery simplification for an ajax call
+        $.getJSON("/dashboard/inventory/" + data.category + "/" + data.brand, function (data) {
+            //console.log('Successful Request Send products');
+        })
+            .done(function (data) {
+                // console.log(data)
                 let html = ``;
 
                 data.forEach(product => {
@@ -360,15 +377,12 @@
                         </div>
                     </div>
                     `;
-
                 });
 
                 $('#results').html(html);
-
-
             })
             .fail(function (data) {
-                console.log('Products Do Not Exist');
+                //e.log('Products Do Not Exist');
                 $("#results").html('');
             });
 
@@ -380,7 +394,7 @@
 
         $.getJSON('/basket/add/' + productID + '/' + quantity, function (data) {
 
-            console.log('Cart Successfully Reached');
+            //console.log('Cart Successfully Reached');
         })
             .done(function (data) {
 
@@ -390,7 +404,7 @@
                 }, 1000);
             })
             .fail(function () {
-                console.log('Product Couldn\'t be added to the basket.');
+                //e.log('Product Couldn\'t be added to the basket.');
             });
 
     }

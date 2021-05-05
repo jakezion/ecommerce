@@ -45,6 +45,7 @@
                             </div>
 
                             <div class="col-md-8">
+
                                 <button class="form-control btn btn-dark" type="submit"
                                         id="basketButton<?= $product->productID; ?>"
                                         onclick="addToBasket(<?= $product->productID; ?>);">Add To Cart

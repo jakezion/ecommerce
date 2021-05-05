@@ -60,6 +60,7 @@ helper('html'); ?>
             </table>
         </div>
         <form action="/basket/purchase" method="post">
+            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
             <button class="btn btn-dark form-control">Checkout</button>
         </form>
     </div>
