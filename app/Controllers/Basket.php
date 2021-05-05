@@ -18,7 +18,7 @@ class Basket extends BaseController
     /**
      * @param int $productID
      * @param int $quantity
-     * @return mixed
+     * @return mixed add a product to the basket
      */
     public function add(int $productID, int $quantity = 1)
     {
@@ -92,7 +92,7 @@ class Basket extends BaseController
     /**
      * @param int|null $productID
      * @param bool $requireAccount
-     * @return array|RedirectResponse|mixed
+     * @return array|RedirectResponse|mixed check if a user is signed in and that a product exists
      */
     private function check(int $productID = null, bool $requireAccount = true)
     {
@@ -143,14 +143,14 @@ class Basket extends BaseController
 
 
     /**
-     * @return \CodeIgniter\HTTP\RedirectResponse|mixed|string
+     * @return \CodeIgniter\HTTP\RedirectResponse|mixed|string purchase a basket
      */
     public function purchase()
     {
         $data = [
             'title' => 'Confirmed'
         ];
-        //todo stop purchae from being called when not pressed in basket
+
         if (!$this->session->authenticated)
             return redirect()->to('/login')->with('error', 'An account must be logged in to purchase a basket.');
 
@@ -174,7 +174,7 @@ class Basket extends BaseController
 
 
     /**
-     * @return \CodeIgniter\HTTP\RedirectResponse|string
+     * @return \CodeIgniter\HTTP\RedirectResponse|string get the contents of the current users basket
      */
     public function getBasket()
     {
@@ -201,8 +201,6 @@ class Basket extends BaseController
         $basket = $model->getProducts($account);
 
 
-        //todo get product values based on returned product id
-
         // If the cart has no products return a 404 and empty message.
         if (empty($basket))
             //return $this->failNotFound('Basket has no items');
@@ -227,6 +225,9 @@ class Basket extends BaseController
 
     }
 
+    /**
+     * @return string return an empty basket
+     */
     public function empty()
     {
         $data = [

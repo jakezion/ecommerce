@@ -15,11 +15,6 @@ class BasketModel extends Model
     protected $primaryKey = 'basketID';
     protected $returnType = 'App\Entities\Basket';
     protected $allowedFields = ['accountFK', 'purchased'];
-    //protected $skipValidation = false;
-
-//    protected $createdField = 'created_at';
-//    protected $updatedField = 'updated_at';
-//    protected $deletedField = 'deleted_at';
     protected $useAutoIncrement = true;
 
 
@@ -27,7 +22,7 @@ class BasketModel extends Model
      * @param Account $account
      * @param Product $product
      * @param int $quantity
-     * @return \CodeIgniter\Database\BaseResult|false|int|object|string
+     * @return \CodeIgniter\Database\BaseResult|false|int|object|string add an item to the basket
      */
     public function add(Account $account, Product $product, int $quantity)
     {
@@ -43,15 +38,14 @@ class BasketModel extends Model
 
     /**
      * @param Account $account
-     * @return array|false|object|null
+     * @return array|false|object|null create a new basket or return the current one
      */
     public function basket(Account $account)
     {
 
 
         //if account doesnt have basket
-        //todo change to find if the accountID exists within the basket database
-        //   then when checking if basket exists if the basket that exists is purchased, make a new basket
+
         if (!$this->exists($account)) {
             //create new basket
 
@@ -62,7 +56,7 @@ class BasketModel extends Model
             try {
                 if ($this->insert($basket)) {
                     //return basket
-                    return $this->id($account); //todo change this to correct return data
+                    return $this->id($account);
 
                 } else {
                     //return error
@@ -75,14 +69,14 @@ class BasketModel extends Model
 
         } else {
             //basket exists for account already
-            return $this->id($account); //todo change this to correct return data
+            return $this->id($account);
 
         }
     }
 
     /**
      * @param Account $account
-     * @return array|false
+     * @return array|false get all the products within a basket if it exists
      */
     public function getProducts(Account $account)
     {
@@ -106,9 +100,7 @@ class BasketModel extends Model
 
     /**
      * @param Account $account
-     * @return array|object|null
-     *
-     * get basket Associated with an account
+     * @return array|object|null get basket Associated with an account
      *
      */
     public function id(Account $account)
@@ -121,9 +113,8 @@ class BasketModel extends Model
 
     /**
      * @param Account $account
-     * @return bool
+     * @return bool Check if account already has a pre-existing basket
      *
-     * Check if account already has a pre-existing basket
      */
     public function exists(Account $account)
     {
@@ -137,8 +128,10 @@ class BasketModel extends Model
     }
 
 
-
-
+    /**
+     * @param Account $account
+     * @return bool|\Exception|ReflectionException set a basket to purchased
+     */
     public function setPurchased(Account $account)
     {
         $basket = $this
@@ -152,7 +145,7 @@ class BasketModel extends Model
 
         try {
 
-            return $this->update($basket->basketID, $data); //todo fix
+            return $this->update($basket->basketID, $data);
 
         } catch (\ReflectionException $e) {
 
@@ -162,6 +155,10 @@ class BasketModel extends Model
 
     }
 
+    /**
+     * @param Basket $basket
+     * @return array|object|null check if a basket is purchased
+     */
     public function purchased(Basket $basket)
     {
         return $this

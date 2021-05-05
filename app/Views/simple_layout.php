@@ -34,6 +34,10 @@
     <meta property="og:url" content="https://localhost/<?= base_url(); ?>"/>
     <link href="/awt.ico" rel="shortcut icon" type="image/ico" />
 </head>
+
+<!-- view partial creates a template for every page that includes it within its view
+repeated data can be placed into their relevant sections/ included and keeps formatting
+between pages identical -->
 <body class="site">
 <?= $this->include('template/login_header'); ?>
 <main class="main">

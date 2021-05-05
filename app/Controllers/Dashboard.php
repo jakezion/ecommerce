@@ -12,21 +12,26 @@ class Dashboard extends BaseController
 {
     use ResponseTrait;
 
+    /**
+     * @return \CodeIgniter\HTTP\RedirectResponse|string main index page redirects to products page
+     *
+     */
     public function index()
     {
         $data = ['title' => ucfirst('dashboard')];
 
-//        if ($this->)
-//        $account = new AccountModel();
-
-            return redirect()->to('/inv');
-
+        return redirect()->to('/inv');
 
         return view('dashboard/dashboard', $data);
 
     }
 
 
+    /**
+     * @param string $category
+     * @param string $brand
+     * @return Response|mixed returns all categories available
+     */
     public function categories($category = 'all', $brand = 'all')
     {
         if ($this->request->isAjax()) {
@@ -38,11 +43,15 @@ class Dashboard extends BaseController
     }
 
 
+    /**
+     * @param string $category
+     * @param string $brand
+     * @return Response|mixed returns all brands for a specific category
+     */
     public function brand($category = 'all', $brand = 'all')
     {
         if ($this->request->isAjax()) {
             $product = new ProductModel();
-
 
 
             return $this->respond($product->getBrands($category));
@@ -50,6 +59,12 @@ class Dashboard extends BaseController
         return $this->failServerError('Request does not appear to be made using AJAX.');
     }
 
+
+    /**
+     * @param string $category
+     * @param string $brand
+     * @return mixed|string returns all products based on their category and brand
+     */
     public function inventory($category = 'all', $brand = 'all')
     {
 
@@ -61,10 +76,6 @@ class Dashboard extends BaseController
         ];
 
         if ($this->request->isAjax()) {
-
-            //if ($category) $category = $this->request->getPost('product_category');
-
-            //if ($brand) $brand = $this->request->getPost('product_brand');
 
             $details = new Product(['category' => $category, 'brand' => $brand]);
 
@@ -83,15 +94,20 @@ class Dashboard extends BaseController
             if (empty($products)) $this->failNotFound('This category does not contain any products.', 404);
 
             return $this->respond($products);
-            // echo json_encode($products);
 
         } else {
+
             return view('dashboard/products', $data);
+
         }
 
     }
 
 
+    /**
+     * @param $productID
+     * @return \CodeIgniter\HTTP\RedirectResponse|string returns an individual product based on its id
+     */
     public function product($productID)
     {
 
@@ -105,7 +121,6 @@ class Dashboard extends BaseController
             return redirect()
                 ->to('/inv');
         }
-
 
         $data = [
             'title' => ucfirst($product->name),

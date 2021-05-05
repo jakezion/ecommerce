@@ -17,13 +17,14 @@ class BasketProductModel extends Model
     protected $useSoftDeletes = false; //might be false if multiple baskets are used
     protected $allowedFields = ['basketFK', 'productFK', 'quantity', 'price'];
 
-//    protected $useTimestamps = true;
-//    protected $createdField = 'created_at';
-//    protected $updatedField = 'updated_at';
-//    protected $deletedField = 'deleted_at';
 
-    //todo validation rules for required and their formats
-
+    /**
+     * @param Basket $basket
+     * @param Product $product
+     * @param int $quantity
+     * @return \CodeIgniter\Database\BaseResult|\Exception|object|\ReflectionException|bool|int|string
+     * add a product to their current basket
+     */
     public function addToBasket(Basket $basket, Product $product, int $quantity)
     {
 
@@ -36,7 +37,6 @@ class BasketProductModel extends Model
             'price' => $price,
         ]);
 
-//todo handle if basket is purchsased then use the non purchased account basket as long as only 1 non purchased one exists
         if ($this->exists($basket, $product)) {
 
             return $this->updateProduct($basketProduct, $quantity, $price);
@@ -58,6 +58,10 @@ class BasketProductModel extends Model
 
     }
 
+    /**
+     * @param Product $product
+     * @return mixed get the current price for an item
+     */
     public function currentPrice(Product $product)
     {
 
@@ -68,7 +72,12 @@ class BasketProductModel extends Model
         return $price->price;
     }
 
-    //--------------------------
+
+    /**
+     * @param Basket $basket
+     * @param Product $product
+     * @return array|object|null check if an items already exists within a basket
+     */
     public function exists(Basket $basket, Product $product)
     {
 
@@ -79,6 +88,10 @@ class BasketProductModel extends Model
             ->find();
     }
 
+    /**
+     * @param Basket $basket
+     * @return array get the contents of a basket and join with the corresponding product table
+     */
     public function getBasket(Basket $basket)
     {
         return $this
@@ -89,6 +102,9 @@ class BasketProductModel extends Model
             ->findAll();
     }
 
+    /**
+     * @return array get every basket
+     */
     public function getAllBaskets()
     {
         return $this
@@ -98,6 +114,10 @@ class BasketProductModel extends Model
             ->findAll();
     }
 
+    /**
+     * @param BasketProduct $basketProduct
+     * @return array|object|null get the product in a basket
+     */
     public function getBasketProduct(BasketProduct $basketProduct)
     {
         return $this
@@ -108,15 +128,20 @@ class BasketProductModel extends Model
 
     }
 
+    /**
+     * @param BasketProduct $basketProduct
+     * @param int $quantity
+     * @param $price
+     * @return bool|\Exception|\ReflectionException update a products price and quantity
+     */
     public function updateProduct(BasketProduct $basketProduct, int $quantity, $price)
     {
         $bp = $this->getBasketProduct($basketProduct);
 
-//todo +=   quantity is wtong
 
         $data = [
             'quantity' => $bp->quantity += $quantity,
-            'price' => $bp->price = $price //todo do this price update on a timer every 30mins
+            'price' => $bp->price = $price
         ];
 
         try {
@@ -126,11 +151,10 @@ class BasketProductModel extends Model
         }
     }
 
-    public function purchased()
-    {
-//todo soft delete the rows in basket_product and update the basket to purchased, then when checking if basket exists if the basket that exists is purchased, make a new product
-    }
 
+    /**
+     *
+     */
     public function deleteProduct()
     {
 

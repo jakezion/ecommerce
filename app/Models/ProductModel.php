@@ -7,23 +7,29 @@ class ProductModel extends Model
 {
     protected $table = 'product';
     protected $primaryKey = 'productID';
-    // protected $useSoftDeletes = true;
-    //protected $returnType = 'array';
-    protected $returnType = 'App\Entities\Product'; //TODO may be correct testing required
-    protected $allowedFields = ['category', 'name', 'brand', 'description', 'price', 'image'];
-//    protected $beforeInsert = ['hashPassword'];
-//    protected $beforeUpdate = ['hashPassword'];
 
+    protected $returnType = 'App\Entities\Product';
+    protected $allowedFields = ['category', 'name', 'brand', 'description', 'price', 'image'];
+
+
+    /**
+     * @param Product $data
+     * @return bool check if a product exists by its id
+     */
     public function exists(Product $data): bool
     {
         $data = $this
             ->select()
-            ->where('productID', $data->productID) //TODO productID poss
+            ->where('productID', $data->productID)
             ->countAllResults();
 
         return ($data == 1);
     }
 
+    /**
+     * @param Product $data
+     * @return array get all products in a  category
+     */
     public function getProductCategory(Product $data)
     {
         return $this
@@ -34,6 +40,10 @@ class ProductModel extends Model
 
     }
 
+    /**
+     * @param Product $data
+     * @return array get all products of a brands for a category
+     */
     public
     function getProductBrand(Product $data)
     {
@@ -46,16 +56,23 @@ class ProductModel extends Model
             ->findAll();
     }
 
+    /**
+     * @param Product $data
+     * @return array|object|null get the id of a product
+     */
     public
     function getProductID(Product $data)
     {
-            return $this
-                ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
-                ->where('productID', $data->productID)
-                ->first();
+        return $this
+            ->select(['productID', 'category', 'name', 'brand', 'description', 'price', 'image'])
+            ->where('productID', $data->productID)
+            ->first();
 
     }
 
+    /**
+     * @return array get all products in the database
+     */
     public function getAllProducts()
     {
         return $this
@@ -65,6 +82,9 @@ class ProductModel extends Model
     }
 
 
+    /**
+     * @return array|null get all existing categories
+     */
     public
     function getCategories()
     {
@@ -74,6 +94,10 @@ class ProductModel extends Model
             ->findColumn('category');
     }
 
+    /**
+     * @param $category
+     * @return array|null get all existing brand by its category
+     */
     public
     function getBrands($category)
     {
@@ -83,7 +107,6 @@ class ProductModel extends Model
             ->where('category', $category)
             ->findColumn('brand');
     }
-
 
 
 }
