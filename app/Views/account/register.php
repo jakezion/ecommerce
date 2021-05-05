@@ -1,8 +1,19 @@
 <?= $this->extend('simple_layout'); ?>
+<style>
+    .register-main {
+        font-family: 'Arvo', sans-serif;
+    }
 
+    .register-main input {
+        font-size: 22px;
+    }
+</style>
+
+
+<?= $this->section('title'); ?>
+<?= esc($title);?>
+<?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
-
-
     <div class="d-flex justify-content-center">
         <div class="col-6 mt-5 px-5 register-main ">
             <div class="mb-2">
@@ -25,18 +36,7 @@
             <div id="form"></div>
         </div>
     </div>
-
 <?= $this->endSection(); ?>
-
-    <style>
-        .register-main {
-            font-family: 'Arvo', sans-serif;
-        }
-
-        .register-main input {
-            font-size: 22px;
-        }
-    </style>
 
 <?= $this->section('scripts'); ?>
     <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
@@ -96,13 +96,13 @@
             validateUsername() {
                 let username = this.state.username;
                 let symbols = new RegExp(/[^a-zA-Z0-9\s]/);
-                //let symbols = new RegExp(/^[a-zA-Z0-9!@#$%^&*)(+=._-]*$/);
                 if (symbols.test(username)) {
+
                     this.setState({nameError: 'Your username is invalid.'});
-                    //   <style>.invalid{text-color: red;}</style>
                 } else {
+
                     this.setState({nameError: ''});
-                    //   <style>.invalid{text-color: black;}</style>
+
                 }
             }
 
@@ -142,46 +142,9 @@
             }
 
             handleSubmit(event) {
-
-
-                // $(document).ready(function () {
-                //     event.preventDefault();
-                //
-                //     $.ajax({
-                //         url: 'handler.php',
-                //         type: 'POST',
-                //         data: {
-                //             'username': this.state.username,
-                //             'phone': this.state.phone,
-                //             'email': this.state.email
-                //         },
-                //         cache: false,
-                //         success: function (data) {
-                //             this.setState({
-                //                 type: 'success',
-                //                 message: 'Form received and will be processed'
-                //             });
-                //             // $('.form-group').slideUp();
-                //             // $('.form-group').after(this.state.contactMessage);
-                //             console.log('success', data);
-                //         }.bind(this),
-                //         error: function (xhr, status, err) {
-                //             console.log(xhr, status);
-                //             console.log(err);
-                //             this.setState({
-                //                 type: 'danger',
-                //                 message: 'Sorry the form encountered an error'
-                //             });
-                //             console.log(this.state.username + this.state.phone + this.state.email + 'fail');
-                //         }.bind(this)
-                //     });
-                // });
-                //alert(this.state.username + this.state.phone + this.state.email + this.state.password);
-                // event.preventDefault();
-
             }
 
-            //TODO: FINSIH FORM VALUES
+
             render() {
                 return (
 
@@ -201,7 +164,6 @@
                                         this.state.username}
                                     id="username"
                                     onChange={this.handleUsername}
-                                    onBlur={this.validateUsername}
                                     placeholder="Username"
                                 />
                                 <div className='invalid-feedback'>{this.state.nameError}</div>
@@ -219,7 +181,7 @@
                                         `form-control ` + `${this.state.phoneError ? 'is-invalid' : ''}`}
                                     id="phone"
                                     onChange={this.handlePhone}
-                                    onBlur={this.validatePhoneNumber}
+
                                     placeholder="Phone Number"
                                 />
                                 <div className='invalid-feedback'>{this.state.phoneError}</div>
@@ -231,15 +193,12 @@
                                 <input
                                     name="email"
                                     type="email"
-                                    value={
-                                        this.state.email}
+                                    value={this.state.email}
                                     className={
                                         `form-control ` + `${this.state.emailError ? 'is-invalid' : ''}`}
                                     id="email"
-                                    onChange={
-                                        this.handleEmail}
-                                    onBlur={
-                                        this.validateEmailAddress}
+                                    onChange={this.handleEmail}
+
                                     placeholder="name@example.co.uk"
 
                                 />
@@ -257,10 +216,8 @@
                                     value={
                                         this.state.password}
                                     id="password"
-                                    onChange={
-                                        this.handlePassword}
-                                    onBlur={
-                                        this.validatePassword}
+                                    onChange={this.handlePassword}
+
                                     placeholder="Password"
                                 />
 
@@ -282,11 +239,4 @@
 
     </script>
 
-    <!--TODO add Confirm password
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-      <span class="input-group-text">@</span>
-      <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-    </div>
-    -->
 <?= $this->endSection(); ?>

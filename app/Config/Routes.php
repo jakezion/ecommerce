@@ -21,6 +21,8 @@ $routes->setDefaultController('Dashboard');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
+
+//automatically routes URLs
 $routes->setAutoRoute(true);
 
 /*
@@ -45,11 +47,8 @@ $routes->match(['get', 'post'], 'inv/(:alpha)/(:alpha)', 'Dashboard::inventory/$
 $routes->match(['get', 'post'], 'inv/(:num)', 'Dashboard::product/$1');
 $routes->match(['get', 'post'], '/inv', 'Dashboard::inventory/all');
 
-
 //basket
-//$routes->post('/basket/purchase', 'Basket::purchase'); //TODO stop user from purchasing without pressing the checkout button
-//$routes->get('/basket/add/(:num)/(:num)', 'Basket::add/$1/$2'); //TODO check
-$routes->get('/basket', 'Basket::getBasket'); //TODO check
+$routes->get('/basket', 'Basket::getBasket');
 
 
 /*

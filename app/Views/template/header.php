@@ -1,6 +1,3 @@
-<!--https://codepen.io/arshdkhn1/pen/pymzWz-->
-<!--https://stackoverflow.com/questions/43439250/bootstrap-4-stop-collapse-from-pushing-content-down-->
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">AWTechnology</a>
@@ -83,10 +80,9 @@
 
 <style>
 
-
     .bg-deep {
         background: #383d41;
-        /*color: #6c757d;*/
+
     }
 
     .bg-deep a {
@@ -146,7 +142,6 @@
     }
 
     .search #searchButton {
-        /*padding-top: 40vh;*/
         background: none;
         border: none;
     }
@@ -157,10 +152,9 @@
     }
 
     .search {
-        /*padding: 2px 0;*/
-        /*padding-right: 15px;*/
+
         border: 3px solid #95999c;
-        /*width: 100%;*/
+
 
     }
 
@@ -173,8 +167,6 @@
 
     .search .bi-search {
         cursor: pointer;
-
-
     }
 
 </style>

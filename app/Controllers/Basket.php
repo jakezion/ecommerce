@@ -15,9 +15,14 @@ class Basket extends BaseController
 {
     use ResponseTrait;
 
+    /**
+     * @param int $productID
+     * @param int $quantity
+     * @return mixed
+     */
     public function add(int $productID, int $quantity = 1)
     {
-        if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.');
+        if ($quantity < 1) return $this->failValidationError('Product Quantity Invalid.', 404);
 
 
         $check = $this->check($productID, true);
@@ -25,7 +30,7 @@ class Basket extends BaseController
 
         if ($check instanceof Response) {
 
-            return $this->failValidationError('Product not added through ajax');
+            return $this->failValidationError('Product not added through ajax', 404);
 
         } else {
             $account = $check["account"];
@@ -49,9 +54,10 @@ class Basket extends BaseController
                 ]
             ]);
 
+
         } else {
 
-            return $this->failValidationError('Product could not be added to the shopping basket');
+            return $this->failValidationError('Product could not be added to the shopping basket', 404);
 
         }
 
@@ -59,21 +65,35 @@ class Basket extends BaseController
     }
 
 
+    /**
+     *
+     */
     public function remove()
     {
 
     }
 
+    /**
+     *
+     */
     public function update()
     {
 
     }
 
+    /**
+     *
+     */
     public function delete()
     {
 
     }
 
+    /**
+     * @param int|null $productID
+     * @param bool $requireAccount
+     * @return array|RedirectResponse|mixed
+     */
     private function check(int $productID = null, bool $requireAccount = true)
     {
         $data = [];
@@ -108,7 +128,7 @@ class Basket extends BaseController
             $product = new Product(['productID' => $productID]);
 
             if (!$model->find($product->productID))
-                return $this->failNotFound('Product doesnt exist in database');
+                return $this->failNotFound('Product doesnt exist in database', 404);
 
             $data['product'] = $product;
 
@@ -121,12 +141,15 @@ class Basket extends BaseController
         //see if ajax call or http request
     }
 
-    /**
-     * gets the account for the current session
-     */
 
+    /**
+     * @return \CodeIgniter\HTTP\RedirectResponse|mixed|string
+     */
     public function purchase()
     {
+        $data = [
+            'title' => 'Confirmed'
+        ];
         //todo stop purchae from being called when not pressed in basket
         if (!$this->session->authenticated)
             return redirect()->to('/login')->with('error', 'An account must be logged in to purchase a basket.');
@@ -145,12 +168,14 @@ class Basket extends BaseController
         if (empty($basket))
             return $this->failNotFound('Basket has no items');
 
-        return redirect()
-            ->to('/')
-            ->with('success', 'Basket has successfully been purchased');
+        return view('basket/confirm', $data);
 
     }
 
+
+    /**
+     * @return \CodeIgniter\HTTP\RedirectResponse|string
+     */
     public function getBasket()
     {
 
@@ -205,7 +230,7 @@ class Basket extends BaseController
     public function empty()
     {
         $data = [
-            'title' => 'Basket'
+            'title' => 'Empty Basket'
 
         ];
         return view('basket/empty', $data);

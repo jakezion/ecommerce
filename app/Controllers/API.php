@@ -45,6 +45,7 @@ class Api extends BaseController
                 $products = $basketProduct->getBasket($basket);
 
 
+
                 return $this->respondCreated($products);
 
             } else {

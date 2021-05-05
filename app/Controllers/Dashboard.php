@@ -47,13 +47,7 @@ class Dashboard extends BaseController
 
                 $brand = $this->request->getPost('brand');
                 return $this->respond($brand);
-                //  echo json_encode($brand);
-
             }
-
-//            if( $this->request->getPost('category') == 'all'){
-//                return $this->respond($product->getAllProducts());
-//            } else {
         }
         return $this->failServerError('Request does not appear to be made using AJAX.');
     }
@@ -87,7 +81,7 @@ class Dashboard extends BaseController
             }
             shuffle($products);
 
-//            if (empty($products)) throw new PageNotFoundException('This category does not contain any products.', 404);
+            if (empty($products)) $this->failNotFound('This category does not contain any products.', 404);
 
             return $this->respond($products);
             // echo json_encode($products);
