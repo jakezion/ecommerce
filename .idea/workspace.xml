@@ -21,16 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="37c63eb1-4b68-422c-a272-ae1d717808d0" name="Default Changelist" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Basket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Basket.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AccountModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AccountModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BasketModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BasketProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BasketProductModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/account/orders/account.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/account/orders/staff.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/dashboard/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/dashboard/products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/simple_layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/simple_layout.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,11 +113,12 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.14.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.14.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../17001013/17001013" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -214,7 +205,14 @@
       <workItem from="1620033355442" duration="41013000" />
       <workItem from="1620115575215" duration="35098000" />
       <workItem from="1620159209455" duration="2578000" />
-      <workItem from="1620170734231" duration="12800000" />
+      <workItem from="1620170734231" duration="13027000" />
+      <workItem from="1621085906875" duration="108000" />
+      <workItem from="1621088550232" duration="602000" />
+      <workItem from="1621155928923" duration="1349000" />
+      <workItem from="1621205908488" duration="634000" />
+      <workItem from="1621247595113" duration="20000" />
+      <workItem from="1625044068240" duration="2763000" />
+      <workItem from="1625576248810" duration="33000" />
     </task>
     <task id="LOCAL-00002" summary="Initial Commit">
       <created>1617974515847</created>
@@ -405,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620192798135</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Initial Commit">
+      <created>1620194316314</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1620194316314</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,118 +431,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1074" y="315" key="#CLI_Interpreters" timestamp="1619791369220">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1074" y="315" key="#CLI_Interpreters/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619791369220" />
-    <state x="872" y="363" key="#Deployment" timestamp="1619791478480">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="872" y="363" key="#Deployment/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619791478480" />
-    <state x="986" y="476" key="#Log_Highlighting_(ideolog)" timestamp="1619991016023">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="986" y="476" key="#Log_Highlighting_(ideolog)/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619991016023" />
-    <state x="734" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619791769954">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="734" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619791769954" />
-    <state x="1058" y="507" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620181897478">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1058" y="507" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620181897478" />
-    <state x="1053" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1620058080513">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1053" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620058080513" />
-    <state x="640" y="522" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620043656747">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="-810" y="469" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618255235037" />
-    <state x="640" y="522" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620043656747" />
-    <state x="92" y="92" width="2376" height="1226" key="DiffContextDialog" timestamp="1619987259602">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="92" y="92" width="2376" height="1226" key="DiffContextDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987259602" />
-    <state x="1274" y="401" key="FileChooserDialogImpl" timestamp="1619791762558">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1274" y="401" key="FileChooserDialogImpl/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619791762558" />
-    <state width="2517" height="404" key="GridCell.Tab.0.bottom" timestamp="1619795195632">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="2517" height="404" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619795195632" />
-    <state width="2517" height="404" key="GridCell.Tab.0.center" timestamp="1619795195632">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="2517" height="404" key="GridCell.Tab.0.center/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619795195632" />
-    <state width="2517" height="404" key="GridCell.Tab.0.left" timestamp="1619795195632">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="2517" height="404" key="GridCell.Tab.0.left/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619795195632" />
-    <state width="2517" height="404" key="GridCell.Tab.0.right" timestamp="1619795195632">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="2517" height="404" key="GridCell.Tab.0.right/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619795195632" />
-    <state x="248" y="123" key="MergeDialog" timestamp="1619987896196">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="248" y="123" key="MergeDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987896196" />
-    <state x="918" y="466" key="MultipleFileMergeDialog" timestamp="1619987896201">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="918" y="466" key="MultipleFileMergeDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987896201" />
-    <state x="1020" y="428" key="NewPhpClassDialog" timestamp="1620077985071">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1020" y="428" key="NewPhpClassDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620077985071" />
-    <state x="1114" y="628" key="NewPhpFileDialog" timestamp="1620179098014">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1114" y="628" key="NewPhpFileDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620179098014" />
-    <state x="995" y="305" key="SettingsEditor" timestamp="1620067027824">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="995" y="305" key="SettingsEditor/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620067027824" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1620192800704">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="-816" y="356" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1618261285062" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620192800704" />
-    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1619987259602">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987259602" />
-    <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619987904589">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1097" y="619" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619987904589" />
-    <state x="-1345" y="-248" width="1096" height="1397" maximized="true" key="dock-window-1" timestamp="1620045139363">
-      <screen x="-1080" y="-231" width="1080" height="1890" />
-    </state>
-    <state x="-1345" y="-248" width="1096" height="1397" maximized="true" key="dock-window-1/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620045139363" />
-    <state x="-1023" y="-244" width="1096" height="1397" maximized="true" key="dock-window-2" timestamp="1620061457715">
-      <screen x="-1080" y="-231" width="1080" height="1890" />
-    </state>
-    <state x="-1023" y="-244" width="1096" height="1397" maximized="true" key="dock-window-2/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620061457715" />
-    <state x="-1080" y="-231" width="1096" height="1890" maximized="true" key="dock-window-3" timestamp="1620065800309">
-      <screen x="-1080" y="-231" width="1080" height="1890" />
-    </state>
-    <state x="-1080" y="-231" width="1096" height="1890" maximized="true" key="dock-window-3/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620065800309" />
-    <state x="997" y="476" key="refactoring.ChangeSignatureDialog" timestamp="1619521937423">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="997" y="476" key="refactoring.ChangeSignatureDialog/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619521937423" />
-    <state x="936" y="333" key="run.anything.popup" timestamp="1620152060983">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="936" y="333" key="run.anything.popup/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1620152060983" />
-    <state x="481" y="326" width="1593" height="506" key="search.everywhere.popup" timestamp="1619474350900">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="-877" y="206" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410/-1080.-231.1080.1890@-1080.-231.1080.1890" timestamp="1617737438646" />
-    <state x="481" y="326" width="1593" height="506" key="search.everywhere.popup/0.0.2560.1410/-1080.-231.1080.1890@0.0.2560.1410" timestamp="1619474350900" />
   </component>
 </project>
